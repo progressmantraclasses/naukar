@@ -1,0 +1,36 @@
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+pydantic-settings==2.7.0
+
+# Database
+sqlalchemy==2.0.36
+asyncpg==0.30.0
+psycopg2-binary==2.9.10
+alembic==1.14.0
+pgvector==0.3.6
+
+# Neo4j AuraDB
+neo4j==5.27.0
+
+# Redis
+redis==5.2.1
+celery==5.4.0
+
+# LLM
+groq==0.13.1
+httpx==0.28.1
+tiktoken==0.8.0
+
+# Utils
+python-dotenv==1.0.1
+structlog==24.4.0
+tenacity==9.0.0
+rich==13.9.4
+orjson==3.10.12
+numpy==1.26.4
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.25.0
+httpx==0.28.1
