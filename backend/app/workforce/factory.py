@@ -5,6 +5,7 @@ Also manages dynamic employee creation/removal during task execution.
 import structlog
 from typing import List, Dict, Optional
 from app.tasks.models import Employee, EmployeeDefinition, WorkforcePlan
+from app.workforce.role_catalog import apply_role_profile
 
 log = structlog.get_logger()
 
@@ -75,6 +76,7 @@ class EmployeeFactory:
         return tops[0] if tops else None
 
     def _create_employee(self, definition: EmployeeDefinition) -> Employee:
+        definition = apply_role_profile(definition)
         emp = Employee(
             task_id=self.task_id,
             role=definition.role,

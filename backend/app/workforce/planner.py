@@ -13,6 +13,7 @@ from app.tasks.models import (
     TaskAnalysis, WorkforcePlan, EmployeeDefinition, WorkforceTopology
 )
 from app.core.config import settings
+from app.workforce.role_catalog import apply_role_profile, ROLE_CATALOG
 
 log = structlog.get_logger()
 
@@ -30,6 +31,7 @@ CRITICAL RULES:
 3. Each role needs a clear, distinct objective. No duplicate roles.
 4. Every specialist should have a clear manager or report to the project lead.
 5. If review is needed, include an independent reviewer (different from the main workers).
+6. Prefer role titles from the role catalog below so every employee receives a proven skill set.
 
 Return ONLY valid JSON in this exact format:
 {
@@ -134,6 +136,8 @@ Task Analysis:
 - Estimated Subtasks: {analysis.subtask_count_estimate}
 - Expected Output: {analysis.expected_output_format}
 
+Preferred role catalog: {", ".join(profile.role for profile in ROLE_CATALOG.values())}
+
 Design the optimal minimum workforce team for this task.
 Remember: complexity={analysis.complexity.complexity_score:.2f} means you should create approximately {self._suggested_team_size(analysis.complexity.complexity_score)} employees."""
 
@@ -155,6 +159,9 @@ Remember: complexity={analysis.complexity.complexity_score:.2f} means you should
         self, roles: List[EmployeeDefinition], analysis: TaskAnalysis
     ) -> List[EmployeeDefinition]:
         """Ensure the plan is sane: no duplicates, max cap, reviewer if needed."""
+        # Normalize generated roles against the reusable capability catalog.
+        roles = [apply_role_profile(role) for role in roles]
+
         # Deduplicate roles by title
         seen = set()
         unique_roles = []

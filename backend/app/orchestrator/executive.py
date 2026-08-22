@@ -342,7 +342,10 @@ Work completed by the team:
 ---
 
 Synthesize all this work into a single, coherent, well-structured final deliverable for the user.
-Present it professionally. Do not mention the internal process or team structure.
+Use clean Markdown formatting: a clear title, a short executive summary, descriptive headings,
+bulleted lists for recommendations, and Markdown tables only when comparing structured data.
+Keep paragraphs short, avoid repeated points, and label assumptions and source limitations clearly.
+Do not mention the internal process or team structure.
 The user should receive the final result as if it came from a single expert."""
 
         from app.core.config import settings

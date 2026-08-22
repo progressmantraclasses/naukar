@@ -12,6 +12,7 @@ from app.llm.provider import LLMRequest, Message
 from app.tasks.models import TaskStep, Employee, TaskAnalysis, StepStatus, EmployeeStatus
 from app.router.model_router import DynamicModelRouter
 from app.core.config import settings
+from app.workforce.role_catalog import role_playbook
 
 log = structlog.get_logger()
 
@@ -21,6 +22,9 @@ Your objective: {objective}
 
 Your responsibilities:
 {responsibilities}
+
+Role playbook:
+{playbook}
 
 Requested tools (reference only; no live tools are connected): {tools}
 
@@ -65,6 +69,7 @@ class EmployeeExecutor:
             role=employee.role,
             objective=employee.objective,
             responsibilities="\n".join(f"- {r}" for r in employee.responsibilities),
+            playbook=role_playbook(employee.role),
             tools=", ".join(employee.tools) if employee.tools else "None (reasoning only)",
             quality_requirement=employee.quality_requirement,
         )
