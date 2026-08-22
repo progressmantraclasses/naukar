@@ -35,19 +35,20 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str = ""
 
     # Model names (Groq)
-    GROQ_COMPOUND_MODEL: str = "groq/compound"
+    GROQ_COMPOUND_MODEL: str = "openai/gpt-oss-120b"
     GROQ_COMPOUND_MINI_MODEL: str = "groq/compound-mini"
 
     # Available models for routing
     MODEL_FAST: str = "groq/compound-mini"
     MODEL_SMART: str = "groq/compound"
-    MODEL_HEAVY: str = "groq/compound"  # fallback to compound for now
+    MODEL_HEAVY: str = "groq/compound"
 
     # Task limits
     MAX_TASK_COST_USD: float = 5.0
     DEFAULT_QUALITY_THRESHOLD: float = 0.80
     MAX_RETRY_ATTEMPTS: int = 3
     MAX_EMPLOYEES_PER_TASK: int = 12
+    GROQ_MAX_OUTPUT_TOKENS: int = 1800
 
     # WebSocket
     WS_HEARTBEAT_INTERVAL: int = 30

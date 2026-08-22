@@ -1,7 +1,4 @@
-"""
-Groq LLM Provider — implements LLMProvider using the Groq SDK.
-Supports compound-beta and compound-beta-mini models.
-"""
+"""Groq LLM provider implementation."""
 import time
 import asyncio
 from typing import AsyncIterator, List
@@ -51,6 +48,7 @@ class GroqProvider(LLMProvider):
     async def generate(self, request: LLMRequest) -> LLMResponse:
         resolved_model = _resolve_model(request.model)
         messages = self._build_messages(request)
+        max_tokens = min(request.max_tokens, settings.GROQ_MAX_OUTPUT_TOKENS)
 
         for attempt in range(settings.MAX_RETRY_ATTEMPTS):
             start = time.monotonic()
@@ -59,7 +57,7 @@ class GroqProvider(LLMProvider):
                     model=resolved_model,
                     messages=messages,
                     temperature=request.temperature,
-                    max_tokens=request.max_tokens,
+                    max_tokens=max_tokens,
                 )
                 if request.json_mode:
                     kwargs["response_format"] = {"type": "json_object"}
@@ -120,12 +118,13 @@ class GroqProvider(LLMProvider):
     async def stream(self, request: LLMRequest) -> AsyncIterator[str]:
         resolved_model = _resolve_model(request.model)
         messages = self._build_messages(request)
+        max_tokens = min(request.max_tokens, settings.GROQ_MAX_OUTPUT_TOKENS)
 
         stream = await self._client.chat.completions.create(
             model=resolved_model,
             messages=messages,
             temperature=request.temperature,
-            max_tokens=request.max_tokens,
+            max_tokens=max_tokens,
             stream=True,
         )
         async for chunk in stream:

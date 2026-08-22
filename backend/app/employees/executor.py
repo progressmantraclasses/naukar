@@ -22,13 +22,14 @@ Your objective: {objective}
 Your responsibilities:
 {responsibilities}
 
-Available tools: {tools}
+Requested tools (reference only; no live tools are connected): {tools}
 
 Work ethic:
 - Be thorough and accurate
 - Provide clear, structured output
 - If you're uncertain, say so explicitly with your confidence level
 - Focus ONLY on your assigned step — do not do work that belongs to others
+- Do not call, invent, or simulate tool functions. If a requested tool is unavailable, state the limitation and continue using reasoning from the supplied context.
 - End your response with: CONFIDENCE: [0.0-1.0] — your confidence in your output
 
 Quality requirement for this step: {quality_requirement:.0%}
@@ -124,7 +125,14 @@ class EmployeeExecutor:
                     snippet = prior_results[ctx_id][:2000]
                     parts.append(f"\n---\n{snippet}")
 
-        parts.append(f"\n## Required Tools\n{', '.join(step.required_tools) if step.required_tools else 'None'}")
+        parts.append(
+            f"\n## Requested Tools (not connected)\n"
+            f"{', '.join(step.required_tools) if step.required_tools else 'None'}"
+        )
+        parts.append(
+            "\nNo tools are connected in this execution. Do not emit tool calls; "
+            "use only the task details and previous-step context."
+        )
         parts.append(f"\n## Quality Threshold\nYour output must meet {step.quality_threshold:.0%} quality. Be thorough.")
         parts.append("\n\nNow complete your task. End with: CONFIDENCE: [0.0-1.0]")
 
