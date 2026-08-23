@@ -9,16 +9,9 @@ from groq import APIError, APIStatusError, RateLimitError
 
 from app.llm.provider import LLMProvider, LLMRequest, LLMResponse, Message
 from app.core.config import settings
+from app.llm.pricing import pricing_registry
 
 log = structlog.get_logger()
-
-# Cost per 1M tokens (USD) — approximate Groq pricing
-_COST_TABLE = {
-    "compound-beta": {"input": 0.90, "output": 0.90},
-    "compound-beta-mini": {"input": 0.40, "output": 0.40},
-    # Fallback
-    "default": {"input": 0.50, "output": 0.50},
-}
 
 # Internal model name mapping
 _MODEL_MAP = {
@@ -133,8 +126,7 @@ class GroqProvider(LLMProvider):
                 yield delta
 
     async def estimate_cost(self, prompt_tokens: int, completion_tokens: int, model: str) -> float:
-        pricing = _COST_TABLE.get(model, _COST_TABLE["default"])
-        return (prompt_tokens * pricing["input"] + completion_tokens * pricing["output"]) / 1_000_000
+        return pricing_registry.cost(model, prompt_tokens, completion_tokens)
 
     def _build_messages(self, request: LLMRequest) -> list:
         msgs = []

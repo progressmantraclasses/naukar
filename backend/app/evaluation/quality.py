@@ -4,7 +4,7 @@ Uses an independent LLM call (potentially a different model) to score results.
 """
 import json
 import structlog
-from app.llm.registry import llm_registry
+from app.llm.gateway import ai_gateway
 from app.llm.provider import LLMRequest, Message
 from app.tasks.models import TaskStep, Employee, TaskAnalysis, QualityResult
 from app.core.config import settings
@@ -88,8 +88,7 @@ Score this output and determine if it passes the quality threshold of {step.qual
             task_id=step.task_id,
         )
 
-        provider = llm_registry.get_provider(self._model)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
 
         try:
             data = json.loads(response.content)
@@ -149,8 +148,7 @@ Does this final output fully satisfy the user's original request?"""
             json_mode=True,
         )
 
-        provider = llm_registry.get_provider(self._model)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
 
         try:
             data = json.loads(response.content)

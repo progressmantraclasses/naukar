@@ -24,6 +24,7 @@ from app.tasks.decomposer import TaskDecomposer
 from app.employees.executor import EmployeeExecutor
 from app.evaluation.quality import QualityController
 from app.router.model_router import DynamicModelRouter
+from app.llm.gateway import bind_usage_session
 from app.tasks.models import (
     TaskAnalysis, WorkforcePlan, Employee, TaskStep,
     TaskStatus, EmployeeStatus, StepStatus, QualityResult
@@ -58,11 +59,12 @@ class ExecutiveOrchestrator:
     # -----------------------------------------------------------------------
     # MAIN ENTRY POINT
     # -----------------------------------------------------------------------
-    async def run(self, task_id: str, user_input: str) -> str:
+    async def run(self, task_id: str, user_input: str, user_id: str = "anonymous") -> str:
         """
         Full autonomous loop. Returns the final result string.
         """
         start_time = time.monotonic()
+        bind_usage_session(self._db, user_id)
         log.info("orchestrator_started", task_id=task_id)
 
         # Update DB status
@@ -119,7 +121,7 @@ class ExecutiveOrchestrator:
                 "message": "Planning execution strategy and assigning work..."
             })
             steps = await self._decomposer.decompose(analysis, plan, employees)
-            for step in steps:
+            for step in steps[:settings.MAX_STEPS]:
                 await self._save_step(step)
                 await _emit(task_id, EventType.TASK_ASSIGNED, {
                     "step_id": step.id,
@@ -136,6 +138,11 @@ class ExecutiveOrchestrator:
             employee_map = {e.id: e for e in employees}
 
             for step in steps:
+                if time.monotonic() - start_time > settings.MAX_RUNTIME_SECONDS:
+                    raise TimeoutError("Maximum task runtime exceeded")
+                if step.step_index >= settings.MAX_STEPS:
+                    step.status = StepStatus.SKIPPED
+                    continue
                 await self._execute_step_with_retry(
                     step=step,
                     employee_map=employee_map,
@@ -317,7 +324,7 @@ class ExecutiveOrchestrator:
         """
         Use an LLM to intelligently synthesize all step results into the final deliverable.
         """
-        from app.llm.registry import llm_registry
+        from app.llm.gateway import ai_gateway
         from app.llm.provider import LLMRequest, Message
 
         completed_parts = []
@@ -355,8 +362,7 @@ The user should receive the final result as if it came from a single expert."""
             temperature=0.4,
             max_tokens=4000,
         )
-        provider = llm_registry.get_provider(settings.MODEL_SMART)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
         return response.content
 
     async def _fix_final_result(
@@ -367,7 +373,7 @@ The user should receive the final result as if it came from a single expert."""
         prior_results: Dict[str, str],
     ) -> str:
         """Attempt to fix the final result based on QC feedback."""
-        from app.llm.registry import llm_registry
+        from app.llm.gateway import ai_gateway
         from app.llm.provider import LLMRequest, Message
 
         prompt = f"""The following output was reviewed and found lacking.
@@ -392,8 +398,7 @@ Please revise and improve the output to address all issues."""
             temperature=0.3,
             max_tokens=4000,
         )
-        provider = llm_registry.get_provider(settings.MODEL_SMART)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
         return response.content
 
     # -----------------------------------------------------------------------

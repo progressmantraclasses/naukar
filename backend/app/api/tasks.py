@@ -7,14 +7,18 @@ from datetime import datetime, timezone
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, BackgroundTasks, Depends
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.core.database import get_db
 from app.core.events import event_bus, Event, EventType
+from app.core.redis_store import redis_store
 from app.db import models as db_models
 from app.orchestrator.executive import ExecutiveOrchestrator
+from app.tools.deterministic import try_deterministic
+from app.core.config import settings
+from app.core.security import Identity, assert_owner, get_identity
 import structlog
 
 log = structlog.get_logger()
@@ -25,8 +29,9 @@ router = APIRouter(prefix="/api/tasks", tags=["tasks"])
 # Request / Response schemas
 # ---------------------------------------------------------------------------
 class CreateTaskRequest(BaseModel):
-    user_input: str
-    max_budget_usd: Optional[float] = 5.0
+    user_input: str = Field(min_length=1, max_length=50_000)
+    max_budget_usd: Optional[float] = Field(default=5.0, ge=0.0, le=100.0)
+    user_id: str = Field(default="anonymous", min_length=1, max_length=200)
 
 
 class TaskResponse(BaseModel):
@@ -45,13 +50,13 @@ class TaskResponse(BaseModel):
 # ---------------------------------------------------------------------------
 # Background task runner
 # ---------------------------------------------------------------------------
-async def _run_orchestration(task_id: str, user_input: str):
+async def _run_orchestration(task_id: str, user_input: str, user_id: str):
     """Run the autonomous loop in the background."""
     from app.core.database import AsyncSessionLocal
     async with AsyncSessionLocal() as db:
         orchestrator = ExecutiveOrchestrator(db)
         try:
-            await orchestrator.run(task_id, user_input)
+            await orchestrator.run(task_id, user_input, user_id=user_id)
         except Exception as e:
             log.exception("orchestration_background_error", task_id=task_id, error=str(e))
 
@@ -64,17 +69,20 @@ async def create_task(
     body: CreateTaskRequest,
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
+    identity: Identity = Depends(get_identity),
 ):
     """
     Create a new task and immediately start autonomous execution.
     The task runs in the background; use WebSocket for live updates.
     """
     task_id = str(uuid.uuid4())
+    user_id = identity.user_id if settings.AUTH_REQUIRED else body.user_id
 
     # Persist task
     task = db_models.Task(
         id=task_id,
         user_input=body.user_input,
+        user_id=user_id,
         max_budget_usd=body.max_budget_usd or 5.0,
         status="pending",
         created_at=datetime.now(timezone.utc),
@@ -89,26 +97,57 @@ async def create_task(
         task_id=task_id,
         payload={"user_input": body.user_input, "task_id": task_id},
     ))
+    deterministic_result = await try_deterministic(body.user_input)
+    if deterministic_result is not None:
+        task.status = "completed"
+        task.title = "Deterministic calculation"
+        task.final_result = deterministic_result
+        task.quality_score = 1.0
+        task.completed_at = datetime.now(timezone.utc)
+        await db.commit()
+        await event_bus.publish(Event(
+            event_type=EventType.FINAL_RESULT_READY,
+            task_id=task_id,
+            payload={"result": deterministic_result, "quality_score": 1.0, "deterministic": True},
+        ))
+        return _task_to_response(task)
+    try:
+        await redis_store.set_json(
+            f"naukar:task:{user_id}:{task_id}",
+            {"task_id": task_id, "status": "pending", "user_id": user_id},
+            86400,
+        )
+    except Exception as exc:
+        log.warning("task_state_cache_write_failed", task_id=task_id, error=str(exc))
 
-    # Start autonomous loop in background
-    background_tasks.add_task(_run_orchestration, task_id, body.user_input)
+    # Use a durable worker when configured; retain local fallback for development.
+    if settings.TASK_QUEUE_MODE.lower() == "celery":
+        from app.core.task_queue import enqueue_orchestration
+        enqueue_orchestration(task_id, body.user_input, user_id)
+    else:
+        background_tasks.add_task(_run_orchestration, task_id, body.user_input, user_id)
 
     log.info("task_created", task_id=task_id)
     return _task_to_response(task)
 
 
 @router.get("/{task_id}", response_model=TaskResponse)
-async def get_task(task_id: str, db: AsyncSession = Depends(get_db)):
+async def get_task(task_id: str, db: AsyncSession = Depends(get_db), identity: Identity = Depends(get_identity)):
     """Get task status and result."""
     task = await db.get(db_models.Task, task_id)
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
+    assert_owner(task.user_id, identity)
     return _task_to_response(task)
 
 
 @router.get("/{task_id}/employees")
-async def get_task_employees(task_id: str, db: AsyncSession = Depends(get_db)):
+async def get_task_employees(task_id: str, db: AsyncSession = Depends(get_db), identity: Identity = Depends(get_identity)):
     """Get all employees created for a task."""
+    task = await db.get(db_models.Task, task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    assert_owner(task.user_id, identity)
     result = await db.execute(
         select(db_models.Employee).where(db_models.Employee.task_id == task_id)
     )
@@ -132,8 +171,12 @@ async def get_task_employees(task_id: str, db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/{task_id}/steps")
-async def get_task_steps(task_id: str, db: AsyncSession = Depends(get_db)):
+async def get_task_steps(task_id: str, db: AsyncSession = Depends(get_db), identity: Identity = Depends(get_identity)):
     """Get all task steps (DAG nodes) for a task."""
+    task = await db.get(db_models.Task, task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    assert_owner(task.user_id, identity)
     result = await db.execute(
         select(db_models.TaskStep).where(db_models.TaskStep.task_id == task_id)
         .order_by(db_models.TaskStep.step_index)
@@ -157,10 +200,10 @@ async def get_task_steps(task_id: str, db: AsyncSession = Depends(get_db)):
 
 
 @router.get("")
-async def list_tasks(db: AsyncSession = Depends(get_db)):
+async def list_tasks(db: AsyncSession = Depends(get_db), identity: Identity = Depends(get_identity)):
     """List all tasks."""
     result = await db.execute(
-        select(db_models.Task).order_by(db_models.Task.created_at.desc()).limit(50)
+        select(db_models.Task).where(db_models.Task.user_id == identity.user_id).order_by(db_models.Task.created_at.desc()).limit(50)
     )
     tasks = result.scalars().all()
     return [_task_to_response(t) for t in tasks]

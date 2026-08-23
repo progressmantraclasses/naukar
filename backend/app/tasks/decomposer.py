@@ -6,7 +6,7 @@ import json
 import structlog
 from typing import List, Dict
 
-from app.llm.registry import llm_registry
+from app.llm.gateway import ai_gateway
 from app.llm.provider import LLMRequest, Message
 from app.tasks.models import TaskAnalysis, WorkforcePlan, TaskStep, Employee
 from app.core.config import settings
@@ -73,8 +73,7 @@ class TaskDecomposer:
             task_id=analysis.task_id,
         )
 
-        provider = llm_registry.get_provider(self._model)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
 
         try:
             data = json.loads(response.content)

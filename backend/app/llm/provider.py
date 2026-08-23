@@ -4,6 +4,7 @@ New providers (OpenAI, Anthropic, etc.) plug in without touching orchestrator co
 """
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
+import uuid
 from typing import AsyncIterator, Optional, List, Dict, Any
 
 
@@ -36,6 +37,13 @@ class LLMRequest:
     task_id: Optional[str] = None
     employee_id: Optional[str] = None
     step_id: Optional[str] = None
+    user_id: Optional[str] = None
+    task_type: Optional[str] = None
+    cacheable: bool = True
+    routing_tier: Optional[str] = None
+    request_id: str = field(default_factory=lambda: str(uuid.uuid4()))
+    workspace_id: Optional[str] = None
+    freshness_required: bool = False
 
 
 class LLMProvider(ABC):

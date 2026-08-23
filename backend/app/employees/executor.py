@@ -7,7 +7,7 @@ import time
 import structlog
 from typing import List, Optional, Dict
 
-from app.llm.registry import llm_registry
+from app.llm.gateway import ai_gateway
 from app.llm.provider import LLMRequest, Message
 from app.tasks.models import TaskStep, Employee, TaskAnalysis, StepStatus, EmployeeStatus
 from app.router.model_router import DynamicModelRouter
@@ -96,8 +96,7 @@ class EmployeeExecutor:
             attempt=attempt,
         )
 
-        provider = llm_registry.get_provider(model)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
 
         result, confidence = self._parse_response(response.content)
         employee.confidence = confidence

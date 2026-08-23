@@ -33,6 +33,7 @@ class Task(Base):
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
     user_input: Mapped[str] = mapped_column(Text, nullable=False)
+    user_id: Mapped[str] = mapped_column(String(200), nullable=False, default="anonymous", index=True)
     title: Mapped[Optional[str]] = mapped_column(String(500))
     status: Mapped[str] = mapped_column(String(50), default="pending")  # pending|analyzing|planning|executing|reviewing|completed|failed
 
@@ -192,6 +193,37 @@ class LLMCall(Base):
 
 
 # ---------------------------------------------------------------------------
+# AI usage / monthly budget ledger
+# ---------------------------------------------------------------------------
+class AIUsage(Base):
+    __tablename__ = "ai_usage"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
+    user_id: Mapped[str] = mapped_column(String(200), nullable=False, default="anonymous")
+    request_id: Mapped[str] = mapped_column(String(36), nullable=False, default=new_uuid)
+    task_id: Mapped[Optional[str]] = mapped_column(String(36), ForeignKey("tasks.id"))
+    model: Mapped[str] = mapped_column(String(200), nullable=False)
+    task_type: Mapped[Optional[str]] = mapped_column(String(200))
+    input_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    cached_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    estimated_cost: Mapped[float] = mapped_column(Float, default=0.0)
+    actual_cost: Mapped[float] = mapped_column(Float, default=0.0)
+    cache_hit: Mapped[bool] = mapped_column(Boolean, default=False)
+    semantic_cache_hit: Mapped[bool] = mapped_column(Boolean, default=False)
+    rag_used: Mapped[bool] = mapped_column(Boolean, default=False)
+    search_used: Mapped[bool] = mapped_column(Boolean, default=False)
+    tool_calls: Mapped[int] = mapped_column(Integer, default=0)
+    status: Mapped[str] = mapped_column(String(30), default="completed")
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    __table_args__ = (
+        Index("ix_ai_usage_user_period", "user_id", "created_at"),
+        Index("ix_ai_usage_task", "task_id"),
+    )
+
+
+# ---------------------------------------------------------------------------
 # Model Metrics (learning)
 # ---------------------------------------------------------------------------
 class ModelMetric(Base):
@@ -242,11 +274,78 @@ class DocumentChunk(Base):
 
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
     task_id: Mapped[Optional[str]] = mapped_column(String(36))
+    user_id: Mapped[str] = mapped_column(String(200), nullable=False, default="anonymous")
+    workspace_id: Mapped[str] = mapped_column(String(200), nullable=False, default="default")
     source: Mapped[str] = mapped_column(String(500))
     content: Mapped[str] = mapped_column(Text)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False, default="")
     embedding: Mapped[Optional[Any]] = mapped_column(Vector(1536))
     metadata_: Mapped[dict] = mapped_column("metadata", JSONB, default=dict)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    __table_args__ = (
+        Index("ix_document_chunks_content_hash", "content_hash"),
+    )
+
+
+# ---------------------------------------------------------------------------
+# Semantic cache
+# ---------------------------------------------------------------------------
+class SemanticCache(Base):
+    __tablename__ = "semantic_cache"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
+    user_id: Mapped[str] = mapped_column(String(200), nullable=False, default="anonymous")
+    workspace_id: Mapped[str] = mapped_column(String(200), nullable=False, default="default")
+    input_text: Mapped[str] = mapped_column(Text, nullable=False)
+    response: Mapped[str] = mapped_column(Text, nullable=False)
+    model: Mapped[str] = mapped_column(String(200), nullable=False)
+    task_type: Mapped[Optional[str]] = mapped_column(String(200))
+    embedding: Mapped[Any] = mapped_column(Vector(1536), nullable=False)
+    time_sensitive: Mapped[bool] = mapped_column(Boolean, default=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    __table_args__ = (
+        Index("ix_semantic_cache_scope", "user_id", "workspace_id", "created_at"),
+    )
+
+
+class Memory(Base):
+    __tablename__ = "memories"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
+    user_id: Mapped[str] = mapped_column(String(200), nullable=False, default="anonymous")
+    workspace_id: Mapped[str] = mapped_column(String(200), nullable=False, default="default")
+    kind: Mapped[str] = mapped_column(String(50), nullable=False, default="fact")
+    content: Mapped[str] = mapped_column(Text, nullable=False)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    embedding: Mapped[Any] = mapped_column(Vector(1536), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    __table_args__ = (
+        Index("ix_memories_scope", "user_id", "workspace_id", "kind"),
+        Index("ix_memories_content_hash", "content_hash"),
+    )
+
+
+class ToolExecution(Base):
+    __tablename__ = "tool_executions"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
+    user_id: Mapped[str] = mapped_column(String(200), nullable=False, default="anonymous")
+    task_id: Mapped[Optional[str]] = mapped_column(String(36), ForeignKey("tasks.id"))
+    tool_name: Mapped[str] = mapped_column(String(200), nullable=False)
+    input_payload: Mapped[dict] = mapped_column(JSONB, default=dict)
+    output_payload: Mapped[Optional[dict]] = mapped_column(JSONB)
+    estimated_cost: Mapped[float] = mapped_column(Float, default=0.0)
+    success: Mapped[bool] = mapped_column(Boolean, default=True)
+    error: Mapped[Optional[str]] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+    __table_args__ = (
+        Index("ix_tool_executions_user", "user_id", "created_at"),
+        Index("ix_tool_executions_task", "task_id"),
+    )
 
 
 # ---------------------------------------------------------------------------

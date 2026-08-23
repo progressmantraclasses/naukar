@@ -12,10 +12,55 @@ function nodeText(node: React.ReactNode): string {
 }
 
 function normalizeReportMarkdown(markdown: string): string {
-  return markdown
+  const cleaned = markdown
     .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/\s*\|\|\s*/g, '\n')
-    .replace(/^(\s*\|[^\n]+\|)\s*$/gm, '$1\n')
+
+  const lines = cleaned.split(/\r?\n/)
+  const output: string[] = []
+  let index = 0
+
+  const isTableRow = (line: string) => {
+    const value = line.trim()
+    return value.startsWith('|') && (value.match(/\|/g)?.length || 0) >= 2
+  }
+  const isSeparator = (line: string) => /^\s*\|?(?:\s*:?-+:?\s*\|)+\s*$/.test(line)
+  const completeRow = (line: string) => {
+    const value = line.trim()
+    return value.endsWith('|') ? value : `${value} |`
+  }
+  const separatorFor = (line: string) => {
+    const columns = completeRow(line).replace(/^\||\|$/g, '').split('|').length
+    return `| ${Array(columns).fill('---').join(' | ')} |`
+  }
+
+  while (index < lines.length) {
+    if (!isTableRow(lines[index])) {
+      output.push(lines[index])
+      index += 1
+      continue
+    }
+
+    const rows: string[] = []
+    while (index < lines.length) {
+      if (isTableRow(lines[index])) {
+        rows.push(completeRow(lines[index]))
+        index += 1
+        continue
+      }
+      if (lines[index].trim() === '' && isTableRow(lines[index + 1] || '')) {
+        index += 1
+        continue
+      }
+      break
+    }
+
+    // Models regularly omit the final pipe in data rows. GFM accepts the
+    // completed rows below, turning otherwise raw pipe text into a real table.
+    if (rows.length > 1 && !isSeparator(rows[1])) rows.splice(1, 0, separatorFor(rows[0]))
+    output.push(...rows, '')
+  }
+
+  return output.join('\n').replace(/\n{3,}/g, '\n\n').trim()
 }
 
 const InteractiveTable: React.FC<{ children?: React.ReactNode }> = ({ children }) => {

@@ -4,7 +4,7 @@ Uses an LLM to understand: what the task is, what skills/tools are needed, compl
 """
 import json
 import structlog
-from app.llm.registry import llm_registry
+from app.llm.gateway import ai_gateway
 from app.llm.provider import LLMRequest, Message
 from app.tasks.models import TaskAnalysis, ComplexityProfile
 from app.core.config import settings
@@ -76,8 +76,7 @@ class TaskIntelligenceEngine:
             task_id=task_id,
         )
 
-        provider = llm_registry.get_provider(self._model)
-        response = await provider.generate(request)
+        response = await ai_gateway.generate(request)
 
         try:
             data = json.loads(response.content)
