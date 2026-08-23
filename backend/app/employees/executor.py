@@ -13,8 +13,16 @@ from app.tasks.models import TaskStep, Employee, TaskAnalysis, StepStatus, Emplo
 from app.router.model_router import DynamicModelRouter
 from app.core.config import settings
 from app.workforce.role_catalog import role_playbook
+from app.security.validators import PromptSanitizer
 
 log = structlog.get_logger()
+
+# Keywords in step objectives that suggest web research is needed
+_RESEARCH_KEYWORDS = {
+    "research", "search", "find", "gather", "collect", "look up", "investigate",
+    "analyze", "trends", "market", "data", "statistics", "report", "survey",
+    "competitor", "industry", "latest", "current", "recent", "news", "information",
+}
 
 EMPLOYEE_SYSTEM_TEMPLATE = """You are {role} — an AI specialist working on a project.
 
@@ -39,6 +47,9 @@ Work ethic:
 Quality requirement for this step: {quality_requirement:.0%}
 """
 
+# Security suffix appended to ALL system prompts
+_SECURITY_SUFFIX = PromptSanitizer.injection_guard_system_suffix()
+
 
 class EmployeeExecutor:
     """
@@ -59,12 +70,26 @@ class EmployeeExecutor:
     ) -> tuple[str, float, str]:
         """
         Execute a step. Returns (result_text, confidence, model_used).
+        Before calling LLM, attempts web search for research-type steps.
         """
         model = self._router.select_model(employee, step, analysis, attempt=attempt)
         employee.current_model = model
         employee.status = EmployeeStatus.WORKING
         employee.current_task = step.objective
 
+        # ── Web Search (free, pre-LLM) ─────────────────────────────────────
+        web_context = ""
+        web_search_result = None
+        if self._needs_web_search(step, employee, analysis):
+            web_search_result = await self._do_web_search(
+                step=step,
+                employee=employee,
+                analysis=analysis,
+            )
+            if web_search_result and web_search_result.text:
+                web_context = web_search_result.to_context_block()
+
+        # ── Build prompts ──────────────────────────────────────────────────
         system_prompt = EMPLOYEE_SYSTEM_TEMPLATE.format(
             role=employee.role,
             objective=employee.objective,
@@ -72,9 +97,9 @@ class EmployeeExecutor:
             playbook=role_playbook(employee.role),
             tools=", ".join(employee.tools) if employee.tools else "None (reasoning only)",
             quality_requirement=employee.quality_requirement,
-        )
+        ) + _SECURITY_SUFFIX  # always append security rules
 
-        user_message = self._build_user_message(step, prior_results)
+        user_message = self._build_user_message(step, prior_results, web_context=web_context)
 
         request = LLMRequest(
             messages=[Message(role="user", content=user_message)],
@@ -94,6 +119,7 @@ class EmployeeExecutor:
             role=employee.role,
             model=model,
             attempt=attempt,
+            web_context_chars=len(web_context),
         )
 
         response = await ai_gateway.generate(request)
@@ -114,12 +140,18 @@ class EmployeeExecutor:
         return result, confidence, model
 
     def _build_user_message(
-        self, step: TaskStep, prior_results: Dict[str, str]
+        self, step: TaskStep, prior_results: Dict[str, str], web_context: str = ""
     ) -> str:
         parts = [
             f"## Your Task\n{step.objective}",
             f"\n{step.description}" if step.description else "",
         ]
+
+        # Inject web research context FIRST (before prior steps)
+        if web_context:
+            # Wrap with PromptSanitizer to prevent injection via scraped web content
+            safe_web_context = PromptSanitizer.sanitize_external(web_context, source="web_search")
+            parts.append(f"\n{safe_web_context}")
 
         # Inject relevant context from prior steps
         if step.context_from_steps and prior_results:
@@ -134,8 +166,7 @@ class EmployeeExecutor:
             f"{', '.join(step.required_tools) if step.required_tools else 'None'}"
         )
         parts.append(
-            "\nNo tools are connected in this execution. Do not emit tool calls; "
-            "use only the task details and previous-step context."
+            "\nNo live tools connected. Use task details, web context above, and previous-step results."
         )
         parts.append(f"\n## Quality Threshold\nYour output must meet {step.quality_threshold:.0%} quality. Be thorough.")
         parts.append("\n\nNow complete your task. End with: CONFIDENCE: [0.0-1.0]")
@@ -165,3 +196,32 @@ class EmployeeExecutor:
                 break
 
         return result, confidence
+
+    def _needs_web_search(self, step: TaskStep, employee: Employee, analysis: TaskAnalysis) -> bool:
+        """Determine if this step benefits from web search."""
+        if not analysis.needs_research:
+            return False
+        objective_lower = step.objective.lower()
+        return any(kw in objective_lower for kw in _RESEARCH_KEYWORDS)
+
+    async def _do_web_search(self, step: TaskStep, employee: Employee, analysis: TaskAnalysis):
+        """Run SmartWebSearcher and emit a WEB_SEARCH_RESULT event."""
+        try:
+            from app.tools.web_searcher import smart_web_searcher
+            # Build a focused search query from step objective + task context
+            query = f"{step.objective[:100]} {' '.join(analysis.required_knowledge[:3])}".strip()
+            log.info("web_search_starting", query=query[:60], step=step.step_index)
+            result = await smart_web_searcher.search(
+                query=query,
+                min_sites=5,
+                task_id=step.task_id,
+            )
+            await smart_web_searcher.emit_event(
+                task_id=step.task_id,
+                result=result,
+                step_label=f"Step {step.step_index}: {step.objective[:50]}",
+            )
+            return result
+        except Exception as exc:
+            log.warning("web_search_in_executor_failed", error=str(exc), step=step.step_index)
+            return None

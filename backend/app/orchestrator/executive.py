@@ -198,6 +198,13 @@ class ExecutiveOrchestrator:
                 "num_steps": len(steps),
             })
 
+            # ── Emit token usage summary ─────────────────────────────────
+            from app.llm.token_tracker import token_tracker
+            token_tracker.print_final_summary(task_id)
+            summary = token_tracker.get_summary(task_id)
+            if summary:
+                await _emit(task_id, EventType.TASK_TOKEN_SUMMARY, summary.to_dict())
+
             log.info(
                 "orchestrator_completed",
                 task_id=task_id,

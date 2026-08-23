@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, BackgroundTasks, Depends
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
@@ -19,6 +19,7 @@ from app.orchestrator.executive import ExecutiveOrchestrator
 from app.tools.deterministic import try_deterministic
 from app.core.config import settings
 from app.core.security import Identity, assert_owner, get_identity
+from app.security.rate_limiter import task_rate_limit, api_rate_limit
 import structlog
 
 log = structlog.get_logger()
@@ -29,9 +30,14 @@ router = APIRouter(prefix="/api/tasks", tags=["tasks"])
 # Request / Response schemas
 # ---------------------------------------------------------------------------
 class CreateTaskRequest(BaseModel):
-    user_input: str = Field(min_length=1, max_length=50_000)
+    user_input: str = Field(min_length=1, max_length=10_000)
     max_budget_usd: Optional[float] = Field(default=5.0, ge=0.0, le=100.0)
-    user_id: str = Field(default="anonymous", min_length=1, max_length=200)
+    # user_id is NOT accepted from client — always taken from JWT identity
+
+    @field_validator("user_input")
+    @classmethod
+    def _strip_input(cls, v: str) -> str:
+        return v.strip()
 
 
 class TaskResponse(BaseModel):
@@ -70,13 +76,14 @@ async def create_task(
     background_tasks: BackgroundTasks,
     db: AsyncSession = Depends(get_db),
     identity: Identity = Depends(get_identity),
+    _rate: None = Depends(task_rate_limit),
 ):
     """
     Create a new task and immediately start autonomous execution.
     The task runs in the background; use WebSocket for live updates.
     """
     task_id = str(uuid.uuid4())
-    user_id = identity.user_id if settings.AUTH_REQUIRED else body.user_id
+    user_id = identity.user_id  # always from JWT, never from request body
 
     # Persist task
     task = db_models.Task(
@@ -222,3 +229,36 @@ def _task_to_response(task: db_models.Task) -> dict:
         "created_at": task.created_at.isoformat() if task.created_at else "",
         "completed_at": task.completed_at.isoformat() if task.completed_at else None,
     }
+
+
+@router.get("/{task_id}/analytics")
+async def get_task_analytics(
+    task_id: str,
+    db: AsyncSession = Depends(get_db),
+    identity: Identity = Depends(get_identity),
+):
+    """
+    Get full token usage analytics for a task.
+    Returns per-step token breakdown, cumulative costs, web search stats.
+    """
+    task = await db.get(db_models.Task, task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    assert_owner(task.user_id, identity)
+
+    from app.llm.token_tracker import token_tracker
+    summary = token_tracker.get_summary(task_id)
+    if summary is None:
+        # Return empty summary if task not in memory (completed long ago)
+        return {
+            "task_id": task_id,
+            "available": False,
+            "message": "Analytics only available for tasks completed in the current server session.",
+            "total_tokens": 0,
+            "total_cost_usd": 0.0,
+            "entries": [],
+        }
+    data = summary.to_dict()
+    data["available"] = True
+    return data
+

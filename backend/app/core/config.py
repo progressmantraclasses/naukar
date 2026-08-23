@@ -2,6 +2,7 @@
 Naukar — Autonomous AI Workforce Platform
 Application Configuration
 """
+import secrets
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 
@@ -35,8 +36,8 @@ class Settings(BaseSettings):
     GROQ_API_KEY: str = ""
 
     # Model names (Groq)
-    GROQ_COMPOUND_MODEL: str = "openai/gpt-oss-120b"
-    GROQ_COMPOUND_MINI_MODEL: str = "groq/compound-mini"
+    GROQ_COMPOUND_MODEL: str = "llama-3.1-70b-versatile"
+    GROQ_COMPOUND_MINI_MODEL: str = "llama-3.1-8b-instant"
 
     # Available models for routing
     MODEL_FAST: str = "groq/compound-mini"
@@ -70,14 +71,27 @@ class Settings(BaseSettings):
     TASK_QUEUE_MODE: str = "background"
     CELERY_BROKER_URL: str = "redis://localhost:6379/1"
     CELERY_RESULT_BACKEND: str = "redis://localhost:6379/2"
-    AUTH_REQUIRED: bool = False
-    AUTH_TOKEN: str = ""
-    AUTH_DEFAULT_USER_ID: str = "anonymous"
-    AUTH_DEFAULT_WORKSPACE_ID: str = "default"
     MODEL_PRICING_JSON: str = '{"groq/compound-mini":{"input":0.075,"output":0.30,"cached_input":0.0},"openai/gpt-oss-120b":{"input":0.15,"output":0.60,"cached_input":0.0}}'
 
     # WebSocket
     WS_HEARTBEAT_INTERVAL: int = 30
+
+    # ── Authentication & JWT ────────────────────────────────────────────────
+    AUTH_REQUIRED: bool = True
+    # A strong random secret; override in .env for production
+    JWT_SECRET_KEY: str = secrets.token_urlsafe(32)
+    JWT_ALGORITHM: str = "HS256"
+    JWT_EXPIRE_HOURS: int = 24
+
+    # Legacy single-token auth (kept for backward compat, unused when AUTH_REQUIRED=True)
+    AUTH_TOKEN: str = ""
+    AUTH_DEFAULT_USER_ID: str = "anonymous"
+    AUTH_DEFAULT_WORKSPACE_ID: str = "default"
+
+    # ── Rate Limiting ───────────────────────────────────────────────────────
+    RATE_LIMIT_TASKS_PER_MINUTE: int = 10
+    RATE_LIMIT_LOGIN_PER_MINUTE: int = 5
+    RATE_LIMIT_API_PER_MINUTE: int = 120
 
 
 @lru_cache()
@@ -86,3 +100,4 @@ def get_settings() -> Settings:
 
 
 settings = get_settings()
+

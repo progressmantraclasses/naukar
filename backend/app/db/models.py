@@ -26,8 +26,22 @@ def new_uuid():
 
 
 # ---------------------------------------------------------------------------
-# Tasks
+# Users (authentication)
 # ---------------------------------------------------------------------------
+class User(Base):
+    __tablename__ = "users"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
+    email: Mapped[str] = mapped_column(String(320), unique=True, nullable=False, index=True)
+    hashed_password: Mapped[str] = mapped_column(String(200), nullable=False)
+    # workspace_id is derived from user id at registration time
+    workspace_id: Mapped[str] = mapped_column(String(36), nullable=False)
+    role: Mapped[str] = mapped_column(String(50), nullable=False, default="user")  # user | admin
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    last_login_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True))
+
+
 class Task(Base):
     __tablename__ = "tasks"
 

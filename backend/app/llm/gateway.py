@@ -14,6 +14,7 @@ from app.llm.registry import llm_registry
 from app.core.redis_store import redis_store
 from app.llm.context_manager import context_manager
 from app.core.observability import metrics
+from app.llm.token_tracker import token_tracker
 
 log = structlog.get_logger()
 _usage_session: ContextVar[object | None] = ContextVar("llm_usage_session", default=None)
@@ -51,6 +52,20 @@ class AIGateway:
                 metrics.increment("cache_hits_total")
                 await self._record_usage(controlled, cached, cache_hit=True)
                 log.info("llm_cache_hit", model=cached.model, task_id=request.task_id)
+                # Track cache hit in token tracker
+                if request.task_id:
+                    step_label = self._build_step_label(request)
+                    token_tracker.record(
+                        task_id=request.task_id,
+                        step_label=step_label,
+                        model=cached.model,
+                        source="cache",
+                        prompt_tokens=cached.prompt_tokens,
+                        completion_tokens=cached.completion_tokens,
+                        cost_usd=0.0,
+                        latency_ms=cached.latency_ms,
+                    )
+                    await self._emit_token_event(request, cached, source="cache")
                 return cached
             semantic = await self._get_semantic_cache(controlled)
             if semantic:
@@ -89,6 +104,20 @@ class AIGateway:
             output_tokens=response.completion_tokens,
             cost_usd=response.cost_usd,
         )
+        # Track in token tracker and emit WebSocket event
+        if request.task_id:
+            step_label = self._build_step_label(request)
+            token_tracker.record(
+                task_id=request.task_id,
+                step_label=step_label,
+                model=response.model,
+                source="llm",
+                prompt_tokens=response.prompt_tokens,
+                completion_tokens=response.completion_tokens,
+                cost_usd=response.cost_usd,
+                latency_ms=response.latency_ms,
+            )
+            await self._emit_token_event(request, response, source="llm")
         return response
 
     async def _check_rate_limit(self, request: LLMRequest):
@@ -231,6 +260,48 @@ class AIGateway:
             )
         except Exception as exc:
             log.warning("llm_cache_write_failed", error=str(exc))
+
+    @staticmethod
+    def _build_step_label(request: LLMRequest) -> str:
+        """Build a human-readable label for the token usage entry."""
+        if request.step_id:
+            # Extract from messages if possible
+            if request.messages:
+                first_msg = request.messages[0].content[:60].split("\n")[0].strip()
+                return f"Step: {first_msg}"
+        if request.task_type:
+            return f"{request.task_type.title()} Request"
+        # Fallback: use system prompt first line
+        if request.system_prompt:
+            first_line = request.system_prompt.split("\n")[0][:50].strip()
+            return first_line
+        return "LLM Request"
+
+    async def _emit_token_event(self, request: LLMRequest, response: LLMResponse, source: str):
+        """Emit a TOKEN_USAGE event to the WebSocket."""
+        try:
+            from app.core.events import event_bus, Event, EventType
+            summary = token_tracker.get_summary(request.task_id)
+            await event_bus.publish(Event(
+                event_type=EventType.TOKEN_USAGE,
+                task_id=request.task_id,
+                payload={
+                    "step_label": self._build_step_label(request),
+                    "model": response.model,
+                    "source": source,
+                    "prompt_tokens": response.prompt_tokens,
+                    "completion_tokens": response.completion_tokens,
+                    "total_tokens": response.prompt_tokens + response.completion_tokens,
+                    "cost_usd": round(response.cost_usd, 6),
+                    "latency_ms": response.latency_ms,
+                    "cumulative_tokens": summary.total_tokens if summary else 0,
+                    "cumulative_cost_usd": round(summary.total_cost_usd, 6) if summary else 0.0,
+                    "cumulative_llm_calls": summary.llm_calls if summary else 0,
+                    "cumulative_cache_hits": summary.cache_hits if summary else 0,
+                },
+            ))
+        except Exception as exc:
+            log.warning("token_event_emit_failed", error=str(exc))
 
 
 ai_gateway = AIGateway()

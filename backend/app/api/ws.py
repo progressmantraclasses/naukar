@@ -1,27 +1,55 @@
 """
 WebSocket endpoint — streams live events to the Electron frontend.
 Clients subscribe to a task_id and receive all events as JSON.
+Token auth via query param: ws://host/ws/{task_id}?token=<jwt>
 """
 import asyncio
 import json
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from typing import Optional
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Query
 from app.core.events import event_bus, Event
+from app.core.config import settings
 import structlog
 
 log = structlog.get_logger()
 router = APIRouter(tags=["websocket"])
 
 
+async def _validate_ws_token(token: Optional[str]) -> Optional[str]:
+    """Validate JWT token from WebSocket query param. Returns user_id or None."""
+    if not settings.AUTH_REQUIRED:
+        return settings.AUTH_DEFAULT_USER_ID
+    if not token:
+        return None
+    try:
+        from app.auth.service import decode_access_token
+        payload = decode_access_token(token)
+        return payload.get("sub")
+    except Exception:
+        return None
+
+
 @router.websocket("/ws/{task_id}")
-async def task_websocket(websocket: WebSocket, task_id: str):
+async def task_websocket(
+    websocket: WebSocket,
+    task_id: str,
+    token: Optional[str] = Query(default=None),
+):
     """
     WebSocket endpoint for a specific task.
     Streams all events for that task in real-time.
-    Connect as: ws://localhost:8000/ws/{task_id}
+    Connect as: ws://localhost:8000/ws/{task_id}?token=<jwt>
     """
+    # Authenticate before accepting
+    user_id = await _validate_ws_token(token)
+    if user_id is None:
+        await websocket.close(code=4401)  # Custom close code for auth failure
+        return
+
     await websocket.accept()
     queue = event_bus.subscribe(task_id)
-    log.info("ws_client_connected", task_id=task_id)
+    log.info("ws_client_connected", task_id=task_id, user_id=user_id)
+
 
     try:
         # Send a welcome message

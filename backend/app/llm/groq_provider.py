@@ -108,6 +108,7 @@ class GroqProvider(LLMProvider):
                 log.error("groq_api_error", error=str(e), model=resolved_model)
                 raise
 
+  
     async def stream(self, request: LLMRequest) -> AsyncIterator[str]:
         resolved_model = _resolve_model(request.model)
         messages = self._build_messages(request)

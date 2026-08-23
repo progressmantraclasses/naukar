@@ -57,6 +57,11 @@ class EventType(str, Enum):
     THINKING = "THINKING"
     LOG = "LOG"
 
+    # Token tracking & web search
+    TOKEN_USAGE = "TOKEN_USAGE"
+    WEB_SEARCH_RESULT = "WEB_SEARCH_RESULT"
+    TASK_TOKEN_SUMMARY = "TASK_TOKEN_SUMMARY"
+
 
 @dataclass
 class Event:

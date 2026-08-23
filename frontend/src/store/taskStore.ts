@@ -46,6 +46,51 @@ export interface LiveEvent {
   timestamp: string
 }
 
+export interface TokenUsageEntry {
+  step_label: string
+  model: string
+  source: 'llm' | 'cache' | 'web' | string
+  prompt_tokens: number
+  completion_tokens: number
+  total_tokens: number
+  cost_usd: number
+  latency_ms: number
+  web_sites_checked?: number
+  web_sites_used?: number
+  tokens_saved_by_web?: number
+  timestamp?: number
+  // cumulative at this point
+  cumulative_tokens?: number
+  cumulative_cost_usd?: number
+}
+
+export interface WebSearchResult {
+  query: string
+  step_label: string
+  tier_used: 'ddg' | 'tavily' | 'none' | string
+  sites_checked: number
+  sites_used: number
+  is_sufficient: boolean
+  estimated_tokens_saved: number
+  latency_ms: number
+  sources: { url: string; title: string; snippet: string }[]
+}
+
+export interface TokenSummary {
+  task_id: string
+  total_prompt_tokens: number
+  total_completion_tokens: number
+  total_tokens: number
+  total_cost_usd: number
+  avg_latency_ms: number
+  cache_hits: number
+  llm_calls: number
+  web_searches: number
+  web_sites_checked: number
+  tokens_saved_by_web: number
+  entries: TokenUsageEntry[]
+}
+
 export type TaskPhase =
   | 'idle'
   | 'analyzing'
@@ -74,6 +119,11 @@ export interface TaskState {
   error: string | null
   workforce_rationale: string
   topology: string
+  // Token analytics
+  tokenUsage: TokenUsageEntry[]
+  webSearchResults: WebSearchResult[]
+  tokenSummary: TokenSummary | null
+  activeView: 'result' | 'analytics'
 }
 
 interface TaskActions {
@@ -82,6 +132,7 @@ interface TaskActions {
   handleEvent: (event: Record<string, unknown>) => void
   reset: () => void
   setWsConnected: (connected: boolean) => void
+  setActiveView: (view: 'result' | 'analytics') => void
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -105,6 +156,10 @@ const initialState: TaskState = {
   error: null,
   workforce_rationale: '',
   topology: '',
+  tokenUsage: [],
+  webSearchResults: [],
+  tokenSummary: null,
+  activeView: 'result',
 }
 
 let startTime = 0
@@ -127,6 +182,8 @@ export const useTaskStore = create<TaskState & TaskActions>((set, get) => ({
   reset: () => set({ ...initialState }),
 
   setWsConnected: (connected) => set({ wsConnected: connected }),
+
+  setActiveView: (view) => set({ activeView: view }),
 
   handleEvent: (event) => {
     const type = event.event_type as string
@@ -256,6 +313,49 @@ export const useTaskStore = create<TaskState & TaskActions>((set, get) => ({
 
         case 'QUALITY_CHECKED':
           return { events: [...state.events.slice(-100), newEvent], elapsedMs: elapsed }
+
+        case 'TOKEN_USAGE': {
+          const entry: TokenUsageEntry = {
+            step_label: payload.step_label as string,
+            model: payload.model as string,
+            source: payload.source as string,
+            prompt_tokens: payload.prompt_tokens as number,
+            completion_tokens: payload.completion_tokens as number,
+            total_tokens: payload.total_tokens as number,
+            cost_usd: payload.cost_usd as number,
+            latency_ms: payload.latency_ms as number,
+            cumulative_tokens: payload.cumulative_tokens as number,
+            cumulative_cost_usd: payload.cumulative_cost_usd as number,
+          }
+          return {
+            events: [...state.events.slice(-100), newEvent],
+            tokenUsage: [...state.tokenUsage, entry],
+          }
+        }
+
+        case 'WEB_SEARCH_RESULT': {
+          const wsr: WebSearchResult = {
+            query: payload.query as string,
+            step_label: payload.step_label as string,
+            tier_used: payload.tier_used as string,
+            sites_checked: payload.sites_checked as number,
+            sites_used: payload.sites_used as number,
+            is_sufficient: payload.is_sufficient as boolean,
+            estimated_tokens_saved: payload.estimated_tokens_saved as number,
+            latency_ms: payload.latency_ms as number,
+            sources: (payload.sources as { url: string; title: string; snippet: string }[]) || [],
+          }
+          return {
+            events: [...state.events.slice(-100), newEvent],
+            webSearchResults: [...state.webSearchResults, wsr],
+          }
+        }
+
+        case 'TASK_TOKEN_SUMMARY':
+          return {
+            events: [...state.events.slice(-100), newEvent],
+            tokenSummary: payload as unknown as TokenSummary,
+          }
 
         case 'FINAL_RESULT_READY':
           return {
