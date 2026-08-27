@@ -121,6 +121,8 @@ class Employee(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=new_uuid)
     task_id: Mapped[str] = mapped_column(String(36), ForeignKey("tasks.id"), nullable=False)
     role: Mapped[str] = mapped_column(String(200), nullable=False)
+    name: Mapped[str] = mapped_column(String(100), default="Employee")
+    avatar: Mapped[str] = mapped_column(String(50), default="👨‍💼")
     objective: Mapped[str] = mapped_column(Text, nullable=False)
     responsibilities: Mapped[list] = mapped_column(JSONB, default=list)
     skills: Mapped[list] = mapped_column(JSONB, default=list)

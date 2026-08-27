@@ -21,11 +21,27 @@ Naukar is a production-grade **Autonomous AI Workforce Platform**. You provide o
 ### Prerequisites
 - Docker Desktop (running)
 - Python 3.11+
-- Node.js 18+
+- Node.js 18+ (Corepack included)
+- Yarn 4.9.2 (managed via Corepack)
 - Groq API key
 - Neo4j AuraDB instance (optional for Phase 1)
 
-### 1. Configure Environment
+### 1. Enable Yarn (Corepack)
+
+```powershell
+# From project root
+corepack prepare yarn@4.9.2 --activate
+"C:\Program Files\nodejs\corepack.cmd" yarn --version
+```
+
+### 2. Install Dependencies (Monorepo)
+
+```powershell
+# From project root
+"C:\Program Files\nodejs\corepack.cmd" yarn install
+```
+
+### 3. Configure Backend Environment
 
 ```powershell
 cd backend
@@ -33,31 +49,33 @@ cp .env.example .env
 # Edit .env — add your GROQ_API_KEY, NEO4J credentials
 ```
 
-### 2. Start Infrastructure
+### 4. Start Infrastructure
 
 ```powershell
 # From project root
 docker compose up -d
 ```
 
-### 3. Start Backend
+### 5. Start Backend
 
 ```powershell
 cd backend
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 4. Start Frontend
+### 6. Start Frontend
 
 ```powershell
-cd frontend
-npm install
-npm run dev:vite   # Web UI only (for testing)
-# OR
-npm run dev        # Full Electron app
+"C:\Program Files\nodejs\corepack.cmd" yarn dev:web
+```
+
+Optional Electron mode:
+
+```powershell
+"C:\Program Files\nodejs\corepack.cmd" yarn dev:frontend
 ```
 
 ### Or use the startup script:
@@ -66,9 +84,66 @@ npm run dev        # Full Electron app
 .\start.ps1
 ```
 
+## Monorepo Commands
+
+Run from project root.
+
+```powershell
+# Frontend web mode
+"C:\Program Files\nodejs\corepack.cmd" yarn dev:web
+
+# Frontend (Electron + Vite)
+"C:\Program Files\nodejs\corepack.cmd" yarn dev:frontend
+
+# Backend
+"C:\Program Files\nodejs\corepack.cmd" yarn dev:backend
+
+# Build frontend
+"C:\Program Files\nodejs\corepack.cmd" yarn build
+
+# Type-check frontend
+"C:\Program Files\nodejs\corepack.cmd" yarn typecheck
+
+# Backend tests
+cd backend
+pytest -q
+```
+
 ---
 
 ## Architecture
+
+### System Diagram
+
+```mermaid
+flowchart TD
+    U[User] --> FE[Frontend Workspace<br/>Electron + React + TypeScript + Vite]
+    FE -->|REST + WebSocket| API[FastAPI Backend]
+
+    API --> ORCH[Executive Orchestrator]
+    ORCH --> TA[Task Analyzer]
+    ORCH --> WP[Workforce Planner]
+    ORCH --> TD[Task Decomposer DAG]
+    ORCH --> MR[Model Router]
+    ORCH --> EX[Employee Executor]
+    ORCH --> QC[Quality Controller]
+
+    API --> PG[(PostgreSQL + pgvector)]
+    API --> RD[(Redis)]
+    API --> N4[(Neo4j AuraDB)]
+    API --> LLM[Groq Models]
+```
+
+### Monorepo Layout
+
+```text
+Naukar/
+├── package.json              # Yarn workspaces (frontend, backend)
+├── yarn.lock                 # Single lockfile for monorepo
+├── start.ps1                 # One-command startup (docker + backend + frontend web)
+├── backend/                  # FastAPI service and orchestration engine
+└── frontend/                 # Electron + React client
+```
 
 ```
 ┌─────────────────────────────────────────────────────────┐

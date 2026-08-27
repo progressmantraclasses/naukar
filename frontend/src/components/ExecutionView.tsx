@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef, type FC } from 'react'
 import { useTaskStore } from '../store/taskStore'
 import { EmployeeCard } from './EmployeeCard'
+import { CompetitionPanel } from './CompetitionPanel'
+
 
 const PHASE_LABELS: Record<string, string> = {
   analyzing: '🔍 Analyzing',
@@ -31,6 +33,9 @@ const EVENT_ICONS: Record<string, string> = {
   QUALITY_CHECKED: '🔎',
   TASK_REPLANNED: '🔄',
   TASK_FAILED: '❌',
+  COMPETITOR_SCAN_PROGRESS: '🕵️',
+  COMPETITOR_MATRIX_READY: '📊',
+  MCP_TOOL_CALLED: '🔌',
 }
 
 function formatElapsed(ms: number): string {
@@ -39,9 +44,9 @@ function formatElapsed(ms: number): string {
   return `${Math.floor(ms / 60000)}m ${Math.floor((ms % 60000) / 1000)}s`
 }
 
-export const ExecutionView: React.FC = () => {
+export const ExecutionView: FC = () => {
   const {
-    phase, title, taskType, complexityScore, employees, steps,
+    phase, title, complexityScore, employees, steps,
     thinkingMessages, events, elapsedMs, wsConnected, topology,
     workforce_rationale,
   } = useTaskStore()
@@ -194,11 +199,20 @@ export const ExecutionView: React.FC = () => {
                     `${(ev.payload.roles as unknown[])?.length} roles · ${ev.payload.topology as string}`}
                   {ev.event_type === 'TASK_REPLANNED' &&
                     (ev.payload.reason as string)}
+                  {ev.event_type === 'COMPETITOR_SCAN_PROGRESS' &&
+                    `${ev.payload.status === 'browsing' ? 'Browsing' : 'Scanned'}: ${ev.payload.name as string}`}
+                  {ev.event_type === 'COMPETITOR_MATRIX_READY' &&
+                    `Competitor matrix ready · ${(ev.payload.profiles as unknown[])?.length || 0} competitors · ${ev.payload.sites_browsed as number} sites browsed`}
+                  {ev.event_type === 'MCP_TOOL_CALLED' &&
+                    `${ev.payload.status === 'calling' ? 'Calling' : ev.payload.status === 'done' ? 'Returned' : 'Failed'} MCP tool: ${ev.payload.tool as string}${ev.payload.server ? ` (${ev.payload.server as string})` : ''}`}
                 </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Competition Scout live panel (only for competition tasks) */}
+        <CompetitionPanel />
 
         {/* Steps tracker */}
         {steps.length > 0 && (

@@ -13,6 +13,7 @@ Usage:
         # call LLM with result.text as context
 """
 import asyncio
+import base64
 import re
 import hashlib
 import json
@@ -39,6 +40,8 @@ _SCRIPT_STYLE_RE = re.compile(
 
 # DuckDuckGo HTML endpoint (no API key, rate limit lenient)
 _DDG_URL = "https://html.duckduckgo.com/html/"
+# Bing fallback (DDG intermittently serves an HTTP 202 challenge page)
+_BING_URL = "https://www.bing.com/search"
 _USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -164,6 +167,68 @@ async def _ddg_search(query: str, max_results: int = 8) -> List[dict]:
     return results
 
 
+def _decode_bing_ck(href: str) -> str:
+    """Decode Bing's /ck/a redirect href into the real destination URL."""
+    href = href.replace("&amp;", "&")
+    m = re.search(r"[?&]u=a1([A-Za-z0-9_\-]+)", href)
+    if not m:
+        return ""
+    try:
+        pad = "=" * (-len(m.group(1)) % 4)
+        raw = base64.urlsafe_b64decode(m.group(1) + pad)
+        url = raw.decode("utf-8", errors="ignore")
+        return url if url.startswith("http") else ""
+    except Exception:
+        return ""
+
+
+async def _bing_search(query: str, max_results: int = 8) -> List[dict]:
+    """
+    Bing HTML scraping fallback — same shape as _ddg_search.
+    Used when DuckDuckGo returns a challenge page instead of results.
+    """
+    results = []
+    try:
+        async with httpx.AsyncClient(
+            headers=_HEADERS, timeout=15, follow_redirects=True
+        ) as client:
+            resp = await client.get(
+                _BING_URL, params={"q": query, "count": "10"}
+            )
+            if resp.status_code != 200:
+                return []
+            # Each organic result is a <li class="b_algo"> block
+            blocks = re.split(r'<li class="b_algo"', resp.text)[1:]
+            for block in blocks[:max_results]:
+                # Result anchors are wrapped in Bing /ck/a redirect hrefs —
+                # decode the real URL out of them.
+                url = ""
+                for hm in re.finditer(r'href="([^"]+)"', block):
+                    cand = hm.group(1)
+                    if "/ck/a" in cand:
+                        cand = _decode_bing_ck(cand)
+                    if not cand.startswith("http"):
+                        continue
+                    if "bing.com" in cand or "microsoft.com" in cand:
+                        continue
+                    url = cand
+                    break
+                if not url:
+                    continue
+                tm = re.search(r"<h2.*?</h2>", block, re.DOTALL)
+                title = _strip_html(tm.group(0)) if tm else ""
+                sm = re.search(r"<p[^>]*>(.*?)</p>", block, re.DOTALL)
+                snippet = _strip_html(sm.group(1)) if sm else ""
+                results.append({
+                    "url": url,
+                    "title": title[:120],
+                    "snippet": snippet[:300],
+                })
+    except Exception as exc:
+        log.warning("bing_search_failed", query=query[:50], error=str(exc))
+    return results
+
+
 class SmartWebSearcher:
     """
     Two-tier web searcher.
@@ -234,24 +299,37 @@ class SmartWebSearcher:
         # ── Tier 1: DuckDuckGo + URL scraping ─────────────────────────────
         ddg_results = await _ddg_search(query, max_results=max(min_sites + 3, 8))
         log.info("ddg_results_found", count=len(ddg_results), query=query[:50])
+        if not ddg_results:
+            # DDG serves an HTTP 202 challenge page during rate limits —
+            # fall back to Bing so research steps never silently go empty.
+            ddg_results = await _bing_search(query, max_results=max(min_sites + 3, 8))
+            log.info("bing_results_found", count=len(ddg_results), query=query[:50])
 
         extracted_texts: List[str] = []
         used_sources: List[dict] = []
 
         if ddg_results:
+            window = ddg_results[:min_sites + 2]
+            # Direct file links (pdf/epub/...) have no HTML text to scrape —
+            # keep them as sources anyway so download discovery can use them.
+            from app.tools.downloader import has_file_ext
+            html_results = [(i, r) for i, r in enumerate(window) if not has_file_ext(r["url"])]
+            file_results = [r for r in window if has_file_ext(r["url"])]
             async with httpx.AsyncClient(headers=_HEADERS, timeout=12) as client:
                 tasks = [
                     _fetch_url_text(client, r["url"])
-                    for r in ddg_results[:min_sites + 2]
+                    for _, r in html_results
                 ]
                 fetched = await asyncio.gather(*tasks, return_exceptions=True)
 
-            for i, text in enumerate(fetched):
+            for (i, r), text in zip(html_results, fetched):
                 if isinstance(text, Exception) or not text:
                     continue
                 if len(text.strip()) > 200:
                     extracted_texts.append(text[:2000])
-                    used_sources.append(ddg_results[i])
+                    used_sources.append(r)
+            for r in file_results:
+                used_sources.append(r)
 
         sites_checked = len(ddg_results)
         sites_used = len(used_sources)
@@ -330,17 +408,19 @@ class SmartWebSearcher:
             latency_ms=result.latency_ms,
         )
 
-        # Cache result
-        await self._set_cached(cache_key, {
-            "query": result.query,
-            "text": result.text,
-            "sources": result.sources,
-            "sites_checked": result.sites_checked,
-            "sites_used": result.sites_used,
-            "tier_used": result.tier_used,
-            "latency_ms": result.latency_ms,
-            "estimated_tokens_saved": result.estimated_tokens_saved,
-        })
+        # Cache result (only non-empty ones — caching empty challenge-page
+        # results would poison every retry for the next hour)
+        if result.sites_used > 0 or result.text.strip():
+            await self._set_cached(cache_key, {
+                "query": result.query,
+                "text": result.text,
+                "sources": result.sources,
+                "sites_checked": result.sites_checked,
+                "sites_used": result.sites_used,
+                "tier_used": result.tier_used,
+                "latency_ms": result.latency_ms,
+                "estimated_tokens_saved": result.estimated_tokens_saved,
+            })
 
         return result
 

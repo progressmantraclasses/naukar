@@ -1,15 +1,17 @@
 {
-  "name": "naukar-frontend",
+  "name": "@naukar/frontend",
   "version": "1.0.0",
   "type": "module",
   "description": "Naukar — Autonomous AI Workforce Platform",
   "main": "dist-electron/main.js",
   "scripts": {
-    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build:electron": "esbuild electron/main.ts --bundle --platform=node --format=esm --outfile=dist-electron/main.js --external:electron && esbuild electron/preload.ts --bundle --platform=node --format=esm --outfile=dist-electron/preload.js --external:electron",
+    "dev": "npm run build:electron && concurrently -k \"vite\" \"wait-on tcp:5173 && electron .\"",
     "dev:vite": "vite",
-    "build": "vite build",
+    "build": "vite build && npm run build:electron",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
     "preview": "vite preview",
-    "electron": "wait-on http://localhost:5173 && electron ."
+    "electron": "wait-on tcp:5173 && electron ."
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
@@ -26,8 +28,10 @@
     "@vitejs/plugin-react": "^4.3.4",
     "concurrently": "^9.0.0",
     "electron": "^33.0.0",
+    "esbuild": "^0.24.0",
     "typescript": "^5.6.3",
     "vite": "^6.0.3",
     "wait-on": "^8.0.0"
   }
 }
+

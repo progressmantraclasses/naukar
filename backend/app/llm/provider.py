@@ -10,8 +10,11 @@ from typing import AsyncIterator, Optional, List, Dict, Any
 
 @dataclass
 class Message:
-    role: str  # "system" | "user" | "assistant"
+    role: str  # "system" | "user" | "assistant" | "tool"
     content: str
+    # Raw OpenAI-format message dict — used for tool-call turns
+    # (assistant with tool_calls / tool role with tool_call_id).
+    raw: Optional[Dict[str, Any]] = None
 
 
 @dataclass
@@ -24,6 +27,8 @@ class LLMResponse:
     cost_usd: float = 0.0
     latency_ms: int = 0
     raw: Optional[Dict[str, Any]] = None
+    # OpenAI-format tool calls requested by the model (None = plain answer)
+    tool_calls: Optional[List[Dict[str, Any]]] = None
 
 
 @dataclass
@@ -44,6 +49,8 @@ class LLMRequest:
     request_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     workspace_id: Optional[str] = None
     freshness_required: bool = False
+    # OpenAI-format tool schemas the model may call this turn
+    tools: Optional[List[Dict[str, Any]]] = None
 
 
 class LLMProvider(ABC):

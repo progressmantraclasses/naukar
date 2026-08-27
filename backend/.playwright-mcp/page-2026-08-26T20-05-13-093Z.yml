@@ -1,0 +1,317 @@
+- generic [active] [ref=f5e1]:
+  - generic [ref=f5e4]:
+    - generic [ref=f5e5]: 8/27/2026, 1:35:10 AM
+    - list [ref=f5e8]:
+      - listitem [ref=f5e9]:
+        - link "मुख्य सामग्री पर जाएँ |" [ref=f5e10] [cursor=pointer]:
+          - /url: "#content"
+      - listitem [ref=f5e11]:
+        - link "नेविगेशन पर जाएँ |" [ref=f5e12] [cursor=pointer]:
+          - /url: "#navigation"
+      - listitem [ref=f5e13]:
+        - link "स्क्रीन रीडर एक्सेस |" [ref=f5e14] [cursor=pointer]:
+          - /url: screen-reader.php?ln=hi
+      - listitem [ref=f5e15]:
+        - link "टेक्सट का साइज़:" [ref=f5e16] [cursor=pointer]:
+          - /url: ""
+        - text: आ-|
+        - link "आ|" [ref=f5e17] [cursor=pointer]:
+          - /url: ""
+        - text: आ+
+      - listitem [ref=f5e18]:
+        - link "साइट दृश्य:" [ref=f5e19] [cursor=pointer]:
+          - /url: ""
+        - text: A
+        - link "A" [ref=f5e20] [cursor=pointer]:
+          - /url: ""
+      - listitem [ref=f5e21]:
+        - button [ref=f5e22] [cursor=pointer]
+  - banner [ref=f5e24]:
+    - generic [ref=f5e31]:
+      - textbox "Search" [ref=f5e32]:
+        - /placeholder: खोज
+      - generic [ref=f5e33]: 
+  - navigation [ref=f5e34]:
+    - list [ref=f5e37]:
+      - listitem [ref=f5e38]:
+        - link "होम (current)" [ref=f5e39] [cursor=pointer]:
+          - /url: /?ln=hi
+          - text: होम
+          - generic [ref=f5e40]: (current)
+      - listitem [ref=f5e41]:
+        - button "हमारे बारे में" [ref=f5e42] [cursor=pointer]
+      - listitem [ref=f5e43]:
+        - button "संघटक और विभाग" [ref=f5e44] [cursor=pointer]
+      - listitem [ref=f5e45]:
+        - button "कार्यक्रम" [ref=f5e46] [cursor=pointer]
+      - listitem [ref=f5e47]:
+        - button "गैलरी" [ref=f5e48] [cursor=pointer]
+      - listitem [ref=f5e49]:
+        - button "प्रकाशन" [ref=f5e50] [cursor=pointer]
+      - listitem [ref=f5e51]:
+        - button "घोषणाएं" [ref=f5e52] [cursor=pointer]
+      - listitem [ref=f5e53]:
+        - button "संपर्क" [ref=f5e54] [cursor=pointer]
+  - generic [ref=f5e57]:
+    - img "NCERT" [ref=f5e59]
+    - link "" [ref=f5e60] [cursor=pointer]:
+      - /url: "#slider-animation"
+    - link "" [ref=f5e63] [cursor=pointer]:
+      - /url: "#slider-animation"
+  - generic [ref=f5e68]:
+    - paragraph [ref=f5e71]: अद्यतन जानकारी
+    - list [ref=f5e74]:
+      - generic [ref=f5e75]: 
+      - text: Advertisement No. 178/2026 for 02 posts of Principal (Group ‘A’) by the NCERT for its RIE's located at Bhubaneswar and Shillong ||
+      - link "List of Candidates provisionally shortlisted for Interviews" [ref=f5e76] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/academicvacancy/R-I_Advt-178_2026_list_shortlisted_candidates.pdf
+      - text: "||"
+      - generic [ref=f5e78]: 
+      - link "R3 Language Learning Resources can be accessed on this link" [ref=f5e79] [cursor=pointer]:
+        - /url: R3_learning_Resources.php
+      - text: "||"
+      - generic [ref=f5e81]: 
+      - 'link "NCERT Press Release regarding Class 9 Fake Textbook Social Science Part-1 \"Understanding Society: India & Beyond\"" [ref=f5e82] [cursor=pointer]':
+        - /url: pdf/announcement/notices/NCERT_Press_Release_book_sst.pdf
+      - text: "||"
+      - generic [ref=f5e84]: 
+      - link "BHARATIYA BHASHA SUMMER CAMP 2026" [ref=f5e85] [cursor=pointer]:
+        - /url: https://bbsc.ncert.org.in
+      - text: "||"
+      - generic [ref=f5e87]: 
+      - 'link "Advertisement No.01/2025 : Notice Regarding the Admit Card for the post of LDC" [ref=f5e88] [cursor=pointer]':
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Admitcard_link_LDC_9482.pdf
+      - text: "||"
+      - link "Admit Card Download Link" [ref=f5e89] [cursor=pointer]:
+        - /url: https://cdn.digialm.com//EForms/configuredHtml/1258/96551/login.html
+      - text: "||"
+      - generic [ref=f5e91]: 
+      - link "NCERT Press Release regarding availability of Grade 9 Books" [ref=f5e92] [cursor=pointer]:
+        - /url: pdf/announcement/notices/NCERT_Press_Release_grade9.pdf
+      - text: "||"
+      - generic [ref=f5e94]: 
+      - link "Mock Test Link Notice For CBT scheduled on 27th & 28th April 2026." [ref=f5e95] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Mock_Test_Link_Notice.pdf
+      - text: "||"
+      - generic [ref=f5e97]: 
+      - link "For the Post of Store Officer" [ref=f5e98] [cursor=pointer]:
+        - /url: https://cdn4.digialm.com/OnlineAssessment/index.html?1258@@M665
+      - text: "||"
+      - generic [ref=f5e100]: 
+      - link "For the Post of Senior Accountant, Junior Accountant, Production Assistant, Professional Assistant, Cameraman Grade II, Engineering Assistant, Script Writer" [ref=f5e101] [cursor=pointer]:
+        - /url: https://cdn4.digialm.com/OnlineAssessment/index.html?1258@@M666
+      - text: "||"
+      - generic [ref=f5e103]: 
+      - link "For the Post of Assistant Engineer Grade-A, Assistant Public Relation Officer" [ref=f5e104] [cursor=pointer]:
+        - /url: https://cdn4.digialm.com/OnlineAssessment/index.html?1258@@M667
+      - text: "||"
+      - generic [ref=f5e106]: 
+      - link "Admit Card Notice" [ref=f5e107] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Admit_Card_Notice230426.pdf
+      - text: "||"
+      - generic [ref=f5e109]: 
+      - link "Admit Card Download Link" [ref=f5e110] [cursor=pointer]:
+        - /url: https://www.digialm.com:443//EForms/configuredHtml/1258/96551/login.html
+      - text: "||"
+      - generic [ref=f5e112]: 
+      - 'link "Advertisement No.01/2025 : Objection Link for CBT conducted on 24th, 25th and 27th March, 2026." [ref=f5e113] [cursor=pointer]':
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Objection_Link_CBT_March.pdf
+      - text: "||"
+      - generic [ref=f5e114]: 
+      - link "Objection Link" [ref=f5e115] [cursor=pointer]:
+        - /url: https://cdn.digialm.com//EForms/configuredHtml/1258/96551/login.html
+      - text: "||"
+      - generic [ref=f5e116]: 
+      - link "Advertisement No.01/2025 CBT Schedule Notification for the post of LDC." [ref=f5e117] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/CBT_dates_for_the_post_of_LDC.pdf
+      - text: "||"
+      - generic [ref=f5e118]: 
+      - link "Advertisement No.01/2025 CBT Schedule Notification." [ref=f5e119] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/CBT_Schedule_Notification_9319.pdf
+      - text: "||"
+      - generic [ref=f5e120]: 
+      - link "Admit Card Download Link" [ref=f5e121] [cursor=pointer]:
+        - /url: https://www.digialm.com:443//EForms/configuredHtml/1258/96551/login.html
+      - text: "||"
+      - generic [ref=f5e122]: 
+      - link "Admit Card Notice" [ref=f5e123] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Admit_Card_Notice.pdf
+      - text: "||"
+      - generic [ref=f5e124]: 
+      - link "Typing Test of Assistant, LDC & MTS" [ref=f5e125] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Typing_Test_Assistant_LDC_MTS.pdf
+      - text: "||"
+      - generic [ref=f5e126]: 
+      - link "Consolidated Statement of Applications" [ref=f5e127] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/nonacademicvacancy/Consolidated_Statement_Applications.pdf
+      - text: "||"
+      - generic [ref=f5e128]: 
+      - link "NCERT Advisory on Introduction of New Textbooks and Syllabi" [ref=f5e129] [cursor=pointer]:
+        - /url: pdf/announcement/notices/Advisory_ncertbooks.pdf
+      - text: "||"
+      - generic [ref=f5e130]: 
+      - link "Public Apology - NCERT Press Release" [ref=f5e131] [cursor=pointer]:
+        - /url: pdf/announcement/notices/Public_Apology_NCERT_Press_Release.pdf
+      - text: "||"
+      - generic [ref=f5e132]: 
+      - 'link "Media Advisory regarding Recall of the NCERT textbook Exploring Society: India and Beyond, Social Science Grade 8 Part 2" [ref=f5e133] [cursor=pointer]':
+        - /url: pdf/announcement/notices/media_advisory_recall_ncert_books.pdf
+      - text: "||"
+      - generic [ref=f5e134]: 
+      - link "Press Release from NCERT on Class 8 Social Science Text Book (Part 2)" [ref=f5e135] [cursor=pointer]:
+        - /url: pdf/announcement/notices/ncert_pressrelease_class8_sstp2.pdf
+      - text: "||"
+      - generic [ref=f5e136]: 
+      - text: Advertisement No. 177/2026 for filling up vacant Academic Position under Direct Recruitment, NCERT
+      - link "English |" [ref=f5e137] [cursor=pointer]:
+        - /url: pdf/announcement/vacancies/academicvacancy/R-I_Advt-177_2026_EN.pdf
+      - generic [ref=f5e138]:
+        - link "Hindi" [ref=f5e139] [cursor=pointer]:
+          - /url: pdf/announcement/vacancies/academicvacancy/R-I_Advt-177_2026_HI.pdf
+        - text: "|"
+        - link "Apply Online" [ref=f5e140] [cursor=pointer]:
+          - /url: https://ncertrec.samarth.edu.in/
+        - text: "|"
+        - link "Date Extended till 06 March 2026" [ref=f5e141] [cursor=pointer]:
+          - /url: pdf/announcement/vacancies/academicvacancy/date_extended_177_2026.pdf
+        - text: "|"
+        - link "Corrigendum" [ref=f5e142] [cursor=pointer]:
+          - /url: pdf/announcement/vacancies/academicvacancy/Corrigendum_177_2026.pdf
+        - text: "|| ||"
+        - generic [ref=f5e143]: 
+        - link "Journals Subscription Form" [ref=f5e144] [cursor=pointer]:
+          - /url: https://ncert.nic.in/division/pd/pdf/Revised_Journals_Subscription_Form.pdf
+        - text: "||"
+  - generic [ref=f5e146]:
+    - heading "एनसीईआरटी संघटक इकाइयाँ" [level=5] [ref=f5e147]
+    - generic [ref=f5e149]:
+      - generic [ref=f5e152]:
+        - heading "एनआईई" [level=5] [ref=f5e153]
+        - link "साइट देखें अवस्थिति " [ref=f5e154] [cursor=pointer]:
+          - /url: national-institute-education.php
+          - text: साइट देखें अवस्थिति
+          - generic [ref=f5e155]: 
+        - link "पता लगाएँ " [ref=f5e156] [cursor=pointer]:
+          - /url: https://maps.google.com/maps?ll=28.539746,77.192893&z=16&t=m&hl=en&gl=IN&mapclient=embed&q=NCERT%20Campus%20Adchini%20New%20Delhi%2C%20Delhi%20110016
+          - text: पता लगाएँ
+          - generic [ref=f5e157]: 
+      - generic [ref=f5e160]:
+        - heading "सीआईईटी" [level=5] [ref=f5e161]
+        - link "साइट देखें अवस्थिति " [ref=f5e162] [cursor=pointer]:
+          - /url: https://ciet.ncert.gov.in/
+          - text: साइट देखें अवस्थिति
+          - generic [ref=f5e163]: 
+        - link "पता लगाएँ " [ref=f5e164] [cursor=pointer]:
+          - /url: https://www.google.com/maps/dir/28.5419808,77.2060235/ciet/@28.5403054,77.1916464,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x390ce2065c7cfa83:0x8262f9426abf8716!2m2!1d77.1951114!2d28.5383307
+          - text: पता लगाएँ
+          - generic [ref=f5e165]: 
+      - generic [ref=f5e168]:
+        - heading "पीएसएससीआईवीई" [level=5] [ref=f5e169]
+        - link "साइट देखें अवस्थिति " [ref=f5e170] [cursor=pointer]:
+          - /url: http://www.psscive.ac.in/
+          - text: साइट देखें अवस्थिति
+          - generic [ref=f5e171]: 
+        - link "पता लगाएँ " [ref=f5e172] [cursor=pointer]:
+          - /url: https://www.google.com/maps/dir//psscive/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x397c42b1925ca64b:0xfc363a04c2b58fe2?sa=X&ved=2ahUKEwilwaXBuKboAhUI4HMBHQa2AjAQ9RcwF3oECBIQDg
+          - text: पता लगाएँ
+          - generic [ref=f5e173]: 
+      - generic [ref=f5e176]:
+        - heading "आरआईई अजमेर" [level=5] [ref=f5e177]
+        - link "साइट देखें अवस्थिति " [ref=f5e178] [cursor=pointer]:
+          - /url: https://rieajmer.raj.nic.in/
+          - text: साइट देखें अवस्थिति
+          - generic [ref=f5e179]: 
+        - link "पता लगाएँ " [ref=f5e180] [cursor=pointer]:
+          - /url: https://www.google.co.in/maps/place/Regional+Institute+of+Education/@26.4832204,74.6107703,17z/data=!3m1!4b1!4m5!3m4!1s0x396be7977db5f141:0xda619f26b0654261!8m2!3d26.4832156!4d74.612959
+          - text: पता लगाएँ
+          - generic [ref=f5e181]: 
+  - generic [ref=f5e190]:
+    - heading "हमारी पहलें" [level=5] [ref=f5e191]
+    - generic [ref=f5e194]:
+      - link [ref=f5e196] [cursor=pointer]:
+        - /url: https://epathshala.nic.in//index.php?ln=en
+      - link [ref=f5e199] [cursor=pointer]:
+        - /url: https://ictcurriculum.gov.in/
+      - link [ref=f5e202] [cursor=pointer]:
+        - /url: https://kalautsav.ncert.gov.in/
+      - link [ref=f5e205] [cursor=pointer]:
+        - /url: https://swayam.gov.in/
+      - link [ref=f5e208] [cursor=pointer]:
+        - /url: https://ncert.nic.in/tamanna/index.html
+      - link [ref=f5e211] [cursor=pointer]:
+        - /url: https://diksha.gov.in/
+      - link [ref=f5e214] [cursor=pointer]:
+        - /url: https://itpd.ncert.gov.in//
+      - link [ref=f5e217] [cursor=pointer]:
+        - /url: https://epathshala.nic.in//index.php?ln=en
+      - link [ref=f5e220] [cursor=pointer]:
+        - /url: https://ictcurriculum.gov.in/
+      - link [ref=f5e223] [cursor=pointer]:
+        - /url: https://kalautsav.ncert.gov.in/
+      - link [ref=f5e226] [cursor=pointer]:
+        - /url: https://swayam.gov.in/
+      - link [ref=f5e229] [cursor=pointer]:
+        - /url: https://ncert.nic.in/tamanna/index.html
+      - link [ref=f5e232] [cursor=pointer]:
+        - /url: https://diksha.gov.in/
+      - link [ref=f5e235] [cursor=pointer]:
+        - /url: https://itpd.ncert.gov.in//
+      - link [ref=f5e238] [cursor=pointer]:
+        - /url: https://epathshala.nic.in//index.php?ln=en
+      - link [ref=f5e241] [cursor=pointer]:
+        - /url: https://ictcurriculum.gov.in/
+      - link [ref=f5e244] [cursor=pointer]:
+        - /url: https://kalautsav.ncert.gov.in/
+      - link [ref=f5e247] [cursor=pointer]:
+        - /url: https://swayam.gov.in/
+      - link [ref=f5e250] [cursor=pointer]:
+        - /url: https://ncert.nic.in/tamanna/index.html
+  - contentinfo [ref=f5e252]:
+    - generic [ref=f5e257]:
+      - link:
+        - /url: https://data.gov.in
+      - link "आरटीआई" [ref=f5e258] [cursor=pointer]:
+        - /url: https://ncert.nic.in/disclo_un_rti.php?ln=hi
+      - text: I
+      - link "तमन्ना" [ref=f5e259] [cursor=pointer]:
+        - /url: https://ncert.nic.in/tamanna/index.html
+      - text: I
+      - link "दीक्षा" [ref=f5e260] [cursor=pointer]:
+        - /url: https://diksha.gov.in/.php
+      - text: I
+      - link "आईसीटी पाठ्यक्रम" [ref=f5e261] [cursor=pointer]:
+        - /url: https://ictcurriculum.gov.in
+      - text: I
+      - link "पुस्तकालय" [ref=f5e262] [cursor=pointer]:
+        - /url: https://ncert.nic.in/ncertldd/index.html
+      - text: I
+      - link "क्यूएमटी" [ref=f5e263] [cursor=pointer]:
+        - /url: https://ncert.nic.in/QMTs/index.php
+      - text: I
+      - link "आईसीटी पहलकदमियाँ" [ref=f5e264] [cursor=pointer]:
+        - /url: https://ncert.nic.in/ict-initiatives.php
+    - generic [ref=f5e266]:
+      - generic [ref=f5e268]:
+        - generic [ref=f5e269]:
+          - paragraph [ref=f5e270]:
+            - strong [ref=f5e271]: एनसीईआरटी का पालन करें
+          - link "" [ref=f5e272] [cursor=pointer]:
+            - /url: https://www.facebook.com/ncertofficial/
+          - link [ref=f5e274] [cursor=pointer]:
+            - /url: https://twitter.com/ncert
+          - link "" [ref=f5e276] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCT0s92hGjqLX6p7qY9BBrSA
+          - link "" [ref=f5e278] [cursor=pointer]:
+            - /url: https://www.instagram.com/ncertindia/
+          - link "" [ref=f5e280] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/national-council-of-educational-research-and-training-ncert/
+        - generic [ref=f5e282]:
+          - strong [ref=f5e284]: हमसे संपर्क करें
+          - generic [ref=f5e285]: एनसीईआरटी, श्री अरबिंदो मार्ग, नई दिल्ली-110016
+          - generic [ref=f5e288]: dceta[dot]ncert[at]nic[dot]in
+          - generic [ref=f5e291]: +91 8800440559
+        - generic [ref=f5e294]:
+          - strong [ref=f5e296]: महत्वपूर्ण हेल्पलाइन नंबर
+          - generic [ref=f5e297]: "महिला हेल्पलाइन नंबर : 7827170170"
+          - generic [ref=f5e299]: "साइबर क्राइम रिपोर्टिंग नंबर : 1930"
+      - generic [ref=f5e301]: NCERT DPDP अधिनियम 2023 और CWSN मानकों के लिए GIGW का पालन करता है| कॉपीराइट © 2026 | सीआईईटी, एनसीईआरटी द्वारा विकसित | एनआईसी द्वारा होस्ट किया गया

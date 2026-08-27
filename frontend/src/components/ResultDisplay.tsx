@@ -130,6 +130,33 @@ function formatElapsed(ms: number): string {
   return `${Math.floor(ms / 60000)}m ${Math.floor((ms % 60000) / 1000)}s`
 }
 
+interface ElectronBridge {
+  isElectron?: boolean
+  openExternal: (url: string) => Promise<unknown>
+  openPath: (filePath: string) => Promise<unknown>
+}
+
+/**
+ * Markdown links must never navigate the app window itself (it is frameless
+ * and has no back button — a PDF link would replace the whole chat UI).
+ * In Electron they open via the OS default handler; in a plain browser they
+ * open in a new tab.
+ */
+const MarkdownLink: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({ href, children, ...rest }) => {
+  const handleClick = (event: React.MouseEvent) => {
+    const api = (window as unknown as { electronAPI?: ElectronBridge }).electronAPI
+    if (!api?.isElectron || !href) return
+    event.preventDefault()
+    if (/^https?:\/\//i.test(href)) void api.openExternal(href)
+    else void api.openPath(href)
+  }
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" onClick={handleClick} {...rest}>
+      {children}
+    </a>
+  )
+}
+
 export const ResultDisplay: React.FC = () => {
   const {
     phase, finalResult, qualityScore, elapsedMs,
@@ -176,6 +203,28 @@ export const ResultDisplay: React.FC = () => {
     URL.revokeObjectURL(url)
   }
 
+  const downloadDocs = () => {
+    const htmlContent = `
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <head><meta charset='utf-8'><title>${title || 'Naukar Result'}</title></head>
+      <body>
+        ${document.querySelector('.result-markdown')?.innerHTML || finalResult}
+      </body>
+      </html>
+    `
+    const blob = new Blob([htmlContent], { type: 'application/msword' })
+    const url = URL.createObjectURL(blob)
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = `${(title || 'naukar-result').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.doc`
+    anchor.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const printPdf = () => {
+    window.print()
+  }
+
   return (
     <div className="result-panel">
       <div className="result-header">
@@ -216,11 +265,19 @@ export const ResultDisplay: React.FC = () => {
           </button>
           <button type="button" onClick={downloadResult} title="Download Markdown">
             <Download size={15} />
-            Markdown
+            MD
+          </button>
+          <button type="button" onClick={downloadDocs} title="Download Microsoft Word Document">
+            <Download size={15} />
+            DOCS
+          </button>
+          <button type="button" onClick={printPdf} title="Save as PDF">
+            <Download size={15} />
+            PDF
           </button>
         </div>
         <div className="result-markdown">
-          <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ table: InteractiveTable }}>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ table: InteractiveTable, a: MarkdownLink }}>
             {normalizeReportMarkdown(finalResult || '_No result generated._')}
           </ReactMarkdown>
         </div>

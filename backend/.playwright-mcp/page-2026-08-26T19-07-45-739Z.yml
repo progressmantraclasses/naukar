@@ -1,0 +1,306 @@
+- generic [active] [ref=f11e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=f11e2] [cursor=pointer]
+      - link "Accessibility help" [ref=f11e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en-IN
+  - generic [ref=f11e8]:
+    - search [ref=f11e9]:
+      - generic [ref=f11e11]:
+        - link "Go to Google Home" [ref=f11e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQPAgI
+        - generic [ref=f11e21]:
+          - generic [ref=f11e22]:
+            - combobox "Search" [ref=f11e25]: site:ncert.nic.in class 10 science pdf site:ncert.nic.in class 10 science pdf
+            - generic [ref=f11e26]:
+              - button "Clear" [ref=f11e28] [cursor=pointer]
+              - generic [ref=f11e33]:
+                - button "Search by voice" [ref=f11e34] [cursor=pointer]
+                - button "Search by image" [ref=f11e37] [cursor=pointer]
+          - button "Search" [ref=f11e40] [cursor=pointer]
+    - generic [ref=f11e45]:
+      - button "Settings" [ref=f11e47] [cursor=pointer]
+      - button "Share" [ref=f11e53] [cursor=pointer]
+      - generic [ref=f11e59]:
+        - button "Google apps" [ref=f11e61] [cursor=pointer]
+        - link "Sign in" [ref=f11e66] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fq%3Dsite:ncert.nic.in%2Bclass%2B10%2Bscience%2Bpdf&ec=futura_srp_og_si_72236_p
+  - generic [ref=f11e68]:
+    - navigation [ref=f11e74]:
+      - generic [ref=f11e80]:
+        - list [ref=f11e81]:
+          - listitem [ref=f11e82]:
+            - link "AI Mode" [ref=f11e85] [cursor=pointer]:
+              - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&udm=50&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUGcFU0TkHlSZOpVvj27yNqPxMYqqceO9DmZC1SWtabsfY4disCrGswfnweUBD3uFpwcOszr2EGveBsLN4XWp9oPFsZqG7P0y_IbxBm4s4jkAM5d8km8sjfidmrUyqOYbAcIJ_TA&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ2J8OegQIEBAD
+          - listitem [ref=f11e89]:
+            - link "All" [disabled] [ref=f11e90]
+          - listitem [ref=f11e93]:
+            - link "Images" [ref=f11e94] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUGcFU0TkHlSZOpVvj27yNqPxMYqqceO9DmZC1SWtabsfY4disCrGswfnweUBD3uFpwcOszr2EGveBsLN4XWp9oPFsZqG7P0y_IbxBm4s4jkAM5d8km8sjfidmrUyqOYbAcIJ_TA&q=site:ncert.nic.in+class+10+science+pdf&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQtKgLegQIFhAB
+          - listitem [ref=f11e97]:
+            - link "Forums" [ref=f11e98] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&udm=18&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUGcFU0TkHlSZOpVvj27yNqPxMYqqceO9DmZC1SWtabsfY4disCrGswfnweUBD3uFpwcOszr2EGveBsLN4XWp9oPFsZqG7P0y_IbxBm4s4jkAM5d8km8sjfidmrUyqOYbAcIJ_TA&q=site:ncert.nic.in+class+10+science+pdf&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQs6gLegQIEhAB
+          - listitem [ref=f11e101]:
+            - link "Videos" [ref=f11e102] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&udm=7&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUGcFU0TkHlSZOpVvj27yNqPxMYqqceO9DmZC1SWtabsfY4disCrGswfnweUBD3uFpwcOszr2EGveBsLN4XWp9oPFsZqG7P0y_IbxBm4s4jkAM5d8km8sjfidmrUyqOYbAcIJ_TA&q=site:ncert.nic.in+class+10+science+pdf&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQtKgLegQIExAB
+          - listitem [ref=f11e105]:
+            - link "Shopping" [ref=f11e106] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&udm=28&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUGcFU0TkHlSZOpVvj27yNqPxMYqqceO9DmZC1SWtabsfY4disCrGswfnweUBD3uFpwcOszr2EGveBsLN4XWp9oPFsZqG7P0y_IbxBm4s4jkAM5d8km8sjfidmrUyqOYbAcIJ_TA&q=site:ncert.nic.in+class+10+science+pdf&ved=1t:220175&ictx=111
+          - listitem [ref=f11e109]:
+            - link "Books" [ref=f11e110] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&q=site:ncert.nic.in+class+10+science+pdf&udm=36&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUGcFU0TkHlSZOpVvj27yNqPxMYqqceO9DmZC1SWtabsfY4disCrGswfnweUBD3uFpwcOszr2EGveBsLN4XWp9oPFsZqG7P0y_IbxBm4s4jkAM5d8km8sjfidmrUyqOYbAcIJ_TA&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ0pQJegQIFRAB
+          - listitem [ref=f11e113]:
+            - button [ref=f11e114] [cursor=pointer]:
+              - generic "More filters" [ref=f11e115]: More
+        - button "Tools" [ref=f11e122] [cursor=pointer]
+    - heading "Search Results" [level=1] [ref=f11e129]
+    - main [ref=f11e135]:
+      - generic [ref=f11e139]:
+        - generic [ref=f11e142]:
+          - heading "वेब नतीजे" [level=2] [ref=f11e143]
+          - generic [ref=f11e144]:
+            - generic [ref=f11e147]:
+              - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f11e149] [cursor=pointer]:
+                - /url: /goto?url=CAESZAHrOzAVHitjdmINHcx4yAsoyIfZKGP9C8BG7_LQd_cFLqmXV7oEtKLUtdsh4MgeFtzVFCVvGe8RKooNZGR122kq1YT9ALa7PSw9Y44PDIdSb6YA0f7lYtcOP5eGx1NrAqg_1No
+                - heading "Textbooks PDF (I-XII)" [level=3] [ref=f11e150]
+                - generic [ref=f11e156]:
+                  - generic [ref=f11e157]: NCERT
+                  - generic [ref=f11e159]: https://ncert.nic.in › textbook
+              - generic [ref=f11e161]:
+                - generic [ref=f11e162]: ·
+                - link "Translate this page" [ref=f11e163] [cursor=pointer]:
+                  - /url: https://ncert.nic.in/textbook.php?jesc1=0-13
+              - button "About this result" [ref=f11e168] [cursor=pointer]
+            - generic [ref=f11e174]:
+              - generic [ref=f11e175]:
+                - emphasis [ref=f11e176]: Class X
+                - text: ", Class XI, Class XII, Class XI & XII Combined ..Select Subject ... Science. Rationalised Content, (Open). Prelims, (Open). Guide for using QR Code ..."
+              - link "Read more" [ref=f11e177] [cursor=pointer]:
+                - /url: /goto?url=CAESrgEB6zswFQ6nEGk4I8qushHH4GtjFyuf55V_9bvPUMwSlj68Vd75FgZXnIBdJ5zBeeGsjmUM6o2vptDq86otH78GaEf84CTL1Y7Gpva7YP9sGlJV2Pq5g-XinaiMdLBji0YGqWsOBm_n00Ho39254ALKgjh4upGfNoRhLSX6vUYr-TD-G_VcaIsi2OBC9lgrcBsi5XoABNivcrbhLGq2uBm4LJLbIASr2xyfrm-g0Wo
+        - generic [ref=f11e181]:
+          - generic [ref=f11e184]:
+            - link "SCIENCE NCERT https://ncert.nic.in › textbook › pdf" [ref=f11e186] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAV0flAMIuDXmHe05aABwoOwHYpGsr2gfV1RRK-_zJrcCCERe84-XuS6jGVSljEbG_FJsjljCYyAJKlLRlyFPBFH1gPrR0mWr4ffOFbm7_Fgc59oReU6A5V3qak6ThsGt_O
+              - heading "SCIENCE" [level=3] [ref=f11e187]
+              - generic [ref=f11e193]:
+                - generic [ref=f11e194]: NCERT
+                - generic [ref=f11e196]: https://ncert.nic.in › textbook › pdf
+            - generic [ref=f11e198]: PDF
+            - button "About this result" [ref=f11e203] [cursor=pointer]
+          - generic [ref=f11e208]:
+            - generic [ref=f11e209]:
+              - generic [ref=f11e210]:
+                - text: This textbook of
+                - emphasis [ref=f11e211]: Science for Class X
+                - text: is a continuation of our attempt in the Class IX. Science textbook to comply with the guidelines of the National Curriculum.
+              - link "Read more" [ref=f11e212] [cursor=pointer]:
+                - /url: /goto?url=CAESwQEB6zswFV42lp36U4DyTdhu9LqOTldwwgvW3jlGtaeeAXd4m73sts6OgzgM5yOc9Hr2JFu1RX6-dz33QMqs5thvt7iDcwNpyJnZeJ5dZV1Ko6y3A0RPvHxoGhso86zpxIn7gj5a6phCQQJDS36FqG50Wk2Ld3Xo-c5QfZOXjD2Z2h5OUVuklS_92tW8mQqQgFWKUS_UYBTDO6eYKZp-bJW4g9_edBJn5WBrjBnZwzF0oY0HLN11eBfZZh-52ohxMtDD
+            - generic [ref=f11e213]: 12 pages
+        - generic [ref=f11e217]:
+          - generic [ref=f11e220]:
+            - link "CHAPTER - Chemical Reactions and Equations NCERT https://ncert.nic.in › textbook › pdf › jesc101" [ref=f11e222] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVYD4L78vwr7n7a6IqgGsPSR6w-S4vwcrBX5HXI09UXDLAkebOWF2hgPmPQwtSTKgAmkTpxHCFY3MxuVdmK3Ptpl6fJcmu2MauxjmkExGJChGJ347rsMEsxgNgTRu0ZzE3
+              - heading "CHAPTER - Chemical Reactions and Equations" [level=3] [ref=f11e223]
+              - generic [ref=f11e229]:
+                - generic [ref=f11e230]: NCERT
+                - generic [ref=f11e232]: https://ncert.nic.in › textbook › pdf › jesc101
+            - generic [ref=f11e234]: PDF
+            - button "About this result" [ref=f11e239] [cursor=pointer]
+          - generic [ref=f11e244]:
+            - generic [ref=f11e245]:
+              - generic [ref=f11e246]:
+                - text: We have learnt in
+                - emphasis [ref=f11e247]: Class
+                - text: IX that during a chemical reaction atoms of one element do not change into those of another element. Nor do atoms disappear from the ...
+              - link "Read more" [ref=f11e248] [cursor=pointer]:
+                - /url: /goto?url=CAEStwEB6zswFQSu4aKMHP3D_ZqyNYc0yaU0-NMnGGpTAzIyij7CJXfFR17fDgmWwEKwGKMTW12Fb2BTi3YfiXkcarot7Fd6BNZQ04hVi0b8PvxyajYl3Dnih315kwwYG-HHtyo_Np7Zvh5pzQ93QK3qZKh3wVMb6gI3sY3hmQgomHi3zIeAehqZdkTUP0N5gJDoJITPhaLIssNHyJVK5tf1mAUmxwbvTxy0lm8MUPALJRQFkKQ9l3L1PxA
+            - generic [ref=f11e249]: 16 pages
+        - generic [ref=f11e253]:
+          - generic [ref=f11e256]:
+            - link "jesc103.pdf NCERT https://ncert.nic.in › textbook › pdf › jesc103" [ref=f11e258] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVpnAlrgUCcFIHZohVOuNmGxTb-Ka40Pi7BtZZV7P8sjeu6Q1Cfmv5NIbS62AA4LqQ8fGCzARhq2Hj7ipdOSe2qQaxAZUXjH3-_jK9ZvZRBtt1SS9We7AEauOYY4R6jiyN
+              - heading "jesc103.pdf" [level=3] [ref=f11e259]
+              - generic [ref=f11e265]:
+                - generic [ref=f11e266]: NCERT
+                - generic [ref=f11e268]: https://ncert.nic.in › textbook › pdf › jesc103
+            - generic [ref=f11e270]: PDF
+            - button "About this result" [ref=f11e275] [cursor=pointer]
+          - generic [ref=f11e280]:
+            - generic [ref=f11e281]:
+              - text: The ability of metals to be drawn into thin wires is called ductility. Gold is the most ductile metal. You will be surprised to know that a wire.
+              - link "Read more" [ref=f11e282] [cursor=pointer]:
+                - /url: /goto?url=CAESqgEB6zswFV__WE5cVUhq-WP3W9eVTq5JcQKcNHIyDdZwCNNtnP4SDiYiqL1CrnzybymbHYSasqr_s4V1xLzbSrGE0yuswWswPYqIOFZOBV-NGpBu20CZRd8vDdi56NWQP-aNfli6oOiSpwJWr_oTaENkufgLjtUeKFP72qckfGBBLYup-mA-5MK8q6-6HxOOtGrai69uK_3zM1vaR6tiRnMTKGF0BMvF-bpzgg
+            - generic [ref=f11e283]: 21 pages
+        - generic [ref=f11e287]:
+          - generic [ref=f11e290]:
+            - link "CHAPTER - Light – Reflection and Refraction NCERT https://ncert.nic.in › textbook › pdf › jesc109" [ref=f11e292] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVeM-KLyxgJSbrDFN6X8k0Cz8A2U5pIFbdKRSeG0YFJE9ciVEpmAa9OBNLvLvYOGP-rMzR8sn8DH2AL1In7BXMVmpSWxoVCaCTVs71ePvd8OoanzgmyhglSingtRus0FG7
+              - heading "CHAPTER - Light – Reflection and Refraction" [level=3] [ref=f11e293]
+              - generic [ref=f11e299]:
+                - generic [ref=f11e300]: NCERT
+                - generic [ref=f11e302]: https://ncert.nic.in › textbook › pdf › jesc109
+            - generic [ref=f11e304]: PDF
+            - button "About this result" [ref=f11e309] [cursor=pointer]
+          - generic [ref=f11e314]:
+            - generic [ref=f11e316]:
+              - emphasis [ref=f11e317]: An object reflects light that falls on it
+              - text: . This phenomenon is known as refraction of light.
+            - generic [ref=f11e318]: 27 pages
+        - generic [ref=f11e322]:
+          - generic [ref=f11e325]:
+            - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f11e327] [cursor=pointer]:
+              - /url: /goto?url=CAESWQHrOzAVqSKJhctZKaZbHIi8KJV1z650V2h9K-HDfa_461GGeEtUAjVuyYekRbFIJ7minf75a8WlQjPkEp3uhEfdTiaEIkihzR3OCMnpC7bgltu_loezttPg
+              - heading "Textbooks PDF (I-XII)" [level=3] [ref=f11e328]
+              - generic [ref=f11e334]:
+                - generic [ref=f11e335]: NCERT
+                - generic [ref=f11e337]: https://ncert.nic.in › textbook
+            - button "About this result" [ref=f11e343] [cursor=pointer]
+          - generic [ref=f11e349]:
+            - generic [ref=f11e350]:
+              - text: This online service offers easy access to the
+              - emphasis [ref=f11e351]: NCERT textbooks
+              - text: . The service covers textbooks of all subjects published by NCERT for classes I to XII in Hindi, ...
+            - link "Read more" [ref=f11e352] [cursor=pointer]:
+              - /url: /goto?url=CAESrwEB6zswFU8eMnqoI6tBzyQSyB3ZZ42lm6ZHD9vAl_3mvJ8eedTnd5HlFTg3SM5zMlt8NAXovqRKDKv7W2iIF3L5PMZcGyDXJihMrOislKbR0h1zrJawEosVtPthhMWhcAzEGbYmPpbwCuqMpZrd4r4JUjZrjZRJnztKBYSTmBI56u5xkgWvhn_HAzg1aITRbGQ_t_IPFHb1K2TUm4CKpePEA5sKOvpnvenIMEuCyg11
+        - generic [ref=f11e356]:
+          - generic [ref=f11e359]:
+            - link "CHAPTER - The Human Eye and the Colourful World NCERT https://ncert.nic.in › textbook › pdf › jesc110" [ref=f11e361] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVpD9taiQ6thPSrWDuRsp9v31yG2RhU0r3rwGcTClOE4flp-kg6Wgg7qD7Ml3xEX7TmO57yUyPc4MBl83C2XskmhWdY_7wIYD102p9FMDoWiEaoH-SmbM93sWdMAiRBdse
+              - heading "CHAPTER - The Human Eye and the Colourful World" [level=3] [ref=f11e362]
+              - generic [ref=f11e368]:
+                - generic [ref=f11e369]: NCERT
+                - generic [ref=f11e371]: https://ncert.nic.in › textbook › pdf › jesc110
+            - generic [ref=f11e373]: PDF
+            - button "About this result" [ref=f11e378] [cursor=pointer]
+          - generic [ref=f11e383]:
+            - generic [ref=f11e385]:
+              - text: CHAP 10.pmd Page 1 The Human Eye.
+              - emphasis [ref=f11e386]: The human eye uses light and enables us to see objects around us
+              - text: . Eyes must be removed within 4-6 hours after death. Eye ...
+            - generic [ref=f11e387]: 10 pages
+        - generic [ref=f11e391]:
+          - generic [ref=f11e394]:
+            - link "CHAPTER - Acids, Bases and Salts NCERT https://ncert.nic.in › textbook › pdf › jesc102" [ref=f11e396] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVsPIgP8IM931qqb_E98ktLL5nfn-m3LBNeyEV-i9muI-vD7pwGJ-XfDGMmXkj4zkoofy74rD8t1Y9qS-iE6CFA4N0lmOFcaPIW6eyuh3zDIm6LvmzJ9iQoC_ZGN0Dc17I
+              - heading "CHAPTER - Acids, Bases and Salts" [level=3] [ref=f11e397]
+              - generic [ref=f11e403]:
+                - generic [ref=f11e404]: NCERT
+                - generic [ref=f11e406]: https://ncert.nic.in › textbook › pdf › jesc102
+            - generic [ref=f11e408]: PDF
+            - button "About this result" [ref=f11e413] [cursor=pointer]
+          - generic [ref=f11e418]:
+            - generic [ref=f11e419]:
+              - generic [ref=f11e420]:
+                - emphasis [ref=f11e421]: Acid + Base → Salt + Water
+                - text: . H X + M OH → MX + HOH. H+(aq) + OH– (aq) → H2O(l). Let us see what is involved when water is mixed with an acid or a base.
+              - link "Read more" [ref=f11e422] [cursor=pointer]:
+                - /url: /goto?url=CAESrQEB6zswFRlg7ggtAc1HfrZDJt2BEzB9LBD0w_Mh3hu4cyjZuz_7kIDrdMXKnqK0JNlB39ejb3ILupNaxMFXJFLh8ND6Tle0K3THEnp9Vk4FZ4CkqtTRussU5q8O0joai4ljnUmTabPd2QnG7B7FvCK4h2FT6P3m1PapUCaecAENcildwVrz0gZHP3ivHgYuRtKMsVsNKwHb1G9F8Z7OWP-EterQ088N0DJopAy_ZQ
+            - generic [ref=f11e423]: 20 pages
+        - generic [ref=f11e427]:
+          - generic [ref=f11e430]:
+            - link "CHAPTER - Life Processes NCERT https://ncert.nic.in › textbook › pdf › jesc105" [ref=f11e432] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVA8I7d6dyuZqJC09pxYLDQoc71TbhYhzeFUaGUVf3LxUkZ3ADgOTEg2DNOObVDYTujwsHrheMb3MFzuIPo2PcHafJQ1cnyL7gN3eZ2oALIv7QK0BDMCdWxEPPVV9I0RjJ
+              - heading "CHAPTER - Life Processes" [level=3] [ref=f11e433]
+              - generic [ref=f11e439]:
+                - generic [ref=f11e440]: NCERT
+                - generic [ref=f11e442]: https://ncert.nic.in › textbook › pdf › jesc105
+            - generic [ref=f11e444]: PDF
+            - button "About this result" [ref=f11e449] [cursor=pointer]
+          - generic [ref=f11e454]:
+            - generic [ref=f11e455]:
+              - generic [ref=f11e456]:
+                - text: In Class IX, we learnt about blood being a fluid connective tissue.
+                - emphasis [ref=f11e457]: Blood
+                - text: consists of a fluid medium called plasma in which the cells are suspended. Plasma ...
+              - link "Read more" [ref=f11e458] [cursor=pointer]:
+                - /url: /goto?url=CAESwwEB6zswFdi4wfCSk7itrpQcDWSsRRzIi0nATNmVr1CSAwx-NXPt2y6IZ7gkHHOjy96oTrV3gvsaGV6CgDOx5mJw_3GCQV9YTXP7qa1HgjvovTRf2odavRtwe_QDXnLCRPQ1tn5X52Zp5rXG0Xw4RNpwhXdo9QRK0WazZGNg96naMA_z-OX1rMrd10NmWhmkAr4yW1XDQpLMvDkOUmnou6PhwhwKDo4kfghWFOsxY-TztfrkRJ92_-0x-6sXyRpsf-7OsAA
+            - generic [ref=f11e459]: 21 pages
+        - generic [ref=f11e463]:
+          - generic [ref=f11e466]:
+            - link "chapter Carbon and its compounds NCERT https://ncert.nic.in › textbook › pdf › jesc104" [ref=f11e468] [cursor=pointer]:
+              - /url: /goto?url=CAESZQHrOzAVAOeXX_Qh56LODVQHXkkfooQvnnGA1xwMHfV58dwI4HXnG-RBWYiKqX6tqbhFjDCAn7-c0mOETMRHlSlYshycfkUjXjv1oFwtpskPr1c7ILdzd-3T4ePpx4c59Ecz5jsU
+              - heading "chapter Carbon and its compounds" [level=3] [ref=f11e469]
+              - generic [ref=f11e475]:
+                - generic [ref=f11e476]: NCERT
+                - generic [ref=f11e478]: https://ncert.nic.in › textbook › pdf › jesc104
+            - generic [ref=f11e480]: PDF
+            - button "About this result" [ref=f11e485] [cursor=pointer]
+          - generic [ref=f11e490]:
+            - generic [ref=f11e491]:
+              - generic [ref=f11e492]:
+                - text: Fullerenes form another
+                - emphasis [ref=f11e493]: class
+                - text: of carbon allotropes. The first one to be identified was. C-60 which has carbon atoms arranged in the shape of a football. Since ...
+              - link "Read more" [ref=f11e494] [cursor=pointer]:
+                - /url: /goto?url=CAESvQEB6zswFb2lC1nIEBXCCNE83SNvya0x_qR_yu4hayxGKmDIYk7f_9HZeLI5IUC5gFBmvV4rgTJE_F8LKJCYNzdZ7vv8XJdIKWDnmskPSZIXEGAYsuowvu1dw68p0jdHhcBJAUr2rPvjGXjw_5dolsGbj4zqkxTfnL3lEfNYL_gdtTXPDs4OYCXOPn-HYC_ZMMoDGqrVNvRfVCTcMYGjFxmWUcwHEdj-K0H7AUyFYFmT6TufFiOiBOrSFfXaxXs
+            - generic [ref=f11e495]: 21 pages
+      - generic [ref=f11e497]:
+        - generic [ref=f11e502]:
+          - heading "People also search for" [level=2] [ref=f11e504]
+          - generic [ref=f11e506]:
+            - generic [ref=f11e507]:
+              - link "Class 10 science pdf chapter 1" [ref=f11e511] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&q=Class+10+science+pdf+chapter+1&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ1QJ6BAglEAE
+              - link "Class 10 science pdf cbse" [ref=f11e525] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&q=Class+10+science+pdf+cbse&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ1QJ6BAgoEAE
+            - generic [ref=f11e536]:
+              - link "Class 10 science pdf solutions" [ref=f11e540] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&q=Class+10+science+pdf+solutions&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ1QJ6BAgnEAE
+              - link "Class 10 science pdf chapter 2" [ref=f11e554] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&q=Class+10+science+pdf+chapter+2&sa=X&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ1QJ6BAgmEAE
+        - navigation [ref=f11e565]:
+          - heading "Page navigation" [level=1] [ref=f11e566]
+          - text: "1"
+          - link "Page 2" [ref=f11e569] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=10&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAE
+            - text: "2"
+          - link "Page 3" [ref=f11e571] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=20&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAG
+            - text: "3"
+          - link "Page 4" [ref=f11e573] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=30&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAI
+            - text: "4"
+          - link "Page 5" [ref=f11e575] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=40&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAK
+            - text: "5"
+          - link "Page 6" [ref=f11e577] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=50&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAM
+            - text: "6"
+          - link "Page 7" [ref=f11e579] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=60&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAO
+            - text: "7"
+          - link "Page 8" [ref=f11e581] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=70&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAQ
+            - text: "8"
+          - link "Page 9" [ref=f11e583] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=80&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAS
+            - text: "9"
+          - link "Page 10" [ref=f11e585] [cursor=pointer]:
+            - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=90&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8tMDegQIIxAU
+            - text: "10"
+          - heading [level=2] [ref=f11e587]:
+            - link "Next" [ref=f11e588] [cursor=pointer]:
+              - /url: /search?q=site:ncert.nic.in+class+10+science+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnsNUwCxhPvSVngSdz3IIYJBi6-JQw:1787771263204&ei=fzmPatCNDLLB4-EPv_vHwAQ&start=10&sa=N&sstk=AS6-VmKfmJxKNaEo7QYYvIP6z2khZdqHfT-dWwUyIuan_4RfFj2_i_1AikLpNe3iHc6g3vX7h9sMpfKjXClHw5IzGw664ePwFGyOaw&ved=2ahUKEwiQydT4_r6WAxWy4DgGHb_9EUgQ8NMDegQIIxAW
+      - navigation
+    - contentinfo [ref=f11e591]:
+      - heading "Footer links" [level=1] [ref=f11e592]
+      - generic [ref=f11e596]:
+        - generic [ref=f11e598]:
+          - text: India
+          - generic [ref=f11e600]:
+            - button "Varanasi, Uttar Pradesh - From your IP address" [ref=f11e602] [cursor=pointer]:
+              - generic [ref=f11e603]: Varanasi, Uttar Pradesh
+              - generic [ref=f11e605]:
+                - text: "-"
+                - generic [ref=f11e606]: From your IP address
+            - text: "-"
+            - button "Update location" [ref=f11e608] [cursor=pointer]
+        - generic [ref=f11e611]:
+          - link "Help" [ref=f11e612] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en-IN&fg=1
+          - link "Send feedback" [ref=f11e613] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=f11e614] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en-IN&fg=1
+          - link "Terms" [ref=f11e615] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en-IN&fg=1

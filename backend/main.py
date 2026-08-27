@@ -14,6 +14,7 @@ from app.core.database import engine, Base, init_neo4j_schema
 from app.core.events import event_bus
 from app.api.tasks import router as tasks_router
 from app.api.ws import router as ws_router
+from app.api.mcp import router as mcp_router
 from app.auth.router import router as auth_router
 from app.core.observability import metrics
 
@@ -72,6 +73,8 @@ async def lifespan(app: FastAPI):
             "ALTER TABLE ai_usage ADD COLUMN IF NOT EXISTS search_used BOOLEAN NOT NULL DEFAULT FALSE",
             "ALTER TABLE ai_usage ADD COLUMN IF NOT EXISTS tool_calls INTEGER NOT NULL DEFAULT 0",
             "ALTER TABLE ai_usage ADD COLUMN IF NOT EXISTS status VARCHAR(30) NOT NULL DEFAULT 'completed'",
+            "ALTER TABLE employees ADD COLUMN IF NOT EXISTS avatar VARCHAR(50) NOT NULL DEFAULT '👨‍💼'",
+            "ALTER TABLE employees ADD COLUMN IF NOT EXISTS name VARCHAR(100) NOT NULL DEFAULT 'Employee'",
         ):
             await conn.execute(text(statement))
     log.info("database_tables_created")
@@ -90,10 +93,28 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         log.warning("neo4j_schema_init_skipped", error=str(e))
 
+    # Auto-connect saved MCP servers (non-fatal — each server fails alone)
+    try:
+        from app.mcp.manager import mcp_manager
+        from app.mcp.store import load_configs
+        for cfg in load_configs():
+            if cfg.enabled:
+                try:
+                    await mcp_manager.connect(cfg)
+                except Exception as e:
+                    log.warning("mcp_auto_connect_failed", server=cfg.name, error=str(e))
+    except Exception as e:
+        log.warning("mcp_startup_skipped", error=str(e))
+
     log.info("naukar_ready")
     yield
 
     # ── Shutdown ─────────────────────────────────────────────────────────
+    try:
+        from app.mcp.manager import mcp_manager
+        await mcp_manager.shutdown()
+    except Exception:
+        pass
     try:
         await event_bus.disconnect()
     except Exception:
@@ -164,6 +185,7 @@ app.add_middleware(
 # Routers
 app.include_router(auth_router)       # /auth/*
 app.include_router(tasks_router)      # /api/tasks/*
+app.include_router(mcp_router)        # /api/mcp/*
 app.include_router(ws_router)         # /ws/*
 
 

@@ -20,9 +20,23 @@ class ContextManager:
         system_tokens = self.count_tokens(system)
         messages = list(request.messages)
         remaining = max(available - system_tokens, 128)
-        selected: list[Message] = []
-        used = 0
+
+        # Tool-call conversations must stay intact: an assistant turn with
+        # tool_calls and its following role:tool replies are one atomic unit.
+        # The API rejects orphaned tool messages (400 invalid_request_error).
+        tail: list[Message] = []
         for message in reversed(messages):
+            if message.role == "tool" or (message.raw and message.raw.get("tool_calls")):
+                tail.append(message)
+            else:
+                break
+        tail.reverse()
+        core = messages[: len(messages) - len(tail)]
+        tail_tokens = sum(self.count_tokens(m.content) for m in tail)
+
+        selected: list[Message] = []
+        used = tail_tokens
+        for message in reversed(core):
             tokens = self.count_tokens(message.content)
             if used + tokens > remaining and selected:
                 break
@@ -33,7 +47,7 @@ class ContextManager:
             selected.append(message)
             used += tokens
         selected.reverse()
-        return replace(request, system_prompt=system, messages=selected)
+        return replace(request, system_prompt=system, messages=selected + tail)
 
     def _truncate(self, text: str, token_limit: int) -> str:
         if token_limit <= 0:

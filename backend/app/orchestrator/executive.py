@@ -27,7 +27,7 @@ from app.router.model_router import DynamicModelRouter
 from app.llm.gateway import bind_usage_session
 from app.tasks.models import (
     TaskAnalysis, WorkforcePlan, Employee, TaskStep,
-    TaskStatus, EmployeeStatus, StepStatus, QualityResult
+    TaskStatus, EmployeeStatus, StepStatus, QualityResult, WorkforceTopology
 )
 from app.db import models as db_models
 
@@ -56,6 +56,33 @@ class ExecutiveOrchestrator:
         self._quality = QualityController()
         self._router = DynamicModelRouter()
 
+    async def _db_op(self, op):
+        """
+        Run a DB write op with deadlock recovery.
+        Postgres occasionally kills one side of overlapping task-row
+        transactions (DeadlockDetected); the session is then poisoned
+        (PendingRollbackError) and every later write would fail. Roll back
+        and retry so a transient deadlock never fails the whole task.
+        """
+        last_exc: Exception | None = None
+        for _ in range(3):
+            try:
+                await op()
+                return
+            except Exception as exc:
+                last_exc = exc
+                msg = str(exc).lower()
+                recoverable = "pendingrollback" in msg.replace("_", "") or "deadlock" in msg
+                if not recoverable:
+                    raise
+                log.warning("db_op_recovering", error=str(exc)[:120])
+                try:
+                    await self._db.rollback()
+                except Exception:
+                    pass
+                await asyncio.sleep(0.3)
+        raise last_exc
+
     # -----------------------------------------------------------------------
     # MAIN ENTRY POINT
     # -----------------------------------------------------------------------
@@ -71,6 +98,11 @@ class ExecutiveOrchestrator:
         await self._update_task_status(task_id, TaskStatus.ANALYZING)
 
         try:
+            # ── Competition task → super-worker fast path (minimum tokens) ──
+            from app.tools.competitor_scout import is_competition_task
+            if is_competition_task(user_input):
+                return await self._run_competition_task(task_id, user_input, start_time)
+
             # ── PHASE 1: Understand the task ──────────────────────────────
             await _emit(task_id, EventType.THINKING, {
                 "message": "Understanding your task and analyzing what needs to be done..."
@@ -107,6 +139,8 @@ class ExecutiveOrchestrator:
                 await self._save_employee(emp)
                 await _emit(task_id, EventType.EMPLOYEE_CREATED, {
                     "employee_id": emp.id,
+                    "name": emp.name,
+                    "avatar": emp.avatar,
                     "role": emp.role,
                     "objective": emp.objective,
                     "skills": emp.skills,
@@ -162,56 +196,15 @@ class ExecutiveOrchestrator:
                 employees=employees,
             )
 
-            # ── PHASE 7: Final quality gate ───────────────────────────────
-            await _emit(task_id, EventType.THINKING, {
-                "message": "Running final quality review of all completed work..."
-            })
-            qc = await self._quality.evaluate_final(user_input, final_result, analysis)
-            await _emit(task_id, EventType.QUALITY_CHECKED, {
-                "score": qc.score,
-                "passed": qc.passed,
-                "issues": qc.issues,
-                "feedback": qc.feedback,
-                "stage": "final",
-            })
-
-            retry_count = 0
-            while not qc.passed and retry_count < self.MAX_FINAL_RETRIES:
-                retry_count += 1
-                await _emit(task_id, EventType.TASK_REPLANNED, {
-                    "reason": f"Final quality failed ({qc.score:.0%}): {qc.feedback}",
-                    "retry": retry_count,
-                })
-                final_result = await self._fix_final_result(
-                    analysis, final_result, qc, prior_results
-                )
-                qc = await self._quality.evaluate_final(user_input, final_result, analysis)
-
-            # ── DONE ─────────────────────────────────────────────────────
-            elapsed = int((time.monotonic() - start_time) * 1000)
-            await self._complete_task(task_id, final_result, qc.score)
-            await _emit(task_id, EventType.FINAL_RESULT_READY, {
-                "result": final_result,
-                "quality_score": qc.score,
-                "elapsed_ms": elapsed,
-                "num_employees": len(employees),
-                "num_steps": len(steps),
-            })
-
-            # ── Emit token usage summary ─────────────────────────────────
-            from app.llm.token_tracker import token_tracker
-            token_tracker.print_final_summary(task_id)
-            summary = token_tracker.get_summary(task_id)
-            if summary:
-                await _emit(task_id, EventType.TASK_TOKEN_SUMMARY, summary.to_dict())
-
-            log.info(
-                "orchestrator_completed",
+            return await self._finalize_and_deliver(
                 task_id=task_id,
-                quality=qc.score,
-                elapsed_ms=elapsed,
+                user_input=user_input,
+                analysis=analysis,
+                final_result=final_result,
+                employees=employees,
+                steps=steps,
+                start_time=start_time,
             )
-            return final_result
 
         except Exception as e:
             log.exception("orchestrator_error", task_id=task_id, error=str(e))
@@ -221,6 +214,231 @@ class ExecutiveOrchestrator:
                 "task_id": task_id,
             })
             raise
+
+    # -----------------------------------------------------------------------
+    # COMPETITION TASK FAST PATH (1 super worker, minimum tokens)
+    # -----------------------------------------------------------------------
+    async def _run_competition_task(
+        self, task_id: str, user_input: str, start_time: float
+    ) -> str:
+        """
+        Super-worker fast path for competition / competitor-analysis tasks.
+        Hires exactly ONE Competition Scout who:
+          - browses competitor websites on the FREE search tier (0 tokens)
+          - extracts pricing/features with deterministic regex (0 tokens)
+          - spends tokens only on 1 tiny discovery call (optional) + 1 synthesis
+        Then the shared final quality gate runs via _finalize_and_deliver.
+        """
+        from app.tools.competitor_scout import deterministic_competition_analysis
+        from app.workforce.role_catalog import get_role_profile
+        from app.employees.scout import CompetitionScoutWorker
+        from app.tasks.models import EmployeeDefinition
+
+        await _emit(task_id, EventType.THINKING, {
+            "message": "Competition task detected — deploying ONE Competition Scout super-worker in minimum-token mode..."
+        })
+
+        # Deterministic analysis — zero tokens (skips the analyzer LLM call)
+        analysis = deterministic_competition_analysis(task_id, user_input)
+        await _emit(task_id, EventType.TASK_ANALYZED, {
+            "title": analysis.title,
+            "task_type": analysis.task_type,
+            "complexity": analysis.complexity.complexity_score,
+            "required_skills": analysis.required_skills,
+            "required_tools": analysis.required_tools,
+            "subtask_estimate": analysis.subtask_count_estimate,
+            "risk_level": analysis.risk_level,
+        })
+        await self._save_task_analysis(task_id, analysis)
+
+        # Workforce = exactly one super worker
+        await self._update_task_status(task_id, TaskStatus.PLANNING)
+        scout_def = get_role_profile("competition scout") or EmployeeDefinition(
+            role="Competition Scout",
+            name="Arjun",
+            avatar="🕵️‍♂️",
+            objective="Browse the web and deliver a competition analysis",
+            responsibilities=["Browse competitor websites", "Extract data", "Synthesize analysis"],
+            skills=["competitive analysis", "web browsing"],
+            tools=["web search", "browser"],
+            quality_requirement=0.88,
+            hierarchy_level=0,
+        )
+        scout_def.objective = (
+            f"Browse the web and deliver a competition analysis for: {user_input[:100]}"
+        )
+        plan = WorkforcePlan(
+            task_id=task_id,
+            topology=WorkforceTopology.SEQUENTIAL,
+            roles=[scout_def],
+            rationale=(
+                "Super-worker fast path: one Competition Scout browses competitor "
+                "sites for free and spends the minimum possible LLM tokens."
+            ),
+        )
+        await _emit(task_id, EventType.WORKFORCE_CREATED, {
+            "topology": plan.topology.value,
+            "roles": [{"role": r.role, "objective": r.objective, "level": r.hierarchy_level}
+                      for r in plan.roles],
+            "rationale": plan.rationale,
+        })
+
+        factory = EmployeeFactory(task_id)
+        employees = factory.create_from_plan(plan)
+        scout = employees[0]
+        await self._save_employee(scout)
+        await _emit(task_id, EventType.EMPLOYEE_CREATED, {
+            "employee_id": scout.id,
+            "name": scout.name,
+            "avatar": scout.avatar,
+            "role": scout.role,
+            "objective": scout.objective,
+            "skills": scout.skills,
+            "tools": scout.tools,
+            "hierarchy_level": scout.hierarchy_level,
+            "manager_id": scout.manager_id,
+            "status": scout.status.value if hasattr(scout.status, 'value') else scout.status,
+        })
+
+        # Single execution step
+        await self._update_task_status(task_id, TaskStatus.EXECUTING)
+        step = TaskStep(
+            task_id=task_id,
+            step_index=0,
+            objective="Browse competitor websites and produce the competition analysis",
+            description="Free web browsing + deterministic extraction + single synthesis call",
+            assigned_employee_id=scout.id,
+            assigned_employee_role=scout.role,
+            required_tools=["web search", "browser"],
+            quality_threshold=0.85,
+        )
+        await self._save_step(step)
+        await _emit(task_id, EventType.TASK_ASSIGNED, {
+            "step_id": step.id,
+            "step_index": step.step_index,
+            "objective": step.objective,
+            "assigned_role": step.assigned_employee_role,
+            "assigned_employee_id": step.assigned_employee_id,
+            "dependencies": step.dependencies,
+        })
+        await _emit(task_id, EventType.STEP_STARTED, {
+            "step_id": step.id,
+            "step_index": step.step_index,
+            "objective": step.objective,
+            "employee_id": scout.id,
+            "role": scout.role,
+        })
+        await _emit(task_id, EventType.EMPLOYEE_STATUS_CHANGED, {
+            "employee_id": scout.id,
+            "role": scout.role,
+            "status": "working",
+            "current_task": step.objective,
+        })
+
+        worker = CompetitionScoutWorker()
+        final_result, model, confidence, _scan = await worker.run(
+            task_id, user_input, scout
+        )
+
+        step.result = final_result
+        step.model = model
+        step.confidence = confidence
+        step.status = StepStatus.COMPLETED
+        await self._update_step(step)
+        await _emit(task_id, EventType.LLM_CALLED, {
+            "employee_id": scout.id,
+            "role": scout.role,
+            "model": model,
+            "step_index": step.step_index,
+            "confidence": confidence,
+        })
+        await _emit(task_id, EventType.STEP_COMPLETED, {
+            "step_id": step.id,
+            "step_index": step.step_index,
+            "quality_score": confidence,
+            "confidence": confidence,
+            "model": model,
+        })
+        await _emit(task_id, EventType.EMPLOYEE_STATUS_CHANGED, {
+            "employee_id": scout.id,
+            "role": scout.role,
+            "status": "completed",
+            "confidence": confidence,
+            "last_action": f"Completed: {step.objective[:60]}",
+        })
+
+        await self._update_task_status(task_id, TaskStatus.REVIEWING)
+        return await self._finalize_and_deliver(
+            task_id=task_id,
+            user_input=user_input,
+            analysis=analysis,
+            final_result=final_result,
+            employees=employees,
+            steps=[step],
+            start_time=start_time,
+        )
+
+    # -----------------------------------------------------------------------
+    # FINAL QUALITY GATE + DELIVERY (shared by both pipelines)
+    # -----------------------------------------------------------------------
+    async def _finalize_and_deliver(
+        self,
+        task_id: str,
+        user_input: str,
+        analysis: TaskAnalysis,
+        final_result: str,
+        employees: List[Employee],
+        steps: List[TaskStep],
+        start_time: float,
+    ) -> str:
+        """Final quality gate with retry, then mark complete and emit results."""
+        await _emit(task_id, EventType.THINKING, {
+            "message": "Running final quality review of all completed work..."
+        })
+        qc = await self._quality.evaluate_final(user_input, final_result, analysis)
+        await _emit(task_id, EventType.QUALITY_CHECKED, {
+            "score": qc.score,
+            "passed": qc.passed,
+            "issues": qc.issues,
+            "feedback": qc.feedback,
+            "stage": "final",
+        })
+
+        retry_count = 0
+        while not qc.passed and retry_count < self.MAX_FINAL_RETRIES:
+            retry_count += 1
+            await _emit(task_id, EventType.TASK_REPLANNED, {
+                "reason": f"Final quality failed ({qc.score:.0%}): {qc.feedback}",
+                "retry": retry_count,
+            })
+            final_result = await self._fix_final_result(
+                analysis, final_result, qc, {}
+            )
+            qc = await self._quality.evaluate_final(user_input, final_result, analysis)
+
+        elapsed = int((time.monotonic() - start_time) * 1000)
+        await self._complete_task(task_id, final_result, qc.score)
+        await _emit(task_id, EventType.FINAL_RESULT_READY, {
+            "result": final_result,
+            "quality_score": qc.score,
+            "elapsed_ms": elapsed,
+            "num_employees": len(employees),
+            "num_steps": len(steps),
+        })
+
+        from app.llm.token_tracker import token_tracker
+        token_tracker.print_final_summary(task_id)
+        summary = token_tracker.get_summary(task_id)
+        if summary:
+            await _emit(task_id, EventType.TASK_TOKEN_SUMMARY, summary.to_dict())
+
+        log.info(
+            "orchestrator_completed",
+            task_id=task_id,
+            quality=qc.score,
+            elapsed_ms=elapsed,
+        )
+        return final_result
 
     # -----------------------------------------------------------------------
     # STEP EXECUTION WITH RETRY + CASCADE
@@ -413,105 +631,131 @@ Please revise and improve the output to address all issues."""
     # -----------------------------------------------------------------------
     async def _update_task_status(self, task_id: str, status: TaskStatus):
         from sqlalchemy import update
-        await self._db.execute(
-            update(db_models.Task)
-            .where(db_models.Task.id == task_id)
-            .values(status=status.value, started_at=datetime.now(timezone.utc))
-        )
-        await self._db.commit()
+
+        async def _op():
+            await self._db.execute(
+                update(db_models.Task)
+                .where(db_models.Task.id == task_id)
+                .values(status=status.value, started_at=datetime.now(timezone.utc))
+            )
+            await self._db.commit()
+
+        await self._db_op(_op)
 
     async def _save_task_analysis(self, task_id: str, analysis: TaskAnalysis):
         from sqlalchemy import update
-        await self._db.execute(
-            update(db_models.Task)
-            .where(db_models.Task.id == task_id)
-            .values(
-                title=analysis.title,
-                task_type=analysis.task_type,
-                complexity_score=analysis.complexity.complexity_score,
-                risk_score=analysis.complexity.risk_score,
-                reasoning_requirement=analysis.complexity.reasoning_requirement,
-                research_requirement=analysis.complexity.research_requirement,
-                tool_requirement=analysis.complexity.tool_requirement,
-                accuracy_requirement=analysis.complexity.accuracy_requirement,
-                required_skills=analysis.required_skills,
-                required_tools=analysis.required_tools,
+
+        async def _op():
+            await self._db.execute(
+                update(db_models.Task)
+                .where(db_models.Task.id == task_id)
+                .values(
+                    title=analysis.title,
+                    task_type=analysis.task_type,
+                    complexity_score=analysis.complexity.complexity_score,
+                    risk_score=analysis.complexity.risk_score,
+                    reasoning_requirement=analysis.complexity.reasoning_requirement,
+                    research_requirement=analysis.complexity.research_requirement,
+                    tool_requirement=analysis.complexity.tool_requirement,
+                    accuracy_requirement=analysis.complexity.accuracy_requirement,
+                    required_skills=analysis.required_skills,
+                    required_tools=analysis.required_tools,
+                )
             )
-        )
-        await self._db.commit()
+            await self._db.commit()
+
+        await self._db_op(_op)
 
     async def _save_employee(self, emp: Employee):
-        db_emp = db_models.Employee(
-            id=emp.id,
-            task_id=emp.task_id,
-            role=emp.role,
-            objective=emp.objective,
-            responsibilities=emp.responsibilities,
-            skills=emp.skills,
-            tools=emp.tools,
-            quality_requirement=emp.quality_requirement,
-            hierarchy_level=emp.hierarchy_level,
-            manager_id=emp.manager_id,
-            status="idle",
-        )
-        self._db.add(db_emp)
-        await self._db.commit()
+        async def _op():
+            db_emp = db_models.Employee(
+                id=emp.id,
+                task_id=emp.task_id,
+                role=emp.role,
+                objective=emp.objective,
+                responsibilities=emp.responsibilities,
+                skills=emp.skills,
+                tools=emp.tools,
+                quality_requirement=emp.quality_requirement,
+                hierarchy_level=emp.hierarchy_level,
+                manager_id=emp.manager_id,
+                status="idle",
+            )
+            self._db.add(db_emp)
+            await self._db.commit()
+
+        await self._db_op(_op)
 
     async def _save_step(self, step: TaskStep):
-        db_step = db_models.TaskStep(
-            id=step.id,
-            task_id=step.task_id,
-            step_index=step.step_index,
-            objective=step.objective,
-            description=step.description,
-            assigned_employee_id=step.assigned_employee_id,
-            dependencies=step.dependencies,
-            required_tools=step.required_tools,
-            quality_threshold=step.quality_threshold,
-            status="pending",
-        )
-        self._db.add(db_step)
-        await self._db.commit()
+        async def _op():
+            db_step = db_models.TaskStep(
+                id=step.id,
+                task_id=step.task_id,
+                step_index=step.step_index,
+                objective=step.objective,
+                description=step.description,
+                assigned_employee_id=step.assigned_employee_id,
+                dependencies=step.dependencies,
+                required_tools=step.required_tools,
+                quality_threshold=step.quality_threshold,
+                status="pending",
+            )
+            self._db.add(db_step)
+            await self._db.commit()
+
+        await self._db_op(_op)
 
     async def _update_step(self, step: TaskStep):
         from sqlalchemy import update
-        await self._db.execute(
-            update(db_models.TaskStep)
-            .where(db_models.TaskStep.id == step.id)
-            .values(
-                status=step.status.value,
-                result=step.result,
-                confidence=step.confidence,
-                model_used=step.model,
-                retry_count=step.retry_count,
-                completed_at=datetime.now(timezone.utc),
+
+        async def _op():
+            await self._db.execute(
+                update(db_models.TaskStep)
+                .where(db_models.TaskStep.id == step.id)
+                .values(
+                    status=step.status.value,
+                    result=step.result,
+                    confidence=step.confidence,
+                    model_used=step.model,
+                    retry_count=step.retry_count,
+                    completed_at=datetime.now(timezone.utc),
+                )
             )
-        )
-        await self._db.commit()
+            await self._db.commit()
+
+        await self._db_op(_op)
 
     async def _complete_task(self, task_id: str, result: str, quality_score: float):
         from sqlalchemy import update
-        await self._db.execute(
-            update(db_models.Task)
-            .where(db_models.Task.id == task_id)
-            .values(
-                status=TaskStatus.COMPLETED.value,
-                final_result=result,
-                quality_score=quality_score,
-                completed_at=datetime.now(timezone.utc),
+
+        async def _op():
+            await self._db.execute(
+                update(db_models.Task)
+                .where(db_models.Task.id == task_id)
+                .values(
+                    status=TaskStatus.COMPLETED.value,
+                    final_result=result,
+                    quality_score=quality_score,
+                    completed_at=datetime.now(timezone.utc),
+                )
             )
-        )
-        await self._db.commit()
+            await self._db.commit()
+
+        await self._db_op(_op)
 
     async def _fail_task(self, task_id: str, error: str):
         from sqlalchemy import update
-        await self._db.execute(
-            update(db_models.Task)
-            .where(db_models.Task.id == task_id)
-            .values(
-                status=TaskStatus.FAILED.value,
-                error_message=error,
-                completed_at=datetime.now(timezone.utc),
+
+        async def _op():
+            await self._db.execute(
+                update(db_models.Task)
+                .where(db_models.Task.id == task_id)
+                .values(
+                    status=TaskStatus.FAILED.value,
+                    error_message=error,
+                    completed_at=datetime.now(timezone.utc),
+                )
             )
-        )
-        await self._db.commit()
+            await self._db.commit()
+
+        await self._db_op(_op)

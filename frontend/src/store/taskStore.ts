@@ -10,6 +10,8 @@ export type EmployeeStatus =
 export interface Employee {
   id: string
   role: string
+  name: string
+  avatar?: string
   objective: string
   skills: string[]
   tools: string[]
@@ -76,6 +78,28 @@ export interface WebSearchResult {
   sources: { url: string; title: string; snippet: string }[]
 }
 
+export interface CompetitorProfile {
+  name: string
+  website: string
+  pricing: string[]
+  features: string[]
+  strengths: string[]
+  weaknesses: string[]
+  sources: { url: string; title: string }[]
+  sites_checked: number
+}
+
+export interface CompetitionScan {
+  status: 'scanning' | 'done'
+  own_product: string | null
+  current_target: string | null
+  profiles: CompetitorProfile[]
+  matrix_md: string
+  sites_browsed: number
+  llm_calls: number
+  tokens_saved: number
+}
+
 export interface TokenSummary {
   task_id: string
   total_prompt_tokens: number
@@ -124,6 +148,8 @@ export interface TaskState {
   webSearchResults: WebSearchResult[]
   tokenSummary: TokenSummary | null
   activeView: 'result' | 'analytics'
+  // Competition scout super-worker
+  competitionScan: CompetitionScan | null
 }
 
 interface TaskActions {
@@ -160,11 +186,12 @@ const initialState: TaskState = {
   webSearchResults: [],
   tokenSummary: null,
   activeView: 'result',
+  competitionScan: null,
 }
 
 let startTime = 0
 
-export const useTaskStore = create<TaskState & TaskActions>((set, get) => ({
+export const useTaskStore = create<TaskState & TaskActions>((set) => ({
   ...initialState,
 
   setUserInput: (input) => set({ userInput: input }),
@@ -234,6 +261,8 @@ export const useTaskStore = create<TaskState & TaskActions>((set, get) => ({
           const emp: Employee = {
             id: payload.employee_id as string,
             role: payload.role as string,
+            name: (payload.name as string) || 'Employee',
+            avatar: (payload.avatar as string) || '👨‍💼',
             objective: payload.objective as string,
             skills: (payload.skills as string[]) || [],
             tools: (payload.tools as string[]) || [],
@@ -357,14 +386,90 @@ export const useTaskStore = create<TaskState & TaskActions>((set, get) => ({
             tokenSummary: payload as unknown as TokenSummary,
           }
 
-        case 'FINAL_RESULT_READY':
+        case 'COMPETITOR_SCAN_PROGRESS': {
+          const name = payload.name as string
+          const status = payload.status as string
+          const prev = state.competitionScan
+          const scan: CompetitionScan = prev || {
+            status: 'scanning',
+            own_product: null,
+            current_target: null,
+            profiles: [],
+            matrix_md: '',
+            sites_browsed: 0,
+            llm_calls: 0,
+            tokens_saved: 0,
+          }
+          if (status === 'browsing') {
+            return {
+              events: [...state.events.slice(-100), newEvent],
+              competitionScan: { ...scan, current_target: name },
+            }
+          }
+          // status === 'done' — upsert the extracted profile
+          const profile = payload.profile as unknown as CompetitorProfile
+          const others = scan.profiles.filter((p) => p.name !== name)
+          return {
+            events: [...state.events.slice(-100), newEvent],
+            competitionScan: {
+              ...scan,
+              current_target: null,
+              profiles: [...others, profile],
+              sites_browsed: scan.sites_browsed + (profile?.sites_checked || 0),
+            },
+          }
+        }
+
+        case 'COMPETITOR_MATRIX_READY': {
+          const scan: CompetitionScan = {
+            status: 'done',
+            own_product: (payload.own_product as string) || null,
+            current_target: null,
+            profiles: (payload.profiles as unknown as CompetitorProfile[]) || [],
+            matrix_md: (payload.matrix_md as string) || '',
+            sites_browsed: (payload.sites_browsed as number) || 0,
+            llm_calls: (payload.llm_calls_used as number) || 0,
+            tokens_saved: (payload.estimated_tokens_saved as number) || 0,
+          }
+          return {
+            events: [...state.events.slice(-100), newEvent],
+            competitionScan: scan,
+          }
+        }
+
+        case 'MCP_TOOL_CALLED':
+          return {
+            events: [...state.events.slice(-100), newEvent],
+          }
+
+        case 'FINAL_RESULT_READY': {
+          const finalResultStr = payload.result as string;
+          const qualityScoreNum = payload.quality_score as number;
+          
+          // Save to local history
+          if (state.taskId && finalResultStr) {
+            import('./historyStore').then(({ useHistoryStore }) => {
+              useHistoryStore.getState().addToHistory({
+                taskId: state.taskId!,
+                title: state.title || 'Untitled Task',
+                date: new Date().toISOString(),
+                finalResult: finalResultStr,
+                qualityScore: qualityScoreNum,
+                employees: state.employees,
+                steps: state.steps,
+                elapsedMs: elapsed,
+              })
+            })
+          }
+
           return {
             events: [...state.events.slice(-100), newEvent],
             phase: 'completed',
-            finalResult: payload.result as string,
-            qualityScore: payload.quality_score as number,
+            finalResult: finalResultStr,
+            qualityScore: qualityScoreNum,
             elapsedMs: elapsed,
           }
+        }
 
         case 'TASK_FAILED':
           return {

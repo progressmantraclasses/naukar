@@ -1,0 +1,304 @@
+- generic [active] [ref=f9e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=f9e2] [cursor=pointer]
+      - link "Accessibility help" [ref=f9e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en-IN
+  - generic [ref=f9e8]:
+    - search [ref=f9e9]:
+      - generic [ref=f9e11]:
+        - link "Go to Google Home" [ref=f9e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQPAgI
+        - generic [ref=f9e21]:
+          - generic [ref=f9e22]:
+            - combobox "Search" [ref=f9e25]: leading the change ncert pdf leading the change ncert pdf
+            - generic [ref=f9e26]:
+              - button "Clear" [ref=f9e28] [cursor=pointer]
+              - generic [ref=f9e33]:
+                - button "Search by voice" [ref=f9e34] [cursor=pointer]
+                - button "Search by image" [ref=f9e37] [cursor=pointer]
+          - button "Search" [ref=f9e40] [cursor=pointer]
+    - generic [ref=f9e45]:
+      - button "Settings" [ref=f9e47] [cursor=pointer]
+      - button "Share" [ref=f9e53] [cursor=pointer]
+      - generic [ref=f9e59]:
+        - button "Google apps" [ref=f9e61] [cursor=pointer]
+        - link "Sign in" [ref=f9e66] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fq%3Dleading%2Bthe%2Bchange%2Bncert%2Bpdf&ec=futura_srp_og_si_72236_p
+  - generic [ref=f9e68]:
+    - navigation [ref=f9e74]:
+      - generic [ref=f9e80]:
+        - list [ref=f9e81]:
+          - listitem [ref=f9e82]:
+            - link "AI Mode" [ref=f9e85] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&udm=50&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUnrwTgnTiuY9xU8D56OFy290CCytJZw3lGu55L8p-mEQnRwu8NsfKTqqMYjV0N_vBlg83leNaayCBKvz0VkP0yZVl1W5Pz8ElQHHd40Ji9f13w85zB6TgUtUEVpsSb9MzFgtg8A&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ2J8OegQIEhAD
+          - listitem [ref=f9e89]:
+            - link "All" [disabled] [ref=f9e90]
+          - listitem [ref=f9e93]:
+            - link "Images" [ref=f9e94] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUnrwTgnTiuY9xU8D56OFy290CCytJZw3lGu55L8p-mEQnRwu8NsfKTqqMYjV0N_vBlg83leNaayCBKvz0VkP0yZVl1W5Pz8ElQHHd40Ji9f13w85zB6TgUtUEVpsSb9MzFgtg8A&q=leading+the+change+ncert+pdf&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQtKgLegQIFhAB
+          - listitem [ref=f9e97]:
+            - link "Forums" [ref=f9e98] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&udm=18&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUnrwTgnTiuY9xU8D56OFy290CCytJZw3lGu55L8p-mEQnRwu8NsfKTqqMYjV0N_vBlg83leNaayCBKvz0VkP0yZVl1W5Pz8ElQHHd40Ji9f13w85zB6TgUtUEVpsSb9MzFgtg8A&q=leading+the+change+ncert+pdf&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQs6gLegQIFRAB
+          - listitem [ref=f9e101]:
+            - link "Videos" [ref=f9e102] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&udm=7&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUnrwTgnTiuY9xU8D56OFy290CCytJZw3lGu55L8p-mEQnRwu8NsfKTqqMYjV0N_vBlg83leNaayCBKvz0VkP0yZVl1W5Pz8ElQHHd40Ji9f13w85zB6TgUtUEVpsSb9MzFgtg8A&q=leading+the+change+ncert+pdf&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQtKgLegQIFxAB
+          - listitem [ref=f9e105]:
+            - link "Shopping" [ref=f9e106] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&udm=28&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUnrwTgnTiuY9xU8D56OFy290CCytJZw3lGu55L8p-mEQnRwu8NsfKTqqMYjV0N_vBlg83leNaayCBKvz0VkP0yZVl1W5Pz8ElQHHd40Ji9f13w85zB6TgUtUEVpsSb9MzFgtg8A&q=leading+the+change+ncert+pdf&ved=1t:220175&ictx=111
+          - listitem [ref=f9e109]:
+            - link "Short videos" [ref=f9e110] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&udm=39&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8c4u0nXx4bEIpwm1lnNH832UV2GkpKEK36HumGR10Evz0DE9hkPgm5pwJD6Y4g4gdUnrwTgnTiuY9xU8D56OFy290CCytJZw3lGu55L8p-mEQnRwu8NsfKTqqMYjV0N_vBlg83leNaayCBKvz0VkP0yZVl1W5Pz8ElQHHd40Ji9f13w85zB6TgUtUEVpsSb9MzFgtg8A&q=leading+the+change+ncert+pdf&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQs6gLegQIGBAB
+          - listitem [ref=f9e113]:
+            - button [ref=f9e114] [cursor=pointer]:
+              - generic "More filters" [ref=f9e115]: More
+        - button "Tools" [ref=f9e122] [cursor=pointer]
+    - heading "Search Results" [level=1] [ref=f9e129]
+    - generic [ref=f9e134]:
+      - generic [ref=f9e153]:
+        - generic [ref=f9e156]:
+          - generic [ref=f9e158]:
+            - heading "AI Overview" [level=2] [ref=f9e162]
+            - generic [ref=f9e164]:
+              - button "Change language to Hindi" [ref=f9e165] [cursor=pointer]:
+                - generic [ref=f9e166]: हिन्दी
+              - button "Listen" [ref=f9e169]:
+                - generic [ref=f9e173] [cursor=pointer]
+            - button "About this result" [ref=f9e181]
+          - generic [ref=f9e211]:
+            - text: You can download official NCERT textbook PDFs directly from the
+            - link "NCERT Online Textbooks Portal" [ref=f9e213] [cursor=pointer]:
+              - /url: /goto?url=CAESRAHrOzAV2ZrEXcDGmwGski5hfgjWyEI6iMXx7dskUDApRvqU2-HlQMAIONFdG-yfJWBlkumldYQ4k7zIW1VPDdieWvJb
+            - text: .
+        - button "Show more AI Overview" [ref=f9e226]:
+          - generic [ref=f9e227] [cursor=pointer]: Show more
+      - main [ref=f9e234]:
+        - generic [ref=f9e238]:
+          - generic [ref=f9e241]:
+            - heading "Web results" [level=2] [ref=f9e242]
+            - generic [ref=f9e243]:
+              - generic [ref=f9e246]:
+                - link "State and Society up to 1000 CE NCERT https://ncert.nic.in › textbook › pdf › iest105" [ref=f9e248] [cursor=pointer]:
+                  - /url: /goto?url=CAESZQHrOzAVMeFwwzK-TjJ12H_FX-TcygeVggAMjPHX96Qag1tRXoTZTzm_VDXOwLSr9vQWMU3Xsu1O3FydXLjl1aJ3jsbe3K8F3Gnwim_ujPJnAvHTaYfcMchdvvZcLkZYzxiVfEPT
+                  - heading "State and Society up to 1000 CE" [level=3] [ref=f9e249]
+                  - generic [ref=f9e255]:
+                    - generic [ref=f9e256]: NCERT
+                    - generic [ref=f9e258]: https://ncert.nic.in › textbook › pdf › iest105
+                - generic [ref=f9e260]: PDF
+                - button "About this result" [ref=f9e265] [cursor=pointer]
+              - generic [ref=f9e270]:
+                - generic [ref=f9e272]:
+                  - text: State and Society up to 1000 CE region witnessed significant sociopolitical
+                  - emphasis [ref=f9e273]: changes
+                  - text: . This included substantial growth in agriculture,
+                - generic [ref=f9e274]: 42 pages
+          - generic [ref=f9e278]:
+            - generic [ref=f9e281]:
+              - link "पीडीएफ (कक्षा 1-12) NCERT https://ncert.nic.in › textbook" [ref=f9e283] [cursor=pointer]:
+                - /url: /goto?url=CAESYwHrOzAVrfDjnyu-ftfutMW4R-0gUZbK-qCGoxHaC7yJZIiVo40ljPlPbYTCKaMBZlanZ6FWeORoFXZRSaZUQQl_HX5uHIdshVm2DdKnA7rp7BGwwRbA1hRo-RzZIdjAJs9fMw
+                - heading "पीडीएफ (कक्षा 1-12)" [level=3] [ref=f9e284]
+                - generic [ref=f9e290]:
+                  - generic [ref=f9e291]: NCERT
+                  - generic [ref=f9e293]: https://ncert.nic.in › textbook
+              - generic [ref=f9e295]:
+                - generic [ref=f9e296]: ·
+                - link "Translate this page" [ref=f9e297] [cursor=pointer]:
+                  - /url: https://ncert.nic.in/textbook.php?lesy2=0-8
+              - button "About this result" [ref=f9e302] [cursor=pointer]
+            - generic [ref=f9e309]:
+              - text: पीडीएफ (कक्षा 1-12) Textbooks
+              - emphasis [ref=f9e310]: PDF
+              - text: (I-XII) Social
+              - emphasis [ref=f9e311]: Change
+              - text: and Development in India Rationalised Content. Download complete book आरटीआई
+          - generic [ref=f9e315]:
+            - generic [ref=f9e318]:
+              - link "Learning Outcomes at Secondary Stage NCERT https://ncert.nic.in › publication › otherpublications" [ref=f9e320] [cursor=pointer]:
+                - /url: /goto?url=CAEShAEB6zswFdlo-bUi01ieI1VYIe0imdf9-TVB4GEiS-QxYaC-3ZGn0Ox_dz7EeVmd2YyUiPkBFaaPXtQ8k61_JpOqAKKHa4o157r66zQmpVpwV4SfEJw2ugNxKJ7p7j39tOEwqE87kIzV-LV7mu7JZOrTicYfj8fN9tfflb2Zv8z7w1N9AQ4
+                - heading "Learning Outcomes at Secondary Stage" [level=3] [ref=f9e321]
+                - generic [ref=f9e327]:
+                  - generic [ref=f9e328]: NCERT
+                  - generic [ref=f9e330]: https://ncert.nic.in › publication › otherpublications
+              - generic [ref=f9e332]: PDF
+              - button "About this result" [ref=f9e337] [cursor=pointer]
+            - generic [ref=f9e342]:
+              - generic [ref=f9e344]:
+                - text: This learning
+                - emphasis [ref=f9e345]: leads
+                - text: to
+                - emphasis [ref=f9e346]: change
+                - text: in their behaviour. This
+                - emphasis [ref=f9e347]: change
+                - text: ", when observed and assessed, is often termed as learning outcome."
+              - generic [ref=f9e348]: 154 pages
+          - generic [ref=f9e352]:
+            - generic [ref=f9e355]:
+              - link "NCERT-Class-12-Sociology-Part-2.pdf Drishti IAS https://www.drishtiias.com › images › NCERT-Cl..." [ref=f9e357] [cursor=pointer]:
+                - /url: /goto?url=CAESgQEB6zswFfT1xDK3JsVdWcMS1QvpgD14NslPm8IcAYvTatk7XPxjDrywP9hYWaJP0IHOTAkNSChKDI3mbULIl9r8m8FCP9t8Z7wWPhMrkgDB8xJL7m378Gx2H87t-H3Qkw41WYo1EI4zxoaO3VuX0ckyW6qxar2bJ1byZRkbkiJnkPc
+                - heading "NCERT-Class-12-Sociology-Part-2.pdf" [level=3] [ref=f9e358]
+                - generic [ref=f9e364]:
+                  - generic [ref=f9e365]: Drishti IAS
+                  - generic [ref=f9e367]: https://www.drishtiias.com › images › NCERT-Cl...
+              - generic [ref=f9e369]: PDF
+              - button "About this result" [ref=f9e374] [cursor=pointer]
+            - generic [ref=f9e379]:
+              - generic [ref=f9e380]:
+                - generic [ref=f9e381]: 24 Feb 2006 —
+                - generic [ref=f9e382]:
+                  - text: In this chapter we focus on structural
+                  - emphasis [ref=f9e383]: changes
+                  - text: that colonialism brought in. Colonialism brought into being new political, economic and social ...
+              - generic [ref=f9e384]: 165 pages
+          - generic [ref=f9e388]:
+            - generic [ref=f9e391]:
+              - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f9e393] [cursor=pointer]:
+                - /url: /goto?url=CAESXwHrOzAVz46tEfxBOobb-5zt0-RyDL7ObtRlPg0ntlSK7GTFv44R1XMX0gQbke2YkWirm6aTfnKOeEgeBaL8A-tGZqm1SyDq_mWTrxT70A4QcmcuS1bSUtJBhEU5g9vr
+                - heading "Textbooks PDF (I-XII)" [level=3] [ref=f9e394]
+                - generic [ref=f9e400]:
+                  - generic [ref=f9e401]: NCERT
+                  - generic [ref=f9e403]: https://ncert.nic.in › textbook
+              - button "About this result" [ref=f9e409] [cursor=pointer]
+            - generic [ref=f9e415]:
+              - generic [ref=f9e416]:
+                - text: Textbooks
+                - emphasis [ref=f9e417]: PDF
+                - text: (I-XII) ..Select Class.. Class I, Class II, Class III, Class ...
+                - emphasis [ref=f9e418]: NCERT
+                - text: ", Sri Aurobindo Marg, New Delhi-110016. dceta[dot]"
+                - emphasis [ref=f9e419]: ncert
+                - text: "[at]nic[dot]in. + ..."
+              - link "Read more" [ref=f9e420] [cursor=pointer]:
+                - /url: /goto?url=CAES2gEB6zswFaeIHTDSJUb30tdjJgdqBtIsebcgSBrqpQjIlRtJBhMuKt5MctNGqtPtf3A2K9HnHfy3_HuYseZKySzkvCvtN6BX896z2reg3whcbGrJGegeghtNo1erA7Y1jZp1f4Ao7fsIe3nlTjuOPfXF4RDm4JBdFr92nF8YzeWc3T9oXVYCb7Z5LpgrvaJI8Y48EGIXwjTHQKC4c6PUS5gUp7uqSqem2VZ-oIcj2TOH1Iirwl9GSk4I2v6vKkvXYr70Vt0mgyzJisUTGiuNBCez5cBNuY1pWzKiRw
+          - generic [ref=f9e424]:
+            - generic [ref=f9e427]:
+              - link "NCERT Books for Class 12 Sociology - Free PDF Vedantu https://www.vedantu.com › ncert-books › ncert-books-..." [ref=f9e429] [cursor=pointer]:
+                - /url: /goto?url=CAESoQEB6zswFd9AmHwmDAS0VWDaM999lyIAvGfc5PPkf046OvVp1bnam7PavFtUCRbiwZ6_ZXRf0e72LrnJ5OEabRI8DZrrhFLki6QKVPTXK9paH37H432I7jHA5YxeztJBMnPa1PpnLkn2MfW2_K-fyqyejbWHJPHoHPOouZoACPa09E312aU3vIiKZ0GhXeXNfA5XhGCu6Pxairau_o0Ll-EjeQ
+                - heading "NCERT Books for Class 12 Sociology - Free PDF" [level=3] [ref=f9e430]
+                - generic [ref=f9e436]:
+                  - generic [ref=f9e437]: Vedantu
+                  - generic [ref=f9e439]: https://www.vedantu.com › ncert-books › ncert-books-...
+              - button "About this result" [ref=f9e445] [cursor=pointer]
+            - generic [ref=f9e452]:
+              - emphasis [ref=f9e453]: Download NCERT Class 12 Sociology Social Change and Development in India PDF
+              - text: ", chapter summaries, and study notes for exam success."
+            - img "Rated 4.2 out of 5, (3,73,000) user reviews" [ref=f9e458]: 4.2(3,73,000)
+          - generic [ref=f9e467]:
+            - generic [ref=f9e470]:
+              - link "CBSE informs schools on NCERT's latest advisory New ... Facebook · CBSE HQ 1.9K+ reactions · 5 months ago" [ref=f9e472] [cursor=pointer]:
+                - /url: /goto?url=CAESxgEB6zswFSTg07k57ZIoFBbUKtlhNMjCYCW6wsdeYiSuz_CmXO5A8qLgzD2VgD30HI0JGrTyIHc3HKRFeztV0zYelCiCrmryzW9O00afRm9ZAhcg_Yhz0Hj3IOpk14Sv2rYE67FbH_OT-23EBq_LPjbr0mi2by3C9cxktSGFhYIq7exJ1idi3FXaBZWOzRCEoI8aOiT7Usu1XStxH8n5Cr6B6jIKOuxLEkp3ZFyvy0lilRwXe7UiK67vqYTWWjupI4X9k9mpCw4
+                - heading "CBSE informs schools on NCERT's latest advisory New ..." [level=3] [ref=f9e473]
+                - generic [ref=f9e479]:
+                  - generic [ref=f9e480]: Facebook · CBSE HQ
+                  - generic [ref=f9e482]: 1.9K+ reactions · 5 months ago
+              - button "About this result" [ref=f9e488] [cursor=pointer]
+            - generic [ref=f9e493]:
+              - link "CBSE informs schools on NCERT's latest advisory New ... by CBSE HQ on Facebook. Play on Facebook. 1:03" [ref=f9e494] [cursor=pointer]:
+                - /url: /goto?url=CAESxgEB6zswFSTg07k57ZIoFBbUKtlhNMjCYCW6wsdeYiSuz_CmXO5A8qLgzD2VgD30HI0JGrTyIHc3HKRFeztV0zYelCiCrmryzW9O00afRm9ZAhcg_Yhz0Hj3IOpk14Sv2rYE67FbH_OT-23EBq_LPjbr0mi2by3C9cxktSGFhYIq7exJ1idi3FXaBZWOzRCEoI8aOiT7Usu1XStxH8n5Cr6B6jIKOuxLEkp3ZFyvy0lilRwXe7UiK67vqYTWWjupI4X9k9mpCw4
+                - generic [ref=f9e495]: 1:03
+              - generic [ref=f9e504]: These courses will help students adapt to the changes in the new textbooks of the National Council of Educational Research and Training (NCERT) ...
+          - generic [ref=f9e509]:
+            - generic [ref=f9e512]:
+              - 'link "New NCERT Changes 2024-25: Classes 3 & 6 Guide iDream Education https://www.idreameducation.org › blog › ncert-change..." [ref=f9e514] [cursor=pointer]':
+                - /url: /goto?url=CAEScwHrOzAVQiwtV5GbMy8WH9viRGExeAiX0q00I6RarRUvtg9lbXHDp11VW-9znlhtCY5IfpwN_Bh-vwvpw12DNRP7F0UMEkw1G8D2y_ORtLQCfDq09Y8UbKGeExhbzSPPSxxtptRBRS2AQeEOVoxh3B8ro6w
+                - 'heading "New NCERT Changes 2024-25: Classes 3 & 6 Guide" [level=3] [ref=f9e515]'
+                - generic [ref=f9e521]:
+                  - generic [ref=f9e522]: iDream Education
+                  - generic [ref=f9e524]: https://www.idreameducation.org › blog › ncert-change...
+              - button "About this result" [ref=f9e530] [cursor=pointer]
+            - generic [ref=f9e536]:
+              - generic [ref=f9e537]: 23 Apr 2025 —
+              - generic [ref=f9e538]:
+                - emphasis [ref=f9e539]: Explore key NCERT changes for Classes 3 & 6 made in 2024-25
+                - text: ", why they happened, and where to find updated digital content."
+          - generic [ref=f9e543]:
+            - generic [ref=f9e546]:
+              - link "NCERT New Books Class 9 2026-27 | PDF Download (All ... Educart https://www.educart.co › ncert › ncert-books-class-9" [ref=f9e548] [cursor=pointer]:
+                - /url: /goto?url=CAESqQEB6zswFTHfiqFI338dk5gUL2RYOfZV2KWAhoZ6onR4Kz70_5OdvM_u4e9IeBHKEVr6x64FofxR9-fb7sXuNacKiT1ixKQ1JvgCyFXQVVZjcL7_Y3GgRYHJAxsirO9VipR_LteBYnuDSBwJCWQGdfNMxtgKSr-yMCU1Wd8ZygkrHkChrX4GwMJrw270JI5Yh9om2T-rLboSYl3AFPPHPnQrNBnZhQI2T3mV
+                - heading "NCERT New Books Class 9 2026-27 | PDF Download (All ..." [level=3] [ref=f9e549]
+                - generic [ref=f9e555]:
+                  - generic [ref=f9e556]: Educart
+                  - generic [ref=f9e558]: https://www.educart.co › ncert › ncert-books-class-9
+              - button "About this result" [ref=f9e564] [cursor=pointer]
+            - generic [ref=f9e570]:
+              - generic [ref=f9e571]: 7 Aug 2026 —
+              - generic [ref=f9e572]:
+                - emphasis [ref=f9e573]: Download the free PDF of Latest NCERT Books Class 9 2026-27
+                - text: "for All the subjects. Updated PDFs with NCERT syllabus & changes: Science, ..."
+        - generic [ref=f9e575]:
+          - generic [ref=f9e580]:
+            - heading "People also search for" [level=2] [ref=f9e582]
+            - generic [ref=f9e584]:
+              - generic [ref=f9e585]:
+                - link "Leading the change ncert pdf free download" [ref=f9e589] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=Leading+the+change+ncert+pdf+free+download&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAgeEAE
+                - link "Leading the change ncert pdf class 10" [ref=f9e603] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=Leading+the+change+ncert+pdf+class+10&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAg8EAE
+                - link "Leading the change ncert pdf download" [ref=f9e617] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=Leading+the+change+ncert+pdf+download&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAg4EAE
+                - link "NCERT Learning Outcomes PDF download" [ref=f9e631] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=NCERT+Learning+Outcomes+PDF+download&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAgzEAE
+              - generic [ref=f9e642]:
+                - link "NCERT 6th to 12th all Books PDF" [ref=f9e646] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=NCERT+6th+to+12th+all+Books+PDF&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAgtEAE
+                - link "NCERT Learning Outcomes for primary Classes PDF" [ref=f9e660] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=NCERT+Learning+Outcomes+for+primary+Classes+PDF&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAgqEAE
+                - link "NCERT Books Class 6 to 10 PDF" [ref=f9e674] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=NCERT+Books+Class+6+to+10+PDF&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAgnEAE
+                - link "NCERT Learning Outcomes middle Stage PDF" [ref=f9e688] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&q=NCERT+Learning+Outcomes+middle+Stage+PDF&sa=X&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ1QJ6BAgfEAE
+          - navigation [ref=f9e699]:
+            - heading "Page navigation" [level=1] [ref=f9e700]
+            - text: "1"
+            - link "Page 2" [ref=f9e703] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=10&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAE
+              - text: "2"
+            - link "Page 3" [ref=f9e705] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=20&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAG
+              - text: "3"
+            - link "Page 4" [ref=f9e707] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=30&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAI
+              - text: "4"
+            - link "Page 5" [ref=f9e709] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=40&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAK
+              - text: "5"
+            - link "Page 6" [ref=f9e711] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=50&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAM
+              - text: "6"
+            - link "Page 7" [ref=f9e713] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=60&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAO
+              - text: "7"
+            - link "Page 8" [ref=f9e715] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=70&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAQ
+              - text: "8"
+            - link "Page 9" [ref=f9e717] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=80&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAS
+              - text: "9"
+            - link "Page 10" [ref=f9e719] [cursor=pointer]:
+              - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=90&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8tMDegQIKBAU
+              - text: "10"
+            - heading [level=2] [ref=f9e721]:
+              - link "Next" [ref=f9e722] [cursor=pointer]:
+                - /url: /search?q=leading+the+change+ncert+pdf&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt-t2fem5c0IJ8BKwOSZeMsFdRvHg:1787774762590&ei=KkePaofXI5ahhvcPuL2GgQE&start=10&sa=N&sstk=AS6-VmJ0AbSinZ-EjixpsfHCYvr7LdcdCBc7Li39uxNwvXNKFfx5FQ5-bB46ud63qiIKvJNFg236mg_kZhWdk0KPY4HDuHqNbnl9TQ&ved=2ahUKEwiHlKb9i7-WAxWWkOEIHbieIRAQ8NMDegQIKBAW
+        - navigation
+    - contentinfo [ref=f9e725]:
+      - heading "Footer links" [level=1] [ref=f9e726]
+      - generic [ref=f9e730]:
+        - generic [ref=f9e732]:
+          - text: India
+          - generic [ref=f9e734]:
+            - button "221005, Varanasi, Uttar Pradesh - Based on your past activity" [ref=f9e736] [cursor=pointer]:
+              - generic [ref=f9e737]: 221005, Varanasi, Uttar Pradesh
+              - generic [ref=f9e739]:
+                - text: "-"
+                - generic [ref=f9e740]: Based on your past activity
+            - text: "-"
+            - button "Update location" [ref=f9e742] [cursor=pointer]
+        - generic [ref=f9e745]:
+          - link "Help" [ref=f9e746] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en-IN&fg=1
+          - link "Send feedback" [ref=f9e747] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=f9e748] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en-IN&fg=1
+          - link "Terms" [ref=f9e749] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en-IN&fg=1

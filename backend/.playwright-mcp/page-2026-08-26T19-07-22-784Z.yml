@@ -1,0 +1,293 @@
+- generic [active] [ref=f7e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=f7e2] [cursor=pointer]
+      - link "Accessibility help" [ref=f7e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en-IN
+  - generic [ref=f7e8]:
+    - search [ref=f7e9]:
+      - generic [ref=f7e11]:
+        - link "Go to Google Home" [ref=f7e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQPAgI
+        - generic [ref=f7e21]:
+          - generic [ref=f7e22]:
+            - combobox "Search" [ref=f7e25]: NCERT PDF download class 10 science NCERT PDF download class 10 science
+            - generic [ref=f7e26]:
+              - button "Clear" [ref=f7e28] [cursor=pointer]
+              - generic [ref=f7e33]:
+                - button "Search by voice" [ref=f7e34] [cursor=pointer]
+                - button "Search by image" [ref=f7e37] [cursor=pointer]
+          - button "Search" [ref=f7e40] [cursor=pointer]
+    - generic [ref=f7e45]:
+      - button "Settings" [ref=f7e47] [cursor=pointer]
+      - button "Share" [ref=f7e53] [cursor=pointer]
+      - generic [ref=f7e59]:
+        - button "Google apps" [ref=f7e61] [cursor=pointer]
+        - link "Sign in" [ref=f7e66] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fq%3DNCERT%2BPDF%2Bdownload%2Bclass%2B10%2Bscience%26sei%3DZzmPaoqgLOmt4-EPl7yjiQI&ec=futura_srp_og_si_72236_p
+  - generic [ref=f7e68]:
+    - navigation [ref=f7e74]:
+      - generic [ref=f7e80]:
+        - list [ref=f7e81]:
+          - listitem [ref=f7e82]:
+            - link "AI Mode" [ref=f7e85] [cursor=pointer]:
+              - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&udm=50&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cn05EoNqnRUpRtqDK_L3JtcaVe4agnDpGKPxtn7rLKbh9RiMyQNxAO2alE80HFcj3ZXGF0Aly06LnFLX21Qs3CKf7f1XiAgHeysobrxxaMQKu3aiVdDzC4XsPhwgTcir1DOI0W4K3a9vxdRX_TgJUNED3xyKk6IXXGkq5KQ1ciEPvqZTfDaWrXnB1l3Rn7C4zHGORMw&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ2J8OegQIFBAD
+          - listitem [ref=f7e89]:
+            - link "All" [disabled] [ref=f7e90]
+          - listitem [ref=f7e93]:
+            - link "Forums" [ref=f7e94] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&udm=18&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cn05EoNqnRUpRtqDK_L3JtcaVe4agnDpGKPxtn7rLKbh9RiMyQNxAO2alE80HFcj3ZXGF0Aly06LnFLX21Qs3CKf7f1XiAgHeysobrxxaMQKu3aiVdDzC4XsPhwgTcir1DOI0W4K3a9vxdRX_TgJUNED3xyKk6IXXGkq5KQ1ciEPvqZTfDaWrXnB1l3Rn7C4zHGORMw&q=NCERT+PDF+download+class+10+science&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQs6gLegQIGhAB
+          - listitem [ref=f7e97]:
+            - link "Images" [ref=f7e98] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cn05EoNqnRUpRtqDK_L3JtcaVe4agnDpGKPxtn7rLKbh9RiMyQNxAO2alE80HFcj3ZXGF0Aly06LnFLX21Qs3CKf7f1XiAgHeysobrxxaMQKu3aiVdDzC4XsPhwgTcir1DOI0W4K3a9vxdRX_TgJUNED3xyKk6IXXGkq5KQ1ciEPvqZTfDaWrXnB1l3Rn7C4zHGORMw&q=NCERT+PDF+download+class+10+science&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQtKgLegQIGRAB
+          - listitem [ref=f7e101]:
+            - link "Shopping" [ref=f7e102] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&udm=28&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cn05EoNqnRUpRtqDK_L3JtcaVe4agnDpGKPxtn7rLKbh9RiMyQNxAO2alE80HFcj3ZXGF0Aly06LnFLX21Qs3CKf7f1XiAgHeysobrxxaMQKu3aiVdDzC4XsPhwgTcir1DOI0W4K3a9vxdRX_TgJUNED3xyKk6IXXGkq5KQ1ciEPvqZTfDaWrXnB1l3Rn7C4zHGORMw&q=NCERT+PDF+download+class+10+science&ved=1t:220175&ictx=111
+          - listitem [ref=f7e105]:
+            - link "Videos" [ref=f7e106] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&udm=7&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cn05EoNqnRUpRtqDK_L3JtcaVe4agnDpGKPxtn7rLKbh9RiMyQNxAO2alE80HFcj3ZXGF0Aly06LnFLX21Qs3CKf7f1XiAgHeysobrxxaMQKu3aiVdDzC4XsPhwgTcir1DOI0W4K3a9vxdRX_TgJUNED3xyKk6IXXGkq5KQ1ciEPvqZTfDaWrXnB1l3Rn7C4zHGORMw&q=NCERT+PDF+download+class+10+science&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQtKgLegQIFxAB
+          - listitem [ref=f7e109]:
+            - link "Books" [ref=f7e110] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=NCERT+PDF+download+class+10+science&udm=36&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cn05EoNqnRUpRtqDK_L3JtcaVe4agnDpGKPxtn7rLKbh9RiMyQNxAO2alE80HFcj3ZXGF0Aly06LnFLX21Qs3CKf7f1XiAgHeysobrxxaMQKu3aiVdDzC4XsPhwgTcir1DOI0W4K3a9vxdRX_TgJUNED3xyKk6IXXGkq5KQ1ciEPvqZTfDaWrXnB1l3Rn7C4zHGORMw&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ0pQJegQIFhAB
+          - listitem [ref=f7e113]:
+            - button [ref=f7e114] [cursor=pointer]:
+              - generic "More filters" [ref=f7e115]: More
+        - button "Tools" [ref=f7e122] [cursor=pointer]
+    - heading "Search Results" [level=1] [ref=f7e130]
+    - main [ref=f7e136]:
+      - generic [ref=f7e140]:
+        - generic [ref=f7e143]:
+          - heading "वेब नतीजे" [level=2] [ref=f7e144]
+          - generic [ref=f7e145]:
+            - generic [ref=f7e148]:
+              - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f7e150] [cursor=pointer]:
+                - /url: /goto?url=CAESZAHrOzAVzaoHbQT13-036FewHLWGoZiRC1f2OFG03pTZsdIfqrdxMItcX8vswhbKvvKble4w9cz69VrV7S3bqox2ASPZZ1RDywzPfJxx0hD0glazsttJHf0j9jWliFbZIcuc-PM
+                - heading "Textbooks PDF (I-XII)" [level=3] [ref=f7e151]
+                - generic [ref=f7e157]:
+                  - generic [ref=f7e158]: NCERT
+                  - generic [ref=f7e160]: https://ncert.nic.in › textbook
+              - generic [ref=f7e162]:
+                - generic [ref=f7e163]: ·
+                - link "Translate this page" [ref=f7e164] [cursor=pointer]:
+                  - /url: https://translate.google.com/translate?u=https://ncert.nic.in/textbook.php?jesc1%3D0-16&hl=en&sl=hi&tl=en&client=search
+              - button "About this result" [ref=f7e169] [cursor=pointer]
+            - generic [ref=f7e175]:
+              - generic [ref=f7e176]:
+                - emphasis [ref=f7e177]: Class X
+                - text: ", Class XI, Class XII, Class XI & XII Combined ..Select Subject ... Science. Rationalised Content, (Open). Prelims, (Open). Guide for using QR Code ..."
+              - link "Read more" [ref=f7e178] [cursor=pointer]:
+                - /url: /goto?url=CAESrgEB6zswFR1y29KlBD_T9hec595hN338bVQDfpLhTFzcNm79j3ZnAcqwXg_994m62xCIKjZdCsof0q_l4bMW8eN2wRNqONhmkjvM1OjLykXmXCPqBmCImS5MBPPKSkcM02zw8cKoY88r8eoxXl5W49TnVLR1ewawomiXkdK4MxTPaYzzg0C1I6g0SyAD5i2wOuZmCoCP7OCqK62fMn2dfR8s2B-K-Un8CpvRULEO9Vk
+        - generic [ref=f7e179]:
+          - generic [ref=f7e183]:
+            - generic [ref=f7e186]:
+              - link "NCERT-Class-10-Science.pdf Drishti IAS https://www.drishtiias.com › images › NCERT-Cl..." [ref=f7e188] [cursor=pointer]:
+                - /url: /goto?url=CAESeAHrOzAV_xqTeC3wQNFq93EzpeK0C2eEpQMgzInrK8pg3Lf_fdtwtjNiMpGGZsoo307HR4v8o0FoagqK4nCTEKQVNcn99QZ-YUKLtvWQspvdJxE8eY3-Wb3IXponolp--EsqADaV1OGDat6G1pfsgObYC2iWSfYmBg
+                - heading "NCERT-Class-10-Science.pdf" [level=3] [ref=f7e189]
+                - generic [ref=f7e195]:
+                  - generic [ref=f7e196]: Drishti IAS
+                  - generic [ref=f7e198]: https://www.drishtiias.com › images › NCERT-Cl...
+              - generic [ref=f7e200]: PDF
+              - button "About this result" [ref=f7e205] [cursor=pointer]
+            - generic [ref=f7e210]:
+              - generic [ref=f7e212]:
+                - text: Untitled Page 1 Page 2 Page 3 2 Page 4 … 7 Do You Know? Page 9 8 Page
+                - emphasis [ref=f7e213]: "10"
+                - text: 6 Page 11
+                - emphasis [ref=f7e214]: "10"
+                - text: Page 12 11 Page 13 12 Page 14 13 Page 15 14 Page 16 15 Page 17 16 Page 18 ...
+              - generic [ref=f7e215]: 282 pages
+          - generic [ref=f7e219]:
+            - generic [ref=f7e222]:
+              - link "NCERT Book for Class 10 Science Chapter-wise in English BYJU'S https://byjus.com › ncert-books-class-10-science" [ref=f7e224] [cursor=pointer]:
+                - /url: /goto?url=CAESZwHrOzAVGph-xP_viZZcK4rxl249mqNBOUkbeey4JYLk64gPnP7L5XvCTicBxYdFUCGqPBsDYH2MSA6Sts2qmteeQRVJHS8hHXhV72eQD_GCC8UN0gMnDPxOZsHm0U8quQ28dSoDDMI
+                - heading "NCERT Book for Class 10 Science Chapter-wise in English" [level=3] [ref=f7e225]
+                - generic [ref=f7e231]:
+                  - generic [ref=f7e232]: BYJU'S
+                  - generic [ref=f7e234]: https://byjus.com › ncert-books-class-10-science
+              - button "About this result" [ref=f7e240] [cursor=pointer]
+            - generic [ref=f7e246]:
+              - generic [ref=f7e247]:
+                - emphasis [ref=f7e248]: NCERT Books Class 10 Science
+                - text: – Download Free PDF for 2023-24. NCERT Books for Class 10 Science is readily made available here for students to access easily.
+              - link "Read more" [ref=f7e249] [cursor=pointer]:
+                - /url: /goto?url=CAESvAEB6zswFcIlxBj_3ey1d2SPc3Se-e9C-OhAX_I6o-dwm-JCHiN9CQpTVXKP4j4KCG8lP0U9n_WMcmaDCDy_Vy7m0jLam7E9mBEzfqxNE7VDfjacZYiqW_2stv9lSqFD8mr2jGnZbaiooWyhN478-vvSm6ijg433a-sqazPD3-AB31VOZs-aptg3xBVwgsWPpQV8KlkDRfAbChn-eAHzvIGgrMNLvWLEA1OD_llhZLR73o8feITFdQTQpd4PVQ
+          - generic [ref=f7e253]:
+            - generic [ref=f7e256]:
+              - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f7e258] [cursor=pointer]:
+                - /url: /goto?url=CAESWQHrOzAV2qOuSlu1CvBcSOeEyr71cJi8nUHnzxMgkJejnO6azdt6B-Y3o4sjyQ3uk3newlh0bh0A3FZZyCS_oRSaJRRn78Bf5_y_z7_RnNWO_PNNlfh82Kc2
+                - heading "Textbooks PDF (I-XII)" [level=3] [ref=f7e259]
+                - generic [ref=f7e265]:
+                  - generic [ref=f7e266]: NCERT
+                  - generic [ref=f7e268]: https://ncert.nic.in › textbook
+              - button "About this result" [ref=f7e274] [cursor=pointer]
+            - generic [ref=f7e281]:
+              - text: This online service offers easy access to the
+              - emphasis [ref=f7e282]: NCERT textbooks
+              - text: . The service covers textbooks of all subjects published by NCERT for classes I to XII. The Entire ...
+          - generic [ref=f7e286]:
+            - generic [ref=f7e289]:
+              - link "CBSE Ncert Book Class 10 All Subjects Pdf Download Ncert24 https://ncert24.com › ncert-books › ncert-books-for-cla..." [ref=f7e291] [cursor=pointer]:
+                - /url: /goto?url=CAEScAHrOzAVRWcOrq0cmOQPMuv8k8QPT6AGp_kYJrM5tmQ72YrrNJZ_7z5WkKl7_0NI9PXVreDKvkm4WwMhBhz9GUlb3VUU0ITzC9roGPBBnOY-ArZoF4ly26jvwPt9r50Ual2e_eMCSsyjgJXprEeNQW0
+                - heading "CBSE Ncert Book Class 10 All Subjects Pdf Download" [level=3] [ref=f7e292]
+                - generic [ref=f7e298]:
+                  - generic [ref=f7e299]: Ncert24
+                  - generic [ref=f7e301]: https://ncert24.com › ncert-books › ncert-books-for-cla...
+              - button "About this result" [ref=f7e307] [cursor=pointer]
+            - generic [ref=f7e313]:
+              - generic [ref=f7e314]:
+                - text: NCERT Books for Class 10 PDF – Free Download Online. Preparation Tips ...
+                - emphasis [ref=f7e315]: NCERT Books Class 10 Science
+                - text: · NCERT Books Class 10 English · NCERT Books Class ...
+              - link "Read more" [ref=f7e316] [cursor=pointer]:
+                - /url: /goto?url=CAES-gEB6zswFat1HEJOqSdSS50RWBgjxoN96ENeRXMgCAedwQlFvFLKOOstt_SQCeb0qPusGxkmuZOMUAlR5exH9sKXNx_wr5oNrYBiGmfHhn4GmJ0-C130VJK2qc_kOoLrAzz1_16Hqv2-Nt1nECnDZPlN_gppiNbErkGoWHx_TCoJFFPNZmb1EP5R6o6NBQT2s3U21gm5oYZYLMM-SO9D05w5ZswHz37mvwa8fPJHVWZ97eTQTkjBb5nP1ycXmrIMGTwqyWiinmiMh4HySw76uX0hJLmUI9KpzO6sw99RU3gh9m8yQbCecDk65aRuR1j6JZ7MOc--HLsoTy7m
+          - generic [ref=f7e320]:
+            - generic [ref=f7e323]:
+              - link "SCIENCE NCERT https://ncert.nic.in › textbook › pdf" [ref=f7e325] [cursor=pointer]:
+                - /url: /goto?url=CAESZQHrOzAVMPz55Pd4PrdgynNEZhxRMuSRE7-jsp3ZsYkFPhHOcieInGIs3Q4H3cvilo7b9q4ZECKzOy1B8gDDcUeqLoQShOMmO5T0KBem9FdT0PkAclfDig1iA9oqZwZAO2ThFEAm
+                - heading "SCIENCE" [level=3] [ref=f7e326]
+                - generic [ref=f7e332]:
+                  - generic [ref=f7e333]: NCERT
+                  - generic [ref=f7e335]: https://ncert.nic.in › textbook › pdf
+              - generic [ref=f7e337]: PDF
+              - button "About this result" [ref=f7e342] [cursor=pointer]
+            - generic [ref=f7e347]:
+              - generic [ref=f7e348]:
+                - generic [ref=f7e349]:
+                  - text: This textbook of Science
+                  - emphasis [ref=f7e350]: for Class X
+                  - text: is a continuation of our attempt in the Class IX. Science textbook to comply with the guidelines of the National Curriculum.
+                - link "Read more" [ref=f7e351] [cursor=pointer]:
+                  - /url: /goto?url=CAESwQEB6zswFWTnog808QPLuCb2huGFlaML8quZ4AB23ic9_PF0ouQ_NOIuaz7QL-2wzB3VRZsYaB4o-hhl01oSxuYoHtszMkn6GosZ6wyTm1wlfkCY8k_g96NQi2Ajnz6qBufORE6vpmkSLQdf4ulr43HFLhYr1J7ypRyH8EToghbrDSrCmx9iwJIBfxKaHE7Gflefjvrl8gNJXAg19FouTDUc3KTf9ADpZKngzjpESG4dTB0xESQTAb36LDacDzOpfZ7g
+              - generic [ref=f7e352]: 12 pages
+          - generic [ref=f7e356]:
+            - generic [ref=f7e359]:
+              - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f7e361] [cursor=pointer]:
+                - /url: /goto?url=CAESXwHrOzAV-u2i3LkciFHL0JoFh6NsryIUDdJFVMwerLn1R9xbhzZA_rv2XKBOlaX4_kq0rejgWBioDDeKUAJWv4FTMiTnVifnGY7ejY7Q3TRUlHxvNp8XM5htZg90cq8d
+                - heading "Textbooks PDF (I-XII)" [level=3] [ref=f7e362]
+                - generic [ref=f7e368]:
+                  - generic [ref=f7e369]: NCERT
+                  - generic [ref=f7e371]: https://ncert.nic.in › textbook
+              - button "About this result" [ref=f7e377] [cursor=pointer]
+            - generic [ref=f7e383]:
+              - generic [ref=f7e384]:
+                - emphasis [ref=f7e385]: Class X
+                - text: ", Class XI, Class XII, Class XI & XII Combined ..Select Subject ... Download complete book · RTI I Privacy Policy I Tamanna I DIKSHA I ICT Curriculum ..."
+              - link "Read more" [ref=f7e386] [cursor=pointer]:
+                - /url: /goto?url=CAESvgEB6zswFSYAt3-iIdzFlIv9bqCCpVf5Peytz4PGhSDsLz4PfGKHs5f2eCJgOB5uB9ONE3KF9zBYIp9t5WxZ05VWwRngdHK2IyylYWiA-q_vnC4zRVyrtsDeUUb4LVziwyXvX30K1_Tg4lbev8JoLmOocSfAwUxI8Q0qblzydz560BvyE-BigcIPKOmsL5mPfNqGbxVuuuqEDveK0CWsNN7PjtN9FNqcZ3DeJgRrARBwZ82Fpe-xH_b6pIKxe9jq
+          - generic [ref=f7e390]:
+            - generic [ref=f7e393]:
+              - link "NCERT Books for Class 10 Science - Free PDF Vedantu https://www.vedantu.com › ncert-books › ncert-books-..." [ref=f7e395] [cursor=pointer]:
+                - /url: /goto?url=CAESeAHrOzAVP7l43xz04qc3cAu750rdyKR69pAMabFOo1IsylTdenBC2PpHX8IEgJakjWca69vtH-3sUDxruswSF1pm09i0OWt3zHRfhG7-MCJuMvLFrg6ejN__Rez4R-PsaNKp-rltbnz5ODv_F6IKOsi3lPD8cYHLYw
+                - heading "NCERT Books for Class 10 Science - Free PDF" [level=3] [ref=f7e396]
+                - generic [ref=f7e402]:
+                  - generic [ref=f7e403]: Vedantu
+                  - generic [ref=f7e405]: https://www.vedantu.com › ncert-books › ncert-books-...
+              - button "About this result" [ref=f7e411] [cursor=pointer]
+            - generic [ref=f7e418]:
+              - text: You can download the
+              - emphasis [ref=f7e419]: NCERT Class 10 Science book PDF
+              - text: in both Hindi and English mediums for free through official and educational platforms.
+            - img "Rated 4.2 out of 5, (3,73,000) user reviews" [ref=f7e424]: 4.2(3,73,000)
+          - generic [ref=f7e431]:
+            - generic [ref=f7e434]:
+              - link "NCERT Textbook for Class 10 Science Free PDF Download Allen https://allen.in › NCERT Textbooks › Class 10" [ref=f7e436] [cursor=pointer]:
+                - /url: /goto?url=CAESaQHrOzAVIeE5Ogw0zvcBweYuHvxOWQv2idRX2L1_jG0XxClyIyk6Quy-PrzsonTcMpzTkUAlgEKrGaFiJOrpFngXFZQ85rnzC-FqhtVd1XGRABwZ6Qg66ijlChFROzgqSSHMl2jhjrpdEg
+                - heading "NCERT Textbook for Class 10 Science Free PDF Download" [level=3] [ref=f7e437]
+                - generic [ref=f7e443]:
+                  - generic [ref=f7e444]: Allen
+                  - generic [ref=f7e446]: https://allen.in › NCERT Textbooks › Class 10
+              - button "About this result" [ref=f7e452] [cursor=pointer]
+            - generic [ref=f7e458]:
+              - generic [ref=f7e459]:
+                - emphasis [ref=f7e460]: Download NCERT Class 10 Science Textbook PDF
+                - text: as per latest NCERT Syllabus followed by CBSE Students. The textbook contains chapters on Physics, Chemistry and ...
+              - link "Read more" [ref=f7e461] [cursor=pointer]:
+                - /url: /goto?url=CAESxgEB6zswFewvhHC98TRlJZFy1yq6K-Zanm6cgn7PkUMxpbOI_6JIsO2rjlPXm2ZA6H3cvXI0djyYf5YoSCaSGj3tgBgr_-Q6zZkeMS-LP0lOE_tqFvpdTc7xEi2iT10lGRAtjWwwHANWmP5a-UAtgcktCLJBeoK_GCqyLhLbcwKBhZuW66GIYU8sTJZhvyxiHTwV91DuGxMLWY1g2FumLwTHcpwP9dK85WV4eUGi2RdgNU07y3zde7F0LzjP9DJNUY84VTCn6bw
+          - generic [ref=f7e465]:
+            - generic [ref=f7e468]:
+              - link "NCERT class 10 science book pdf - Free PDF Download eSaral https://www.esaral.com › ncert-class-10-science-book-pdf" [ref=f7e470] [cursor=pointer]:
+                - /url: /goto?url=CAESbwHrOzAVMX5aRv00SjDj0-K6b8g8YJyYDUZwClu7DE5XH28aoFmle_-nIzuvSQ64DynGkHQrNfHah-o2PJxkjXPPgyayzNA1qTY53qOe7xRZEanYB_aN9JBpN4pJSMqtnxgqzIFvZDQrOVGinrfZHA
+                - heading "NCERT class 10 science book pdf - Free PDF Download" [level=3] [ref=f7e471]
+                - generic [ref=f7e477]:
+                  - generic [ref=f7e478]: eSaral
+                  - generic [ref=f7e480]: https://www.esaral.com › ncert-class-10-science-book-pdf
+              - button "About this result" [ref=f7e486] [cursor=pointer]
+            - generic [ref=f7e492]:
+              - generic [ref=f7e493]: 26 Jun 2026 —
+              - generic [ref=f7e494]:
+                - emphasis [ref=f7e495]: NCERT Class 10 Science book PDF
+                - text: covers all 13 chapters across Physics, Chemistry, and Biology following the CBSE 2025–26 syllabus, ...
+              - link "Read more" [ref=f7e496] [cursor=pointer]:
+                - /url: /goto?url=CAES0wEB6zswFVYxeakk5pZ-KLBjyTDJ9mLj2JgB7cnT1lVb4tk_fsWjkd4igpvBj4NR_AVeuRV-L4NATA-uHqFo4GvjzQjYz0e2MVi9ZvX9hUP4MauuzmdDoIkb1lCuPhbM0dzJTm_RVD2feQbsdprfBu1P9p2HeIe0W6kgH-eR0upjcQYq34sVirKbZpojkIe-XP_Ynxg747YSWHG2_fWzGaaRnklryE3IR9Au8-VC2EEwM5_wW4fr06yDTYCo2dp-BKNmXek0N-IEAsFqSxkrKupIk0yO
+      - generic [ref=f7e498]:
+        - generic [ref=f7e503]:
+          - heading "People also search for" [level=2] [ref=f7e505]
+          - generic [ref=f7e507]:
+            - generic [ref=f7e508]:
+              - link "Cbse ncert pdf download class 10 science" [ref=f7e512] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=Cbse+ncert+pdf+download+class+10+science&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAgyEAE
+              - link "Class 10 Science textbook PDF" [ref=f7e526] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=Class+10+Science+textbook+PDF&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAg2EAE
+              - link "Class 10 Science textbook NCERT" [ref=f7e540] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=Class+10+Science+textbook+NCERT&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAg1EAE
+              - link "NCERT Class 10 Science rationalised book PDF" [ref=f7e554] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=NCERT+Class+10+Science+rationalised+book+PDF&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAg0EAE
+            - generic [ref=f7e565]:
+              - link "10th Class NCERT Science Book Hindi Medium" [ref=f7e569] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=10th+Class+NCERT+Science+Book+Hindi+Medium&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAgzEAE
+              - link "Science textbook for Class 10 PDF in English" [ref=f7e583] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=Science+textbook+for+Class+10+PDF+in+English&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAgvEAE
+              - link "NCERT Science book in Hindi PDF" [ref=f7e597] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=NCERT+Science+book+in+Hindi+PDF&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAgxEAE
+              - link "Class 10 Science textbook NCERT Chapter 1" [ref=f7e611] [cursor=pointer]:
+                - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&q=Class+10+Science+textbook+NCERT+Chapter+1&sa=X&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ1QJ6BAgwEAE
+        - navigation [ref=f7e622]:
+          - heading "Page navigation" [level=1] [ref=f7e623]
+          - text: "1"
+          - link "Page 2" [ref=f7e626] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=10&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAE
+            - text: "2"
+          - link "Page 3" [ref=f7e628] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=20&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAG
+            - text: "3"
+          - link "Page 4" [ref=f7e630] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=30&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAI
+            - text: "4"
+          - link "Page 5" [ref=f7e632] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=40&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAK
+            - text: "5"
+          - link "Page 6" [ref=f7e634] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=50&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAM
+            - text: "6"
+          - link "Page 7" [ref=f7e636] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=60&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAO
+            - text: "7"
+          - link "Page 8" [ref=f7e638] [cursor=pointer]:
+            - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=70&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8tMDegQILRAQ
+            - text: "8"
+          - heading [level=2] [ref=f7e640]:
+            - link "Next" [ref=f7e641] [cursor=pointer]:
+              - /url: /search?q=NCERT+PDF+download+class+10+science&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnvleTYSSaQjPqDw6DSbCnOLe_w3LQ:1787771240085&ei=aDmPaoXIA8bKqfkPpfCR4AU&start=10&sa=N&sstk=AS6-VmJGlUom1TPHgxjQBU01ApzdKyHedQNOPvMCkykwPK1dHIa3ulUlbBe3HUUxSShO0FY0B_5SbWmXeQgSoPnYn2IiQ87iwDtIEA&ved=2ahUKEwiFnNDt_r6WAxVGZSoJHSV4BFwQ8NMDegQILRAS
+      - navigation
+    - contentinfo [ref=f7e644]:
+      - heading "Footer links" [level=1] [ref=f7e645]
+      - generic [ref=f7e649]:
+        - generic [ref=f7e651]:
+          - text: India
+          - generic [ref=f7e653]:
+            - button "Varanasi, Uttar Pradesh - From your IP address" [ref=f7e655] [cursor=pointer]:
+              - generic [ref=f7e656]: Varanasi, Uttar Pradesh
+              - generic [ref=f7e658]:
+                - text: "-"
+                - generic [ref=f7e659]: From your IP address
+            - text: "-"
+            - button "Update location" [ref=f7e661] [cursor=pointer]
+        - generic [ref=f7e664]:
+          - link "Help" [ref=f7e665] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en-IN&fg=1
+          - link "Send feedback" [ref=f7e666] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=f7e667] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en-IN&fg=1
+          - link "Terms" [ref=f7e668] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en-IN&fg=1

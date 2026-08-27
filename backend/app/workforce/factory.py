@@ -80,6 +80,8 @@ class EmployeeFactory:
         emp = Employee(
             task_id=self.task_id,
             role=definition.role,
+            name=definition.name,
+            avatar=definition.avatar or "👨‍💼",
             objective=definition.objective,
             responsibilities=definition.responsibilities,
             skills=definition.skills,

@@ -60,6 +60,7 @@ class DynamicModelRouter:
         step: TaskStep,
         analysis: TaskAnalysis,
         attempt: int = 0,
+        tools_required: bool = False,
     ) -> str:
         """
         Select model for this step execution attempt.
@@ -67,6 +68,10 @@ class DynamicModelRouter:
         """
         # Cascade index = max of all signals + attempt
         base_tier = self._compute_base_tier(employee, step, analysis)
+        if tools_required:
+            # groq/compound-mini rejects tool schemas with HTTP 400 —
+            # never send MCP tool calls to a non-tool-calling model.
+            base_tier = max(base_tier, 1)
         cascade_index = min(base_tier + attempt, len(MODEL_CASCADE) - 1)
         model = MODEL_CASCADE[cascade_index]
 

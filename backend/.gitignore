@@ -30,3 +30,6 @@ dist/
 # Logs
 *.log
 logs/
+
+# Local runtime data (MCP server configs may contain API keys)
+data/

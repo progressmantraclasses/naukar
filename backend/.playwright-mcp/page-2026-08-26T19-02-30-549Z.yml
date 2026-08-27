@@ -1,0 +1,278 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e4]:
+    - generic [ref=f3e5]: 8/27/2026, 12:32:30 AM
+    - list [ref=f3e8]:
+      - listitem [ref=f3e9]:
+        - link "मुख्य सामग्री पर जाएँ |" [ref=f3e10] [cursor=pointer]:
+          - /url: "#content"
+      - listitem [ref=f3e11]:
+        - link "नेविगेशन पर जाएँ |" [ref=f3e12] [cursor=pointer]:
+          - /url: "#navigation"
+      - listitem [ref=f3e13]:
+        - link "स्क्रीन रीडर एक्सेस |" [ref=f3e14] [cursor=pointer]:
+          - /url: screen-reader.php?ln=hi
+      - listitem [ref=f3e15]:
+        - link "टेक्सट का साइज़:" [ref=f3e16] [cursor=pointer]:
+          - /url: ""
+        - text: आ-|
+        - link "आ|" [ref=f3e17] [cursor=pointer]:
+          - /url: ""
+        - text: आ+
+      - listitem [ref=f3e18]:
+        - link "साइट दृश्य:" [ref=f3e19] [cursor=pointer]:
+          - /url: ""
+        - text: A
+        - link "A" [ref=f3e20] [cursor=pointer]:
+          - /url: ""
+      - listitem [ref=f3e21]:
+        - button [ref=f3e22] [cursor=pointer]
+  - banner [ref=f3e24]:
+    - generic [ref=f3e31]:
+      - textbox "Search" [ref=f3e32]:
+        - /placeholder: खोज
+      - generic [ref=f3e33]: 
+  - navigation [ref=f3e34]:
+    - list [ref=f3e37]:
+      - listitem [ref=f3e38]:
+        - link "होम (current)" [ref=f3e39] [cursor=pointer]:
+          - /url: /?ln=hi
+          - text: होम
+          - generic [ref=f3e40]: (current)
+      - listitem [ref=f3e41]:
+        - button "हमारे बारे में" [ref=f3e42] [cursor=pointer]
+      - listitem [ref=f3e43]:
+        - button "संघटक और विभाग" [ref=f3e44] [cursor=pointer]
+      - listitem [ref=f3e45]:
+        - button "कार्यक्रम" [ref=f3e46] [cursor=pointer]
+      - listitem [ref=f3e47]:
+        - button "गैलरी" [ref=f3e48] [cursor=pointer]
+      - listitem [ref=f3e49]:
+        - button "प्रकाशन" [ref=f3e50] [cursor=pointer]
+      - listitem [ref=f3e51]:
+        - button "घोषणाएं" [ref=f3e52] [cursor=pointer]
+      - listitem [ref=f3e53]:
+        - button "संपर्क" [ref=f3e54] [cursor=pointer]
+  - heading "Textbooks PDF (I-XII)" [level=2] [ref=f3e58]
+  - generic [ref=f3e63]:
+    - table [ref=f3e64]:
+      - rowgroup [ref=f3e65]:
+        - row [ref=f3e66]:
+          - cell [ref=f3e67]:
+            - table [ref=f3e69]:
+              - rowgroup [ref=f3e70]:
+                - row [ref=f3e71]:
+                  - cell [ref=f3e72]
+                  - cell [ref=f3e73]:
+                    - combobox [ref=f3e74]:
+                      - option "..Select Class.." [selected]
+                      - option "Class I"
+                      - option "Class II"
+                      - option "Class III"
+                      - option "Class IV"
+                      - option "Class V"
+                      - option "Class VI"
+                      - option "Class VII"
+                      - option "Class VIII"
+                      - option "Class IX"
+                      - option "Class X"
+                      - option "Class XI"
+                      - option "Class XII"
+                      - option "Class XI & XII Combined"
+                    - combobox [ref=f3e75]:
+                      - option "..Select Subject.." [selected]
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                    - combobox [ref=f3e76]:
+                      - option "..Select Book Title..." [selected]
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                      - option
+                    - button "Go" [ref=f3e77] [cursor=pointer]
+    - paragraph [ref=f3e78]:
+      - table:
+        - rowgroup:
+          - row
+      - table [ref=f3e79]:
+        - rowgroup [ref=f3e80]:
+          - row [ref=f3e81]:
+            - cell [ref=f3e82]:
+              - table [ref=f3e83]:
+                - rowgroup [ref=f3e84]:
+                  - row [ref=f3e85]:
+                    - cell [ref=f3e86]:
+                      - paragraph [ref=f3e87]: Welcome to the Online Textbooks Section
+                      - paragraph [ref=f3e88]: This online service offers easy access to the NCERT textbooks. The service covers textbooks of all subjects published by NCERT for classes I to XII in Hindi, English and Urdu. The Entire book or individual chapters can be downloaded provided the terms of use as mentioned in the Copyright Notice is adhered to.
+                      - paragraph
+                      - paragraph [ref=f3e89]:
+                        - text: Catalogue of Textbooks (Grades I–VIII) and Indian Language Primers (
+                        - link "Pdf" [ref=f3e90] [cursor=pointer]:
+                          - /url: pdf/Textbooks_Primer_Brochure/Textbooks_Primer_Brochure.pdf
+                        - text: "||"
+                        - link "Flipbook" [ref=f3e92] [cursor=pointer]:
+                          - /url: flipbook/Textbooks_Primer_Brochure/index.html
+                        - text: ).
+                      - paragraph
+                      - paragraph [ref=f3e94]:
+                        - generic [ref=f3e95]: Copyright of NCERT Textbooks and terms of use
+                      - paragraph
+                      - paragraph [ref=f3e96]: Please note that the NCERT textbooks are copyrighted.
+                      - paragraph
+                      - paragraph [ref=f3e97]: While copies of these textbooks may be downloaded and used as textbooks or for reference, republication of NCERT textbooks by any other individual or agency is strictly prohibited. No agency or individual may make electronic or print copies of these books and redistribute them in any form whatsoever. Use of these online books as a part of digital content packages or software is also strictly prohibited. No website or online service is permitted to host these online textbooks.
+                      - paragraph
+                      - paragraph [ref=f3e98]: Links may however be provided with written permission from the NCERT.
+                      - paragraph
+                      - paragraph [ref=f3e99]: Discouraging Piracy
+                      - paragraph
+                      - paragraph [ref=f3e100]: In order to discourage piracy, the online textbooks carry a watermark on all pages declaring the copyright of NCERT. DO NOT BUY OR SELL electronic or printed books with watermarked pages.
+                      - paragraph
+                      - paragraph [ref=f3e101]: Please bring to our notice any infringement or violation of copyright and commercial exploitation of these textbooks.
+                      - paragraph
+                      - paragraph [ref=f3e102]: Join us in the Education for All mission . Help us reach these textbooks to children, teachers and schools.
+                      - paragraph
+                      - paragraph [ref=f3e103]: Help us improve our services. Send your comments, suggestions or queries to dceta.ncert@nic.in
+                      - paragraph
+                      - paragraph
+      - table:
+        - rowgroup:
+          - row
+  - contentinfo [ref=f3e104]:
+    - generic [ref=f3e107]:
+      - list [ref=f3e109]:
+        - listitem [ref=f3e110]:
+          - link [ref=f3e111] [cursor=pointer]:
+            - /url: https://amritmahotsav.nic.in/
+        - listitem [ref=f3e113]:
+          - link [ref=f3e114] [cursor=pointer]:
+            - /url: http://data.gov.in
+        - listitem [ref=f3e116]:
+          - link [ref=f3e117] [cursor=pointer]:
+            - /url: http://mygov.in
+        - listitem [ref=f3e119]:
+          - link [ref=f3e120] [cursor=pointer]:
+            - /url: https://www.digitalindia.gov.in/
+        - listitem [ref=f3e122]:
+          - link [ref=f3e123] [cursor=pointer]:
+            - /url: https://www.education.gov.in/
+        - listitem [ref=f3e125]:
+          - link [ref=f3e126] [cursor=pointer]:
+            - /url: https://swayam.gov.in
+        - listitem [ref=f3e128]:
+          - link [ref=f3e129] [cursor=pointer]:
+            - /url: http://epathshala.nic.in/
+        - listitem [ref=f3e131]:
+          - link [ref=f3e132] [cursor=pointer]:
+            - /url: https://www.g20.in/
+      - generic [ref=f3e134]:
+        - link:
+          - /url: https://data.gov.in
+        - link "आरटीआई" [ref=f3e135] [cursor=pointer]:
+          - /url: https://ncert.nic.in/disclo_un_rti.php?ln=hi
+        - text: I
+        - link "तमन्ना" [ref=f3e136] [cursor=pointer]:
+          - /url: https://ncert.nic.in/tamanna/index.html
+        - text: I
+        - link "दीक्षा" [ref=f3e137] [cursor=pointer]:
+          - /url: https://diksha.gov.in/.php
+        - text: I
+        - link "आईसीटी पाठ्यक्रम" [ref=f3e138] [cursor=pointer]:
+          - /url: https://ictcurriculum.gov.in
+        - text: I
+        - link "पुस्तकालय" [ref=f3e139] [cursor=pointer]:
+          - /url: https://ncert.nic.in/ncertldd/index.html
+        - text: I
+        - link "क्यूएमटी" [ref=f3e140] [cursor=pointer]:
+          - /url: https://ncert.nic.in/QMTs/index.php
+        - text: I
+        - link "आईसीटी पहलकदमियाँ" [ref=f3e141] [cursor=pointer]:
+          - /url: https://ncert.nic.in/ict-initiatives.php
+    - generic [ref=f3e143]:
+      - generic [ref=f3e145]:
+        - generic [ref=f3e146]:
+          - paragraph [ref=f3e147]:
+            - strong [ref=f3e148]: एनसीईआरटी का पालन करें
+          - link "" [ref=f3e149] [cursor=pointer]:
+            - /url: https://www.facebook.com/ncertofficial/
+          - link [ref=f3e151] [cursor=pointer]:
+            - /url: https://twitter.com/ncert
+          - link "" [ref=f3e153] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCT0s92hGjqLX6p7qY9BBrSA
+          - link "" [ref=f3e155] [cursor=pointer]:
+            - /url: https://www.instagram.com/ncertindia/
+          - link "" [ref=f3e157] [cursor=pointer]:
+            - /url: https://www.linkedin.com/company/national-council-of-educational-research-and-training-ncert/
+        - generic [ref=f3e159]:
+          - strong [ref=f3e161]: हमसे संपर्क करें
+          - generic [ref=f3e162]: एनसीईआरटी, श्री अरबिंदो मार्ग, नई दिल्ली-110016
+          - generic [ref=f3e165]: dceta[dot]ncert[at]nic[dot]in
+          - generic [ref=f3e168]: +91 8800440559
+        - generic [ref=f3e171]:
+          - strong [ref=f3e173]: महत्वपूर्ण हेल्पलाइन नंबर
+          - generic [ref=f3e174]: "महिला हेल्पलाइन नंबर : 7827170170"
+          - generic [ref=f3e176]: "साइबर क्राइम रिपोर्टिंग नंबर : 1930"
+      - generic [ref=f3e178]: NCERT DPDP अधिनियम 2023 और CWSN मानकों के लिए GIGW का पालन करता है| कॉपीराइट © 2026 | सीआईईटी, एनसीईआरटी द्वारा विकसित | एनआईसी द्वारा होस्ट किया गया

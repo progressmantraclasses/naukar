@@ -90,6 +90,8 @@ class TaskAnalysis(BaseModel):
 class EmployeeDefinition(BaseModel):
     """Blueprint for creating an employee."""
     role: str
+    name: str = "Employee"
+    avatar: Optional[str] = None
     objective: str
     responsibilities: List[str]
     skills: List[str]
@@ -104,6 +106,8 @@ class Employee(BaseModel):
     id: str = Field(default_factory=lambda: gen_id("emp-"))
     task_id: str
     role: str
+    name: str = "Employee"
+    avatar: str = "👨‍💼"
     objective: str
     responsibilities: List[str] = []
     skills: List[str] = []

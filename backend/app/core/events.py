@@ -62,6 +62,14 @@ class EventType(str, Enum):
     WEB_SEARCH_RESULT = "WEB_SEARCH_RESULT"
     TASK_TOKEN_SUMMARY = "TASK_TOKEN_SUMMARY"
 
+    # Competition scout super-worker
+    COMPETITOR_SCAN_PROGRESS = "COMPETITOR_SCAN_PROGRESS"
+    COMPETITOR_MATRIX_READY = "COMPETITOR_MATRIX_READY"
+
+    # MCP (external tool servers)
+    MCP_SERVER_STATUS = "MCP_SERVER_STATUS"
+    MCP_TOOL_CALLED = "MCP_TOOL_CALLED"
+
 
 @dataclass
 class Event:

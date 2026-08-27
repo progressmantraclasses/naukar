@@ -1,0 +1,29 @@
+**Sure – I can share a direct download link to any NCERT textbook that’s publicly available, together with a brief ≈150‑word summary.**  
+
+To give you exactly the book you need, please let me know:
+
+| Required detail | Why it matters |
+|-----------------|----------------|
+| **Class / grade** (e.g., 9, 10, 12) | NCERT publishes a separate set of books for each class. |
+| **Subject** (Science, Mathematics, History, etc.) | Narrows the search to the right curriculum. |
+| **Exact title or part** (e.g., *Mathematics – Class 10*, *Biology – Part 1, Class 11*) | Some subjects have multiple volumes/parts. |
+| **Language** (English, Hindi, etc.) – optional | NCERT offers translations; the link differs by language. |
+
+---
+
+### Example (in case you were looking for a commonly‑used book)
+
+**Book:** *Mathematics – Class 10* (English)  
+**Edition:** 2022 (latest public release)  
+**ISBN:** 978‑93‑5029‑023‑5  
+
+**Download link (official NCERT site):**  
+https://ncert.nic.in/textbook.php?lev=2&cls=10&sub=2 (click “Download PDF” on the page)
+
+**≈150‑word summary**
+
+The Class 10 Mathematics textbook introduces students to fundamental concepts that bridge elementary arithmetic and higher‑level algebra, geometry, and statistics. It is organized into ten chapters: (1) Real Numbers, (2) Polynomials, (3) Pair of Linear Equations in Two Variables, (4) Quadratic Equations, (5) Arithmetic Progressions, (6) Triangles, (7) Coordinate Geometry, (8) Introduction to Trigonometry, (9) Some Applications of Trigonometry, and (10) Statistics. Each chapter blends theory with worked‑out examples, followed by a set of practice problems that develop problem‑solving skills and logical reasoning. The book also includes a “Self‑Assessment” section at the end of each chapter, enabling students to test their understanding before the board examinations. Clear diagrams, step‑by‑step derivations, and real‑life applications make the content accessible and engaging for learners preparing for the CBSE Class 10 board exams.
+
+---
+
+**Please reply with the specific class, subject, and title (or a brief description) of the NCERT book you need, and I’ll send you the exact download link and a tailored summary right away.**

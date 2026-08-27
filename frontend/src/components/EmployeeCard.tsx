@@ -55,9 +55,9 @@ export const EmployeeCard: React.FC<EmployeeCardProps> = ({
       style={{ marginLeft: getHierarchyIndent(employee.hierarchy_level) }}
     >
       <div className="employee-card-header">
-        <div className="employee-avatar">{getRoleEmoji(employee.role)}</div>
+        <div className="employee-avatar">{employee.avatar || getRoleEmoji(employee.role)}</div>
         <div className="employee-info">
-          <div className="employee-role">{employee.role}</div>
+          <div className="employee-role">{employee.name} &middot; {employee.role}</div>
           <div className="employee-status-row">
             <div className="status-dot" data-status={employee.status} />
             <div className="status-label">{employee.status}</div>

@@ -1,0 +1,295 @@
+- generic [active] [ref=f19e1]:
+  - generic:
+    - generic:
+      - link "Skip to main content" [ref=f19e2] [cursor=pointer]
+      - link "Accessibility help" [ref=f19e3] [cursor=pointer]:
+        - /url: https://support.google.com/websearch/answer/181196?hl=en-IN
+  - generic [ref=f19e8]:
+    - search [ref=f19e9]:
+      - generic [ref=f19e11]:
+        - link "Go to Google Home" [ref=f19e13] [cursor=pointer]:
+          - /url: https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQPAgI
+        - generic [ref=f19e21]:
+          - generic [ref=f19e22]:
+            - combobox "Search" [ref=f19e25]: Leading the Change NCERT edition Leading the Change NCERT edition
+            - generic [ref=f19e26]:
+              - button "Clear" [ref=f19e28] [cursor=pointer]
+              - generic [ref=f19e33]:
+                - button "Search by voice" [ref=f19e34] [cursor=pointer]
+                - button "Search by image" [ref=f19e37] [cursor=pointer]
+          - button "Search" [ref=f19e40] [cursor=pointer]
+    - generic [ref=f19e45]:
+      - button "Settings" [ref=f19e47] [cursor=pointer]
+      - button "Share" [ref=f19e53] [cursor=pointer]
+      - generic [ref=f19e59]:
+        - button "Google apps" [ref=f19e61] [cursor=pointer]
+        - link "Sign in" [ref=f19e66] [cursor=pointer]:
+          - /url: https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/search%3Fq%3DLeading%2Bthe%2BChange%2BNCERT%2Bedition&ec=futura_srp_og_si_72236_p
+  - generic [ref=f19e68]:
+    - navigation [ref=f19e74]:
+      - generic [ref=f19e80]:
+        - list [ref=f19e81]:
+          - listitem [ref=f19e82]:
+            - link "AI Mode" [ref=f19e85] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&udm=50&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cqCQj_06QnZs315LoFmPf5bBLHMJ0vMQmTbuI72DM7jn1PTmby9t4tumVo2l1imA7zXzUtWBynCWWtqkX5F_1SUlwDpUj5wzRmxRkI5CwmUKjS0Lu4BspqqIdc4cz560RNiZXPSZe1m1-GshTcDsCDqiZpUiTjhIBhiXMB8FJuwcBWLSb09jU1XeM4HzeLghT1SC5JA&aep=1&ntc=1&cs=0&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ2J8OegQIERAD
+          - listitem [ref=f19e89]:
+            - link "All" [disabled] [ref=f19e90]
+          - listitem [ref=f19e93]:
+            - link "Shopping" [ref=f19e94] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&udm=28&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cqCQj_06QnZs315LoFmPf5bBLHMJ0vMQmTbuI72DM7jn1PTmby9t4tumVo2l1imA7zXzUtWBynCWWtqkX5F_1SUlwDpUj5wzRmxRkI5CwmUKjS0Lu4BspqqIdc4cz560RNiZXPSZe1m1-GshTcDsCDqiZpUiTjhIBhiXMB8FJuwcBWLSb09jU1XeM4HzeLghT1SC5JA&q=Leading+the+Change+NCERT+edition&ved=1t:220175&ictx=111
+          - listitem [ref=f19e97]:
+            - link "Images" [ref=f19e98] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&udm=2&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cqCQj_06QnZs315LoFmPf5bBLHMJ0vMQmTbuI72DM7jn1PTmby9t4tumVo2l1imA7zXzUtWBynCWWtqkX5F_1SUlwDpUj5wzRmxRkI5CwmUKjS0Lu4BspqqIdc4cz560RNiZXPSZe1m1-GshTcDsCDqiZpUiTjhIBhiXMB8FJuwcBWLSb09jU1XeM4HzeLghT1SC5JA&q=Leading+the+Change+NCERT+edition&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQtKgLegQIExAB
+          - listitem [ref=f19e101]:
+            - link "Videos" [ref=f19e102] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&udm=7&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cqCQj_06QnZs315LoFmPf5bBLHMJ0vMQmTbuI72DM7jn1PTmby9t4tumVo2l1imA7zXzUtWBynCWWtqkX5F_1SUlwDpUj5wzRmxRkI5CwmUKjS0Lu4BspqqIdc4cz560RNiZXPSZe1m1-GshTcDsCDqiZpUiTjhIBhiXMB8FJuwcBWLSb09jU1XeM4HzeLghT1SC5JA&q=Leading+the+Change+NCERT+edition&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQtKgLegQIFBAB
+          - listitem [ref=f19e105]:
+            - link "Forums" [ref=f19e106] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&udm=18&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cqCQj_06QnZs315LoFmPf5bBLHMJ0vMQmTbuI72DM7jn1PTmby9t4tumVo2l1imA7zXzUtWBynCWWtqkX5F_1SUlwDpUj5wzRmxRkI5CwmUKjS0Lu4BspqqIdc4cz560RNiZXPSZe1m1-GshTcDsCDqiZpUiTjhIBhiXMB8FJuwcBWLSb09jU1XeM4HzeLghT1SC5JA&q=Leading+the+Change+NCERT+edition&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQs6gLegQIFhAB
+          - listitem [ref=f19e109]:
+            - link "News" [ref=f19e110] [cursor=pointer]:
+              - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=Leading+the+Change+NCERT+edition&tbm=nws&source=lnms&fbs=ABfTbFVyMZGZf1hfvX9uKjN_-G8cqCQj_06QnZs315LoFmPf5bBLHMJ0vMQmTbuI72DM7jn1PTmby9t4tumVo2l1imA7zXzUtWBynCWWtqkX5F_1SUlwDpUj5wzRmxRkI5CwmUKjS0Lu4BspqqIdc4cz560RNiZXPSZe1m1-GshTcDsCDqiZpUiTjhIBhiXMB8FJuwcBWLSb09jU1XeM4HzeLghT1SC5JA&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ0pQJegQIGBAB
+          - listitem [ref=f19e113]:
+            - button [ref=f19e114] [cursor=pointer]:
+              - generic "More filters" [ref=f19e115]: More
+        - button "Tools" [ref=f19e122] [cursor=pointer]
+    - heading "Search Results" [level=1] [ref=f19e129]
+    - generic [ref=f19e134]:
+      - generic [ref=f19e153]:
+        - heading "Searching Thinking a little longer" [level=2] [ref=f19e157]:
+          - generic [ref=f19e158]:
+            - generic [ref=f19e159]: Searching
+            - generic [ref=f19e169]: Thinking a little longer
+        - progressbar "Generating" [ref=f19e172]
+      - main [ref=f19e223]:
+        - generic [ref=f19e227]:
+          - generic [ref=f19e230]:
+            - heading "Web results" [level=2] [ref=f19e231]
+            - generic [ref=f19e232]:
+              - generic [ref=f19e235]:
+                - 'link "Leading the change- : 50 years of NCERT Amazon.in https://www.amazon.in › Leading-change-50-years-NCE..." [ref=f19e237] [cursor=pointer]':
+                  - /url: /goto?url=CAESeQHrOzAVCbmZlYDxYw-_0qdgRgPsOkz-2dIju8XU7h09ygwtM9Dm75cv7YqUlUhEk1TVONkqyE1nr6my0raGf4ikFSsruecayIJp6Z05TXRezl0iz3_sbo1738FC1CrR4tXQbQzo0eVO-fy64fdgOEUZpYHf1yENXm4
+                  - 'heading "Leading the change- : 50 years of NCERT" [level=3] [ref=f19e238]'
+                  - generic [ref=f19e244]:
+                    - generic [ref=f19e245]: Amazon.in
+                    - generic [ref=f19e247]: https://www.amazon.in › Leading-change-50-years-NCE...
+                - button "About this result" [ref=f19e253] [cursor=pointer]
+              - generic [ref=f19e259]:
+                - generic [ref=f19e260]:
+                  - text: Book details ; ISBN-10. 9350071789 ; ISBN-13. 978-9350071786 ;
+                  - emphasis [ref=f19e261]: Edition. 1st ed
+                  - text: ; Publisher. National Council of Educational Research and Training ; Publication date.
+                - link "Read more" [ref=f19e262] [cursor=pointer]:
+                  - /url: /goto?url=CAEStQIB6zswFbgLfwjlatqYZPOvlr4C1_73KNFfAvit_Q8FGcxM17UzBtWoPZDCcoqsEN2PBsiy9UStlo7QFoXWKys0ZB2hKpRrjrHDSZBM-nm8G8Y7VLkkYAR6uVkvywCBJnfp3N_8LmsLDvgJuHyIl2fo1HOK0fRomX6kxpDID_5it1C_13cAIv52_nkXqI85mKDZJAfcpPyHmUQCCHhdKZA0EnMuLMqNesNWee-8pafFxbHfCT2qWv0-eUH6wS1vjOPxA0MdYS0J2-mU8LlJ323do3K3oko7KvCF0AhGEQZMfD72ILn-e4f8zDg0tRBumOY7YZh3ifWjiSr-XrRSatKpik4vUlk1EeF_P-hWYvzTV2cOdaSTbN-JCjTGTAAMedh2DRttGIe673Lc9iznwradR5TelVQ
+              - generic [ref=f19e263]: Free delivery
+          - generic [ref=f19e269]:
+            - generic [ref=f19e272]:
+              - link "Textbooks PDF (I-XII) NCERT https://ncert.nic.in › textbook" [ref=f19e274] [cursor=pointer]:
+                - /url: /goto?url=CAESXwHrOzAVKRPiHEcFOWD_iVqkBG5Qo47xDnYC-6jenzJtaWuQ7niLa7yorvjPZM2PzuJS6aislB5xCVosxEIlTTJTRjhTBgFN1xBanHqZzIqE0eVrDPLrzQiS_vqAI8oR
+                - heading "Textbooks PDF (I-XII)" [level=3] [ref=f19e275]
+                - generic [ref=f19e281]:
+                  - generic [ref=f19e282]: NCERT
+                  - generic [ref=f19e284]: https://ncert.nic.in › textbook
+              - button "About this result" [ref=f19e290] [cursor=pointer]
+            - generic [ref=f19e295]: Publication List of Publication ePub Flipbook PDF(I-XII) Textbooks PDF (I-XII) Class I Class II Class III Class IV Class V Class VI Class VII Class VIII Class ...
+          - generic [ref=f19e301]:
+            - heading "People also ask" [level=2] [ref=f19e303]
+            - generic [ref=f19e304]:
+              - button "Is there any change in NCERT books in 2026?" [ref=f19e310] [cursor=pointer]
+              - button "Will NCERT books change in 2026-27 class 12?" [ref=f19e324] [cursor=pointer]
+              - button "Which class NCERT has been changed?" [ref=f19e338] [cursor=pointer]
+              - button "Will class 9 NCERT books change in 2026-27?" [ref=f19e352] [cursor=pointer]
+          - generic [ref=f19e362]:
+            - heading "Web results" [level=2] [ref=f19e363]
+            - generic [ref=f19e364]:
+              - generic [ref=f19e367]:
+                - link "How NCERT New Textbooks 2026-27 Differ from Previous ... Centre Point School Nagpur https://centrepointschools.com › blogs › how-ncert-new..." [ref=f19e369] [cursor=pointer]:
+                  - /url: /goto?url=CAESmwEB6zswFZf1M1ddZcxLTodze-SFX1yCOtUHAn9NQk7Y6BIxl-uP12r4zBtWFBPtYee_36EEQou_Epa1tRQeJwAfm0gSxUv0x8bdEeNaE1WP2yXIhf1iNVOEg9LmCG_YDStGOkk82trOfnmABlGaSkMWmNU3AKvv8ecMMaSqm_IxXUZNijdRUEW6E4Qn2Wdjp4AKPzPbWM7rErRyJw
+                  - heading "How NCERT New Textbooks 2026-27 Differ from Previous ..." [level=3] [ref=f19e370]
+                  - generic [ref=f19e376]:
+                    - generic [ref=f19e377]: Centre Point School Nagpur
+                    - generic [ref=f19e379]: https://centrepointschools.com › blogs › how-ncert-new...
+                - button "About this result" [ref=f19e385] [cursor=pointer]
+              - generic [ref=f19e391]:
+                - generic [ref=f19e392]:
+                  - text: The
+                  - emphasis [ref=f19e393]: NCERT
+                  - text: new books 2026-27 have been crafted with this modern reality in mind. You might notice that the language is much more conversational. Instead of dense ...
+                - link "Read more" [ref=f19e394] [cursor=pointer]:
+                  - /url: /goto?url=CAES-AEB6zswFW_vPx1-gPp1CdfGKOadxnjmnm5PEUe-HM3CmIH4YlgMjSEkry2DooTolSSnVcMdcP1UHZTp-i_M6DDAM4FjXNCOdRQGku85gLcM3CVHSNJjYabUPRmwrpdUhbGIFiJ-7SPJ8dR6xAzk11aAfgSIz4l-Rq3a7OsJiznGIf5gP1vGmbsVChsDYwduYvJL3jo6H7dDkKXOsaBgv7cYjzmcNUuHJa12STFcV29pmyiOglidyH86kRQ2xVl-R7SSO5dGXH-GylX4GZAW19ONezhk6ujcnhEnZx4VXUyJRys2x41NKtONrt9Bj-FplOtQgxxD-qdNYQ
+          - generic [ref=f19e400]:
+            - generic [ref=f19e403]:
+              - link "NCERT Clarity Bomb Yes, textbooks are changing… but not ... Instagram · iquemohit 1.2K+ likes · 5 months ago" [ref=f19e405] [cursor=pointer]:
+                - /url: /goto?url=CAESaQHrOzAV9Zlo4kjF2zdGnkyPGsBneQGznNgWvquPpBflxvklSgrSu7eCbPfnX93OmIXnoGjnrL97WxBycZfS4hMXXxTtiS6FHP87X10DWYATfxKDdoePnvQhJHUDUW1mlyCxYzjXYl1cIg
+                - heading "NCERT Clarity Bomb Yes, textbooks are changing… but not ..." [level=3] [ref=f19e406]
+                - generic [ref=f19e412]:
+                  - generic [ref=f19e413]: Instagram · iquemohit
+                  - generic [ref=f19e415]: 1.2K+ likes · 5 months ago
+              - button "About this result" [ref=f19e421] [cursor=pointer]
+            - generic [ref=f19e426]:
+              - link "NCERT Clarity Bomb Yes, textbooks are changing… but not ... by Mohit Mangal on Instagram. Play on Instagram. 1:08" [ref=f19e427] [cursor=pointer]:
+                - /url: /goto?url=CAESaQHrOzAV9Zlo4kjF2zdGnkyPGsBneQGznNgWvquPpBflxvklSgrSu7eCbPfnX93OmIXnoGjnrL97WxBycZfS4hMXXxTtiS6FHP87X10DWYATfxKDdoePnvQhJHUDUW1mlyCxYzjXYl1cIg
+                - generic [ref=f19e428]: 1:08
+              - generic [ref=f19e437]: Big textbook updates are officially coming! NCERT has formed a 20-member panel to draft new Political Science books for Classes 11 and 12 under ...
+          - generic [ref=f19e442]:
+            - generic [ref=f19e445]:
+              - 'link "Explained: What Are The Latest Changes In The NCERT ... NDTV https://www.ndtv.com › Education › schools" [ref=f19e447] [cursor=pointer]':
+                - /url: /goto?url=CAESlwEB6zswFYTiCIzZdT5Xl26Jg9g2zGqUsNmQoq4e1l6ZkvvjMDPPHKSNBYiYvdKH-asmARECfzN6TfZ43qKSpsXLEKLcw6L08ThsQDezLRtTLEMlV5POhOI7UabHHFe99cR0Rm_G_Jh3fDnPNdX4EVasdWysx-hKhHHPDJWx2otjHWfdQs15YAbKnlS7HnB5W1rRTQMayLzU
+                - 'heading "Explained: What Are The Latest Changes In The NCERT ..." [level=3] [ref=f19e448]'
+                - generic [ref=f19e454]:
+                  - generic [ref=f19e455]: NDTV
+                  - generic [ref=f19e457]: https://www.ndtv.com › Education › schools
+              - button "About this result" [ref=f19e463] [cursor=pointer]
+            - generic [ref=f19e469]:
+              - generic [ref=f19e470]: 18 Jun 2024 —
+              - generic [ref=f19e471]:
+                - text: The panel suggested that 'India' should be replaced with 'Bharat' in school textbooks for all classes. Following this,
+                - emphasis [ref=f19e472]: NCERT
+                - text: director Mr Saklani ...
+              - link "Read more" [ref=f19e473] [cursor=pointer]:
+                - /url: /goto?url=CAEStQEB6zswFRJz-c-PWEm8tpRf1-SJqgD6-kJUcn-UQHcqm9A4SpLBDs10lsqbKdTiK-MLVZq8MIGp8NBhljlb0RFNA3dF9FiPOzImJjq_a-Eqaw0Hpa-lXeQILsY4xhHk9sNO2hILlFKcKXcALX_TVR0SWCT-M0S30wEGc35ANzhktLRb6ZvKB_-TPDzf3j8ti6E5K3idQyQsk2IMtDbX5MTWeYXG4v1m-jxHba1cKyM7K_Ct9Su7
+          - generic [ref=f19e477]:
+            - generic [ref=f19e480]:
+              - 'link "Leading The Change: 50 Years of NCERT Bagchee https://www.bagchee.com › books › leading-the-change..." [ref=f19e482] [cursor=pointer]':
+                - /url: /goto?url=CAESggEB6zswFcex9OPbZGwF0ch-ZE70Gj0FIAjjyT2X4nnemMznSqd0zU8ZJ7U4kzGt57dVoA2AY33KdwY2pytk3B4WkwFfn3pG-D0WFx0wtN3DTf7ovy6gb3NyarBBxcg10CD0PdRMECLcQ3jjjRfjkiGAt4iJzG0zNieFrQ7NvbgxxKgi
+                - 'heading "Leading The Change: 50 Years of NCERT" [level=3] [ref=f19e483]'
+                - generic [ref=f19e489]:
+                  - generic [ref=f19e490]: Bagchee
+                  - generic [ref=f19e492]: https://www.bagchee.com › books › leading-the-change...
+              - button "About this result" [ref=f19e498] [cursor=pointer]
+            - generic [ref=f19e504]:
+              - generic [ref=f19e505]:
+                - text: Language:English ; ISBN:9789350071786 ; Release Date:2011-12-31 ;
+                - emphasis [ref=f19e506]: Edition:1st. ed
+                - text: . ; Publisher:National Council of Educational Research and Training.
+              - link "Read more" [ref=f19e507] [cursor=pointer]:
+                - /url: /goto?url=CAESyAIB6zswFciPBRdsqjP9c8TL7FqPVc2qnDpsAGr0o25wNRjEDUCE7OVlkuKD128pz2xJ3kqol-_748THZuWaRJWf7a9jmk8xBibCnGfTFCYtwl4WaVkwTn1L4rOII2jchFlFyK8tzNrVgdukN9iQRn1SUP8GrHUkkbqC3Fg0IltH7fnsiN-39cheXOK3opH89EddDP46NpU7AgqddmhuMw9iVgclxViYu3FiakyFpbZz1POPFncewpe-GLFvizObsJ0iTspGnOtr3EEbRekvygPUG3YJTGHJj_O5k0PWYxfbOuD4ABsGz6NzwRc3x-BSJx0ZmbzQHo1_JNWGrcv_lj2mu4UahPLOYbLIP0jr81HPR2gRtU68TbKRRqWsT86y3jYXEsFmIME-A8ao-Y_oIs8YzsToYb_jZNm_oTAB0KG2pKcH4CD2AN44
+          - generic [ref=f19e511]:
+            - generic [ref=f19e514]:
+              - link "State and Society up to 1000 CE NCERT https://ncert.nic.in › textbook › pdf › iest105" [ref=f19e516] [cursor=pointer]:
+                - /url: /goto?url=CAESZQHrOzAVGZ6ELTg-oX5IxZM_tn5b_fTibl2bo9Zjn6mnETKQef4x7GWrooC7sDkzxmDWb-hw2M4v-oTh78buXtsKhVVF2PUCBt0CepQmnksuvarRRK7C6JJmMed_-sCx3K6h9FtH
+                - heading "State and Society up to 1000 CE" [level=3] [ref=f19e517]
+                - generic [ref=f19e523]:
+                  - generic [ref=f19e524]: NCERT
+                  - generic [ref=f19e526]: https://ncert.nic.in › textbook › pdf › iest105
+              - generic [ref=f19e528]: PDF
+              - button "About this result" [ref=f19e533] [cursor=pointer]
+            - generic [ref=f19e538]:
+              - generic [ref=f19e540]:
+                - text: State and Society up to 1000 CE region witnessed significant sociopolitical
+                - emphasis [ref=f19e541]: changes
+                - text: . This included substantial growth in agriculture,
+              - generic [ref=f19e542]: 42 pages
+          - generic [ref=f19e546]:
+            - generic [ref=f19e549]:
+              - link "Have NCERT books been changed? Quora 30+ answers · 9 years ago" [ref=f19e551] [cursor=pointer]:
+                - /url: /goto?url=CAESawHrOzAViWq1X1QvW78RCOg82-VlA9pJa-0eT2mw_Kqc32upBYWgxt6qSriQIvsdXwPFOiCDPewm4PjeuP7NTdlCuXFaN29tfPz_kWKiwogiq10Xe179YjnBcd1eM3qbcGSLohqBR8IDuSZy
+                - heading "Have NCERT books been changed?" [level=3] [ref=f19e552]
+                - generic [ref=f19e558]:
+                  - generic [ref=f19e559]: Quora
+                  - generic [ref=f19e561]: 30+ answers · 9 years ago
+              - button "About this result" [ref=f19e567] [cursor=pointer]
+            - generic [ref=f19e572]: Have NCERT books been changed?
+            - generic [ref=f19e578]:
+              - link "35 answers" [ref=f19e579] [cursor=pointer]:
+                - /url: /goto?url=CAESfQHrOzAV3baZjIT5Y54PxBiddLAP1FsTx1OMvflTYPFNcxtwjt0FShFRoBLQ_MhucjT99s7R87AGSr-gu7gQYcHzpydVAZEGL7PXdo9hyKuKoxTidnMnMSdEv1TZp5OFXewhqJ2jmsA_pWxWxvi9wsp78LdoKts0AGNZ3zUK
+              - generic [ref=f19e580]: ·
+              - generic [ref=f19e581]: "Top answer:"
+              - generic [ref=f19e582]: From last 12 years NCERT books have not changed. Certainly a good news for those who want ...
+          - generic [ref=f19e586]:
+            - generic [ref=f19e589]:
+              - 'link "Five Years of NCERT Textbook Revisions: 2022 to 2026 Education for All in India https://educationforallinindia.com › five-years-of-ncert-..." [ref=f19e591] [cursor=pointer]':
+                - /url: /goto?url=CAESjwEB6zswFaHdG717PXLIMbUPTBDjPX35fD1EWgK_MLubk9KmoonZ87J973gWfY3YIt3BV3OWXhbWTZNdYRo9Sv9cAsA9O4_8FY3pf11qrqen6biWXmXejbSyjI1Ef_5uO5578qc2L6kmBAoiLzWxIuPCIN3CTtl-UJ28em9ok2vZu3Wn_ugCnlpVXKa_pmgdMw
+                - 'heading "Five Years of NCERT Textbook Revisions: 2022 to 2026" [level=3] [ref=f19e592]'
+                - generic [ref=f19e598]:
+                  - generic [ref=f19e599]: Education for All in India
+                  - generic [ref=f19e601]: https://educationforallinindia.com › five-years-of-ncert-...
+              - button "About this result" [ref=f19e607] [cursor=pointer]
+            - generic [ref=f19e613]:
+              - generic [ref=f19e614]: 28 Feb 2026 —
+              - generic [ref=f19e615]:
+                - text: This report provides a factual account of what was
+                - emphasis [ref=f19e616]: changed
+                - text: ", when, in which books and subjects, the official rationale provided by"
+                - emphasis [ref=f19e617]: NCERT
+                - text: ", ..."
+              - link "Read more" [ref=f19e618] [cursor=pointer]:
+                - /url: /goto?url=CAES7QEB6zswFd6upKLGw5in5yaEQisI4OsenTTbjx5pdHf2_umAx77qDOTCifrM0b_knqu4VszrbIn8iOuEe1evqfs-4wLqcoW2UkMSfbDwhJhcrDF5LGhkHvJq-BrlcnB36ncbkBNdRVnnvLF66kkdoGoQlhx-YQA5v6Mbhs0jnnvR-TGUIMMSoX3HOXwVVeXGZsbUflOwpbehp00he-JA7WEDcyuzVcR1VrBzNtRf_YwRSZ9KeNjWo5dnx4bGq4Urp4RYX1qDGjvWYU8M3KUW1fgTy-jvEgJvks7pyN8vZ8qvQBjHsvFeSVMRcfRrSSk
+        - generic [ref=f19e620]:
+          - generic [ref=f19e625]:
+            - heading "People also search for" [level=2] [ref=f19e627]
+            - generic [ref=f19e629]:
+              - generic [ref=f19e630]:
+                - link "Leading the change ncert edition pdf" [ref=f19e634] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=Leading+the+change+ncert+edition+pdf&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhEEAE
+                - link "Leading the change ncert edition pdf download" [ref=f19e648] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=Leading+the+change+ncert+edition+pdf+download&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhCEAE
+                - link "Leading the change ncert edition 2022" [ref=f19e662] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=Leading+the+change+ncert+edition+2022&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhBEAE
+                - link "NCERT 6th to 12th all Books PDF" [ref=f19e676] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=NCERT+6th+to+12th+all+Books+PDF&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhDEAE
+              - generic [ref=f19e687]:
+                - link "Class 9 new NCERT book 2026-27 PDF" [ref=f19e691] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=Class+9+new+NCERT+book+2026-27+PDF&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhKEAE
+                - link "NCERT 2026 Edition" [ref=f19e705] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=NCERT+2026+Edition&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhJEAE
+                - link "NCERT books PDF" [ref=f19e719] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=NCERT+books+PDF&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhLEAE
+                - link "Class 10 new NCERT Book 2026-27" [ref=f19e733] [cursor=pointer]:
+                  - /url: /search?sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&q=Class+10+new+NCERT+Book+2026-27&sa=X&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ1QJ6BAhIEAE
+          - navigation [ref=f19e744]:
+            - heading "Page navigation" [level=1] [ref=f19e745]
+            - text: "1"
+            - link "Page 2" [ref=f19e748] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=10&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAE
+              - text: "2"
+            - link "Page 3" [ref=f19e750] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=20&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAG
+              - text: "3"
+            - link "Page 4" [ref=f19e752] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=30&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAI
+              - text: "4"
+            - link "Page 5" [ref=f19e754] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=40&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAK
+              - text: "5"
+            - link "Page 6" [ref=f19e756] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=50&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAM
+              - text: "6"
+            - link "Page 7" [ref=f19e758] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=60&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAO
+              - text: "7"
+            - link "Page 8" [ref=f19e760] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=70&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAQ
+              - text: "8"
+            - link "Page 9" [ref=f19e762] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=80&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAS
+              - text: "9"
+            - link "Page 10" [ref=f19e764] [cursor=pointer]:
+              - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=90&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8tMDegQINxAU
+              - text: "10"
+            - heading [level=2] [ref=f19e766]:
+              - link "Next" [ref=f19e767] [cursor=pointer]:
+                - /url: /search?q=Leading+the+Change+NCERT+edition&sca_esv=7bf78debd29e0bdd&sxsrf=APpeQnt7mIiv5Gmo172GvkC7nY5XqzR7XQ:1787774879288&ei=n0ePav2gEbilhvcPmvWZmQg&start=10&sa=N&sstk=AS6-VmLpzJGXoaxN6WwN0HVI1oQfv6fgqLU8QarCI5RGEWrZI4yTwFKzNcCePZgfsNP7k0kQDGZb8t8rXi70H6mGIKvtg_qWWGSg8Q&ved=2ahUKEwi97Pi0jL-WAxW4kuEIHZp6JoMQ8NMDegQINxAW
+        - navigation
+    - contentinfo [ref=f19e770]:
+      - heading "Footer links" [level=1] [ref=f19e771]
+      - generic [ref=f19e775]:
+        - generic [ref=f19e777]:
+          - text: India
+          - generic [ref=f19e779]:
+            - button "221005, Varanasi, Uttar Pradesh - Based on your past activity" [ref=f19e781] [cursor=pointer]:
+              - generic [ref=f19e782]: 221005, Varanasi, Uttar Pradesh
+              - generic [ref=f19e784]:
+                - text: "-"
+                - generic [ref=f19e785]: Based on your past activity
+            - text: "-"
+            - button "Update location" [ref=f19e787] [cursor=pointer]
+        - generic [ref=f19e790]:
+          - link "Help" [ref=f19e791] [cursor=pointer]:
+            - /url: https://support.google.com/websearch/?p=ws_results_help&hl=en-IN&fg=1
+          - link "Send feedback" [ref=f19e792] [cursor=pointer]:
+            - /url: "#"
+          - link "Privacy" [ref=f19e793] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?hl=en-IN&fg=1
+          - link "Terms" [ref=f19e794] [cursor=pointer]:
+            - /url: https://policies.google.com/terms?hl=en-IN&fg=1

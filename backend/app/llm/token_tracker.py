@@ -4,12 +4,20 @@ Tracks every LLM call: model, tokens, cost, latency.
 Emits TOKEN_USAGE events to the frontend.
 Prints beautiful formatted boxes to the terminal.
 """
+import sys
 import time
 from dataclasses import dataclass, field, asdict
 from typing import Dict, List, Optional
 import structlog
 
 log = structlog.get_logger()
+
+# Windows consoles (cp1252) cannot render box-drawing/emoji chars — never
+# crash the request path on a print; fall back to replacement characters.
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except Exception:
+    pass
 
 # ANSI colors for terminal output
 _C = {

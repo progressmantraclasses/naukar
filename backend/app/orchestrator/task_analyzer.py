@@ -4,7 +4,7 @@ Uses an LLM to understand: what the task is, what skills/tools are needed, compl
 """
 import json
 import structlog
-from app.llm.gateway import ai_gateway
+from app.llm.registry import llm_registry
 from app.llm.provider import LLMRequest, Message
 from app.tasks.models import TaskAnalysis, ComplexityProfile
 from app.core.config import settings
@@ -54,6 +54,7 @@ Examples:
 - "Summarize this text" → complexity=0.1, subtasks=1, needs_research=false
 - "Create competitor analysis for SaaS" → complexity=0.7, subtasks=5-8, needs_research=true
 - "Build a React website" → complexity=0.85, subtasks=6-10, needs_research=false, tool_requirement=0.8
+- "Find/download a book, PDF, file, price, news or any current real-world fact" → needs_research=true, required_tools=["web_search"] (your memorized knowledge is NOT a substitute for looking it up)
 """
 
 
@@ -76,7 +77,8 @@ class TaskIntelligenceEngine:
             task_id=task_id,
         )
 
-        response = await ai_gateway.generate(request)
+        provider = llm_registry.get_provider(self._model)
+        response = await provider.generate(request)
 
         try:
             data = json.loads(response.content)
@@ -139,3 +141,4 @@ class TaskIntelligenceEngine:
             "needs_review": False,
             "risk_level": "low",
         }
+        
